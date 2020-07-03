@@ -16,9 +16,9 @@ RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - && \
 apt-get install nodejs
 
 # 作業ディレクトリの作成、設定
-RUN mkdir /app_name
+RUN mkdir /myapp
 ##作業ディレクトリ名をAPP_ROOTに割り当てて、以下$APP_ROOTで参照
-ENV APP_ROOT /app_name
+ENV APP_ROOT /myapp
 WORKDIR $APP_ROOT
 
 # ホスト側（ローカル）のGemfileを追加する（ローカルのGemfileは【３】で作成）
