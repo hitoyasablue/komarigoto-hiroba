@@ -6,11 +6,11 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/shim' %>
   </head>
   <body>
-    <div class="app-title navbar navbar-expand-md navbar-light bg-light">
-      <div class="navbar-brand">困りごとひろば</div>
-    </div>
+    <%= render 'layouts/header' %>
+    <div class=""></div>
     <div class="container">
       <%= yield %>
     </div>
