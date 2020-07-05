@@ -29,6 +29,8 @@ jobs:
                 gem install bundler -v 2.1.4
                 bundle install --jobs=4 --retry=3 --path vendor/bundle
 
+        # - run: NODE_ENV=test bundle exec rails webpacker:compile
+
         - save_cache:
             paths:
             - ./vendor/bundle

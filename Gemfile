@@ -30,7 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap'
 gem 'jquery-rails'
 
-gem 'therubyracer'
+gem 'mini_racer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
