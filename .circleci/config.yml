@@ -2,7 +2,7 @@ version: 2
 jobs:
     build:
         docker:
-            - image: circleci/ruby:2.7.1
+            - image: circleci/ruby:2.7.1-node-browsers
               environment:
                 - BUNDLER_VERSION: 2.1.4
                 - RAILS_ENV: 'test'
@@ -29,8 +29,6 @@ jobs:
                 gem install bundler -v 2.1.4
                 bundle install --jobs=4 --retry=3 --path vendor/bundle
 
-        # - run: NODE_ENV=test bundle exec rails webpacker:compile
-
         - save_cache:
             paths:
             - ./vendor/bundle
@@ -39,6 +37,7 @@ jobs:
         # Database setup
         - run: mv ./config/database.yml.ci ./config/database.yml
 
+        #- run: NODE_ENV=test bundle exec rails webpacker:compile
         # Database setup
         - run:
             name: Databasesetup
