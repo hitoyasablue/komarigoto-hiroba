@@ -2,13 +2,13 @@ version: 2
 jobs:
     build:
         docker:
-            - image: circleci/ruby:2.7.1-node-browsers
-            - environment:
+            - image: circleci/ruby:2.7.1
+              environment:
                 - BUNDLER_VERSION: 2.1.4
                 - RAILS_ENV: 'test'
 
             - image: circleci/mysql:5.7
-            - environment:
+              environment:
                 - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
                 - MYSQL_ROOT_HOST: '127.0.0.1'
 
@@ -28,6 +28,8 @@ jobs:
             command: |
                 gem install bundler -v 2.1.4
                 bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+        # - run: NODE_ENV=test bundle exec rails webpacker:compile
 
         - save_cache:
             paths:
