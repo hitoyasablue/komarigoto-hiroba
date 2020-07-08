@@ -34,10 +34,6 @@ jobs:
             - ./vendor/bundle
             key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-        - run:
-            name: Rubocop
-            command: bundle exec rubocop
-
         # Database setup
         - run: mv ./config/database.yml.ci ./config/database.yml
 
@@ -63,6 +59,10 @@ jobs:
                 --out /tmp/test-results/rspec.xml \
                 --format progress \
                 $TEST_FILES
+
+        - run:
+            name: Rubocop
+            command: bundle exec rubocop
 
         # collect reports
         - store_test_results:
