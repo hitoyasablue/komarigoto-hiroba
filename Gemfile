@@ -32,6 +32,7 @@ gem 'jquery-rails'
 
 gem 'mini_racer'
 gem 'bcrypt', '3.1.13'
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
