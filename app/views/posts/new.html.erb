@@ -4,10 +4,10 @@
   <%= link_to "一覧", posts_path, class: "nav-link" %>
 </div>
 
-<%= form_with model: @task, local: true do |f| %>
+<%= form_with model: @post, local: true do |f| %>
   <div class="form-group">
     <%= f.label :content %>
-    <%= f.text_field :content, class: "form-control", id: "task_name" %>
+    <%= f.text_field :content, class: "form-control", id: "post_name" %>
   </div>
-  <%= f.submit nil, class: "btn btn-primary" %>
+  <%= f.submit "登録する", class: "btn btn-primary" %>
 <% end %>

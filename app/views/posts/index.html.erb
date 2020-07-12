@@ -1,2 +1,22 @@
-<h1> タスク一覧 </h1>
+<h1> 投稿一覧 </h1>
+
 <%= link_to "新規登録", new_post_path, class: "btn btn-primary" %>
+
+<div class="mb-3">
+  <table class="table table-hover">
+    <thead class="thead-default">
+      <tr>
+        <th><%= Post.human_attribute_name(:content) %></th>
+        <th><%= Post.human_attribute_name(:created_at) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= link_to post.content, post %></td>
+          <td><%= post.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
