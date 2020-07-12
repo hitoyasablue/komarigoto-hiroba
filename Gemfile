@@ -32,6 +32,7 @@ gem 'jquery-rails'
 
 gem 'mini_racer'
 gem 'bcrypt', '3.1.13'
+gem 'faker', '2.1.2'
 gem 'kaminari'
 
 group :development, :test do
