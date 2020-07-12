@@ -1,0 +1,13 @@
+<h1>新規投稿</h1>
+
+<div class = "nav justify-content-end">
+  <%= link_to "一覧", posts_path, class: "nav-link" %>
+</div>
+
+<%= form_with model: @task, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_field :content, class: "form-control", id: "task_name" %>
+  </div>
+  <%= f.submit nil, class: "btn btn-primary" %>
+<% end %>
