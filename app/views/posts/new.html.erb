@@ -4,10 +4,4 @@
   <%= link_to "一覧", posts_path, class: "nav-link" %>
 </div>
 
-<%= form_with model: @post, local: true do |f| %>
-  <div class="form-group">
-    <%= f.label :content %>
-    <%= f.text_field :content, class: "form-control", id: "post_name" %>
-  </div>
-  <%= f.submit "登録する", class: "btn btn-primary" %>
-<% end %>
+<%= render partial: "form", locals: {post: @post} %>
