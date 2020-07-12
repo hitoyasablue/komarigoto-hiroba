@@ -1,2 +1,26 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h1> 投稿詳細 </h1>
+
+<div class="nav justify-content-end">
+  <%= link_to "一覧", posts_path, class: "nav-link" %>
+</div>
+
+<table class="table table-hover">
+  <tbody>
+    <tr>
+      <th><%= Post.human_attribute_name(:id) %></th>
+      <td><%= @post.id %></td>
+    </tr>
+    <tr>
+      <th><%= Post.human_attribute_name(:content) %></th>
+      <td><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: "div") %></td>
+    </tr>
+    <tr>
+      <th><%= Post.human_attribute_name(:created_at) %></th>
+      <td><%= @post.created_at %></td>
+    </tr>
+    <tr>
+      <th><%= Post.human_attribute_name(:updated_at) %></th>
+      <td><%= @post.updated_at %></td>
+    </tr>
+  </tbody>
+</table>
