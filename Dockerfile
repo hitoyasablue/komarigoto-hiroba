@@ -6,16 +6,6 @@ RUN apt-get update -qq && \
                        libpq-dev \
                        nodejs
 
-# ENTRYKITの設定
-ENV ENTRYKIT_VERSION 0.4.0
-
-RUN wget https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VERSION}/entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
-    && tar -xvzf entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
-    && rm entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
-    && mv entrykit /bin/entrykit \
-    && chmod +x /bin/entrykit \
-    && entrykit --symlink
-
 # yarnパッケージ管理ツールをインストール
 RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
@@ -35,5 +25,6 @@ WORKDIR $APP_ROOT
 ADD ./Gemfile $APP_ROOT/Gemfile
 ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
 
-
-ENTRYPOINT ["prehook", "bundle install -j3 --quiet", "--"]
+# Gemfileのbundle install
+RUN bundle install
+ADD . $APP_ROOT
