@@ -2,6 +2,7 @@
 
 <%= link_to "新規登録", new_post_path, class: "btn btn-primary" %>
 
+<!--
 <div class="mb-3">
   <table class="table table-hover">
     <thead class="thead-default">
@@ -19,4 +20,23 @@
       <% end %>
     </tbody>
   </table>
+</div>
+-->
+<div class="row">
+  <div class="col-md-8">
+    <% if @posts.any? %>
+      <ol class="posts">
+        <% @posts.each do |post| %>
+          <li id="post-<%= post.id %>">
+            <% link_to gravatar_for(post.user, size: 50), post.user %>
+            <span class="user"><%= link_to post.user.name, post.user %></span>
+            <span class="content"><%= post.content %></span>
+            <span class="timestamp">
+              <%= time_ago_in_words(post.created_at) %>前
+            </span>
+          </li>
+        <% end %>
+      </ol>
+    <% end %>
+  </div>
 </div>

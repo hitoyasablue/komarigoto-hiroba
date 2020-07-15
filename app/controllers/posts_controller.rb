@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   include SessionsHelper
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:create, :destroy]
 
   def index
     @posts = Post.all.order(created_at: :desc)
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:notice] = "投稿しました"
-      redirect_to @post
+      redirect_to root_url
     else
       render :new
     end
