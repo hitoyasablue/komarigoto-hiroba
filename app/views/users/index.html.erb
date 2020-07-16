@@ -1,6 +1,9 @@
-<% provide(:title, 'All users') %>
 <h1>ユーザー一覧</h1>
 
-<ul class="users">
-  <%= render @users %>
-</ul>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <% if @users.any? %>
+      <%= render "user" %>
+    <% end %>
+  </div>
+</div>

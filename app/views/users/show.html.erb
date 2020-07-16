@@ -1,6 +1,7 @@
-<% provide(:title, @user.name)%>
+<h1>ユーザー詳細</h1>
+
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-md-4 offset-md-4">
     <section class="user_info">
       <h1>
         <%= gravatar_for @user %>
@@ -10,21 +11,19 @@
   </aside>
 </div>
 
-<div class="mb-3">
-  <table class="table table-hover">
-    <thead class="thead-default">
-      <tr>
-        <th><%= Post.human_attribute_name(:content) %></th>
-        <th><%= Post.human_attribute_name(:created_at) %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <td><%= link_to post.content, post %></td>
-          <td><%= post.created_at %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <% if @posts.any? %>
+      <ul class="posts">
+        <% @posts.each do |post| %>
+          <li>
+            <%= link_to post.content, post %>
+            <span class="timestamp">
+              <%= time_ago_in_words(post.created_at) %>前
+            </span>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
 </div>

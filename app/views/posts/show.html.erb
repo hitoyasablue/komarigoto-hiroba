@@ -1,15 +1,7 @@
-<h1> 投稿詳細 </h1>
-
-<div class="nav justify-content-end">
-  <%= link_to "一覧", posts_path, class: "nav-link" %>
-</div>
+<h1>投稿詳細</h1>
 
 <table class="table table-hover">
   <tbody>
-    <tr>
-      <th><%= Post.human_attribute_name(:id) %></th>
-      <td><%= @post.id %></td>
-    </tr>
     <tr>
       <th><%= Post.human_attribute_name(:content) %></th>
       <td><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: "div") %></td>
