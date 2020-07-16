@@ -10,12 +10,11 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
-      <% if flash.notice.present? %>
-        <div class="alert alert-success"><%= flash.notice %></div>
+      <% flash.each do |name, msg| %>
+        <div class="alert alert-<%= name %>">
+          <%= msg.html_safe %>
+        </div>
       <% end %>
-      <!-- <% flash.each do |message_type, message| %> -->
-        <!-- <div class="alert alert-<%= message_type %>"><%= message %></div> -->
-      <!-- <% end %> -->
       <%= yield %>
     </div>
   </body>
