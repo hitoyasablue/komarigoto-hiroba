@@ -1,15 +1,24 @@
-<% if post.errors.present? %>
+<!-- <% if post.errors.present? %>
   <ul id="error_explanation">
     <% post.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
   </ul>
-<% end %>
+<% end %> -->
 
-<%= form_with model: post, local: true do |f| %>
+<!-- <%= form_with(model: @post, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
   <div class="form-group">
     <%= f.label :content %>
     <%= f.text_field :content, class: "form-control", id: "post_name" %>
   </div>
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %> -->
+
+<%= form_with(model: @post, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "どんなことで困っていますか？" %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>
