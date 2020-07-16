@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
 
   def index
-    @users = User.all
+    @users = User.all.order(created_at: :desc)
   end
 
   def show
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "ログインしました"
+      flash[:notice] = "ログインしました"
       redirect_to @user
     else
       render 'new'
@@ -34,17 +34,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
-      flash[:success] = "プロフィールが変更されました"
-      redirect_to @user
-    else
-      render 'edit'
-    end
+    @user.update!(user_params)
+    flash[:notice] = "プロフィールが変更されました"
+    redirect_to @user
   end
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "ユーザーは削除されました"
+    flash[:notice] = "ユーザーは削除されました"
     redirect_to users_url
   end
 
