@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :post do
-    content { 'MyText' }
+    content { '内容' }
+    user
   end
 end
