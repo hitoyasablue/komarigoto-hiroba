@@ -3,7 +3,7 @@ require 'rails_helper'
 describe '投稿のシステムテスト', type: :system do
   let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com') }
   let(:user_b) { FactoryBot.create(:user, name: 'ユーザーB', email: 'b@example.com') }
-  let!(:post_a) { FactoryBot.create(:post, content: 'おめシスはいいぞ', user: user_a) }
+  let!(:post_a) { FactoryBot.create(:post, content: '1つ目の投稿', user: user_a) }
 
   before do
     visit login_path
@@ -13,7 +13,7 @@ describe '投稿のシステムテスト', type: :system do
   end
 
   shared_examples_for 'ユーザーAが作成した投稿が表示される' do
-    it { expect(page).to have_content 'おめシスはいいぞ' }
+    it { expect(page).to have_content '1つ目の投稿' }
   end
 
   describe '一覧表示機能' do
@@ -27,7 +27,7 @@ describe '投稿のシステムテスト', type: :system do
       let(:login_user) { user_b }
 
       it 'ユーザーAが作成したタスクが表示されない' do
-        expect(page).to have_no_content 'おめシスはいいぞ'
+        expect(page).to have_no_content '1つ目の投稿'
       end
     end
   end
@@ -49,12 +49,12 @@ describe '投稿のシステムテスト', type: :system do
 
     before do
       visit new_post_path
-      fill_in 'content', with: post_content
+      fill_in 'post_content', with: post_content
       click_button '投稿'
     end
 
     context '新規作成画面で内容を入力したとき' do
-      let(:post_content) { 'こんにちにんにん' }
+      let(:post_content) { '困っています！' }
 
       it '正常に登録される' do
         expect(page).to have_selector '.alert-success', text: '投稿しました'
