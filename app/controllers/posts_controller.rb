@@ -28,7 +28,6 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
     @post.update!(post_params)
     flash[:success] = "投稿を更新しました"
     redirect_to posts_url
@@ -47,7 +46,7 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.find_by(id: params[:id])
   end
 
 end
