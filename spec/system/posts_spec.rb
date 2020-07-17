@@ -13,7 +13,7 @@ describe '投稿のシステムテスト', type: :system do
   end
 
   shared_examples_for 'ユーザーAが作成した投稿が表示される' do
-    it { expect(page).to have_content 'おめシスはいいぞ'}
+    it { expect(page).to have_content 'おめシスはいいぞ' }
   end
 
   describe '一覧表示機能' do
