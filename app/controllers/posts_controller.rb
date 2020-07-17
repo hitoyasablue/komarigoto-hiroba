@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      flash[:success] = "投稿しました"
+      flash[:success] = '投稿しました'
       redirect_to root_url
     else
       render :new
@@ -29,24 +29,23 @@ class PostsController < ApplicationController
 
   def update
     @post.update!(post_params)
-    flash[:success] = "投稿を更新しました"
+    flash[:success] = '投稿を更新しました'
     redirect_to posts_url
   end
 
   def destroy
     Post.find(params[:id]).destroy
-    flash[:success] = "投稿を削除しました"
+    flash[:success] = '投稿を削除しました'
     redirect_to posts_url
   end
 
   private
 
-  def post_params
-    params.require(:post).permit(:content)
-  end
+    def post_params
+      params.require(:post).permit(:content)
+    end
 
-  def set_post
-    @post = Post.find_by(id: params[:id])
-  end
-
+    def set_post
+      @post = Post.find_by(id: params[:id])
+    end
 end

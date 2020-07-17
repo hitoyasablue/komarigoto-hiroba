@@ -34,9 +34,6 @@ Layout/EmptyLinesAroundClassBody:
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: Width, IgnoredPatterns.
-Layout/IndentationWidth:
-  Exclude:
-    - 'app/models/user.rb'
 
 # Offense count: 6
 # Cop supports --auto-correct.
@@ -61,8 +58,7 @@ Layout/SpaceInsideBlockBraces:
 # Configuration parameters: EnforcedStyleForEmptyBraces.
 # SupportedStyles: space, no_space, compact
 # SupportedStylesForEmptyBraces: space, no_space
-Layout/SpaceInsideHashLiteralBraces:
-  EnforcedStyle: no_space
+
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -90,5 +86,3 @@ Style/RedundantBegin:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
 # SupportedStyles: single_quotes, double_quotes
-Style/StringLiterals:
-  Enabled: false
