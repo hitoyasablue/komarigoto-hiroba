@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       flash[:success] = 'ログインしました'
       redirect_back_or user
     else
-      flash.now[:danger] = 'メールアドレス、またはパスワードが誤っています'
+      flash.now[:danger] = 'メールアドレス、またはパスワードが正しくありません'
       render 'new'
     end
   end
