@@ -89,6 +89,22 @@ li {
   list-style: none;
 }
 
+/* ページネーション */
+
+.pagenation>li>a {
+  border: none;
+  color: #696969;
+}
+
+.pagenation>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagenation>li>a:hover {
+  border-radius: 15px;
+}
+
 /* miscellaneous */
 
 .debug_dump {
