@@ -5,10 +5,12 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(id: 'DESC').page(params[:page]).per(10)
+    @like = Like.new(user_id: current_user.id)
   end
 
   def show
     @user = Post.find_by(id: params[:id]).user
+    @like = Like.new(user_id: current_user.id)
   end
 
   def new

@@ -7,6 +7,9 @@
       <span class="timestamp">
         <%= time_ago_in_words(post.created_at) %>前
       </span>
+      <div id="like_button_<%= post.id %>">
+        <%= render partial: 'likes/like', locals: { post: post, user: current_user } %>
+      </div>
     </li>
   <% end %>
 </ul>
