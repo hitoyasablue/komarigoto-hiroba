@@ -3,7 +3,7 @@
     <div class="like">
       <div class="row">
         <div class="col-md-4 offset-md-4">
-          <%= button_to 'すごいね済', post_like_path(id: post.id, post_id: post.id), method: :delete, remote: true %>
+          <%= button_to 'えらい済', post_like_path(id: post.id, post_id: post.id), method: :delete, remote: true %>
           <%= post.likes.count %>
         </div>
       </div>
@@ -12,7 +12,7 @@
     <div class="unlike">
       <div class="row">
         <div class="col-md-4 offset-md-4">
-          <%= button_to 'すごいね', post_likes_path(id: post.id, post_id: post.id), method: :post, remote: true %>
+          <%= button_to 'えらい', post_likes_path(id: post.id, post_id: post.id), method: :post, remote: true %>
           <%= post.likes.count %>
         </div>
       </div>
