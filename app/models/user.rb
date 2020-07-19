@@ -9,8 +9,4 @@ class User < ApplicationRecord
   validates :password, presence: true, length: {minimum: 6}
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
-
-  def already_liked?(post)
-    self.likes.exists?(post_id: post.id)
-  end
 end

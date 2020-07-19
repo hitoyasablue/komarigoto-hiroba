@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'progresses/new'
+  get 'progresses/edit'
   root to: 'home#top'
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
@@ -7,5 +9,6 @@ Rails.application.routes.draw do
   resources :users
   resources :posts do
     resources :likes, only: [:create, :destroy]
+    resources :progresses, only: [:new, :create, :show, :edit, :update, :destroy]
   end
 end

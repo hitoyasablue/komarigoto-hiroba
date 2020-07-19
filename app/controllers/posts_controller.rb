@@ -21,9 +21,9 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(post_params)
     if @post.save
       flash[:success] = '投稿しました'
-      redirect_to root_url
+      redirect_to posts_url
     else
-      render :new
+      render 'new'
     end
   end
 
