@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'progresses/new'
-  get 'progresses/edit'
   root to: 'home#top'
   get '/signup', to: 'users#new'
+  get '/posts/search', to: 'posts#search'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

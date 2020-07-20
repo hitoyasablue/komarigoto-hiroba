@@ -6,6 +6,13 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.order(id: 'DESC').page(params[:page]).per(10)
     @like = Like.new(user_id: current_user.id)
+    @q = Post.ransack(params[:q])
+    @search_posts = @q.result.page(params[:page]).per(10)
+  end
+
+  def search
+    @q = Post.search(search_posts)
+    @posts = @q.result.page(params[:page]).per(10)
   end
 
   def show
@@ -47,6 +54,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+    def search_posts
+      params.require(:q).permit(:content_cont)
+    end
 
     def post_params
       params.require(:post).permit(:content)
