@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   include SessionsHelper
-  before_action :logged_in_user, only:[:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only:[:show, :index, :edit, :update, :destroy]
   before_action :correct_user, only:[:edit, :update]
   before_action :admin_user, only: :destroy
 
@@ -29,18 +29,21 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
-    @user.update!(user_params)
-    flash[:success] = 'プロフィールが変更されました'
-    redirect_to @user
+    @user = User.find_by(id: params[:id])
+    if @user.update(user_params)
+      flash[:success] = 'プロフィールが変更されました'
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-    User.find(params[:id]).destroy
+    User.find_by(id: params[:id]).destroy
     flash[:success] = 'ユーザーは削除されました'
     redirect_to users_url
   end
@@ -52,7 +55,7 @@ class UsersController < ApplicationController
     end
 
     def correct_user
-      @user = User.find(params[:id])
+      @user = User.find_by(id: params[:id])
       redirect_to(root_url) unless current_user?(@user)
     end
 
