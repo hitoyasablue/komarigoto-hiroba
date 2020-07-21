@@ -1,0 +1,31 @@
+<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+<% if notifications.exists? %>
+  <% notifications.each do |notification| %>
+  <% visitor = User.find_by(id: notification.visitor_id) %>
+  <% visited = User.find_by(id: notification.visited_id) %>
+  <div class="col-md-6.mx-auto">
+    <div class="form-inline">
+      <span>
+        <%= link_to user_path(visitor) do %>
+          <strong>
+            <%= visitor.name %>
+          </strong>
+        <% end %>
+        <%= 'さんが' %>
+
+        <% case notification.action %>
+        <% when 'like' then %>
+          <%= link_to 'あなたの投稿', notification.post, style: 'font-weight: bold;' %>
+          <%= 'にいいねしました' %>
+        <% end %>
+      </span>
+    </div>
+    <div class="small text-muted text-right">
+      <%= time_ago_in_words(notification.created_at).upcase %>
+    </div>
+  </div>
+  <% end %>
+  <%= paginate notifications %>
+<% else %>
+  <p>通知はありません</p>
+<% end %>

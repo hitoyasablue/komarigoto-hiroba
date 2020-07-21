@@ -10,4 +10,5 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
     resources :progresses, only: [:new, :create, :show, :edit, :update, :destroy]
   end
+  resources :notifications, only: [:index]
 end
