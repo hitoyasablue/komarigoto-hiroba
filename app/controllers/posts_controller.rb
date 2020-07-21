@@ -7,12 +7,11 @@ class PostsController < ApplicationController
     @posts = Post.all.order(id: 'DESC').page(params[:page]).per(10)
     @like = Like.new(user_id: current_user.id)
     @q = Post.ransack(params[:q])
-    @search_posts = @q.result.page(params[:page]).per(10)
   end
 
   def search
     @q = Post.search(search_posts)
-    @posts = @q.result.page(params[:page]).per(10)
+    @posts = @q.result.all.order(id: 'DESC').page(params[:page]).per(10)
   end
 
   def show
