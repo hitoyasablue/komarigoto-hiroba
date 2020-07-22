@@ -1,0 +1,6 @@
+<p>（以下のボタンを押すと情報の入力を省略できます）</p>
+<%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+  <%= f.hidden_field :email, {value: 'test@example.com'} %>
+  <%= f.hidden_field :password, {value: 'testtest'} %>
+  <%= f.submit 'かんたんログイン', class: 'btn btn-block btn-warning'%>
+<% end %>

@@ -8,7 +8,9 @@
         <%= time_ago_in_words(post.created_at) %>前
       </span>
       <%= render 'likes/like', post: post %>
-      <%= render 'progresses/progress', post: post %>
+      <% if post.user == current_user %>
+        <%= render 'progresses/progress', post: post %>
+      <% end %>
     </li>
   <% end %>
 </ul>
