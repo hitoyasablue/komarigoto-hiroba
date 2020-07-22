@@ -1,10 +1,9 @@
-<% notifications.each do |notification| %>
-<% visitor = notification.visitor %>
-<% visited = notification.visited %>
+<% visitor = User.find_by(id: notification.visitor_id) %>
+<% visited = User.find_by(id: notification.visited_id) %>
 <div class="col-md-6.mx-auto">
   <div class="form-inline">
     <span>
-      <% link_to user_path(visitor) do %>
+      <%= link_to user_path(visitor) do %>
         <strong>
           <%= visitor.name %>
         </strong>
@@ -13,8 +12,9 @@
 
       <% case notification.action %>
       <% when 'like' then %>
-        <%= link_to 'あなたの投稿', notification.post, style: 'font-weight: bold;' %>
-        <%= 'にいいねしました' %>
+        <%= 'あなたの投稿にえらいと言っています' %>
+        <br>
+        <%= link_to notification.post.content, notification.post %>
       <% end %>
     </span>
   </div>
@@ -22,4 +22,3 @@
     <%= time_ago_in_words(notification.created_at).upcase %>
   </div>
 </div>
-<% end %>
