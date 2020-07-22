@@ -5,7 +5,16 @@
       <li><%= link_to 'ユーザー一覧', users_path %></li>
       <li><%= link_to '新規投稿', new_post_path %></li>
       <li><%= link_to '投稿一覧', posts_path %></li>
-      <li><%= link_to '通知', notifications_path %></li>
+      <li>
+        <%= link_to(notifications_path) do %>
+          <% if unchecked_notifications.any? %>
+            <i class="fa fa-circle" style="color: gold;"></i>
+            通知
+          <% else %>
+            通知
+          <% end %>
+        <% end %>
+      </li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           アカウント <b class="caret"></b>
