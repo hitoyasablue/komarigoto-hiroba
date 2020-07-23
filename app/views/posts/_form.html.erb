@@ -3,5 +3,43 @@
   <div class="field">
     <%= f.text_area :content, class: 'form-control', id: 'post_content', placeholder: 'どんなことに困っていますか？' %>
   </div>
+  <script>
+    $(function(){
+      $("dd").hide();
+
+      $("#Accordion dt").on("click", function() {
+        $(this).next().slideToggle();
+      });
+    });
+  </script>
+  <dl id="Accordion">
+    <dt>ステップ2</dt>
+    <dd>
+      <div class="field">
+        <%= f.label :困りごとのきっかけは何でしたか？ %>
+        <%= f.text_area :content, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label :困りごとはどのような状況で発生しますか？ %>
+        <%= f.text_area :content, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label :どうなればうれしいですか？ %>
+        <%= f.text_area :content, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label :今どのように感じていますか？ %>
+        <%= f.text_area :content, class: 'form-control' %>
+      </div>
+    </dd>
+    <dt>ステップ3</dt>
+    <dd>
+      <div class="field">
+        <%= f.label :よくしていくために、これからどうしますか？ %>
+        <%= f.text_area :content, class: 'form-control' %>
+      </div>
+    </dd>
+  </dl>
+
   <%= f.submit yield(:button_text), class: 'btn btn-primary' %>
 <% end %>
