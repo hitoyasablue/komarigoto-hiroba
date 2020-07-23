@@ -15,6 +15,8 @@ ja:
         content: 内容
         created_at: 登録日時
         updated_at: 更新日時
+      progress:
+        content: 内容
 
   date:
     abbr_day_names:

@@ -1,6 +1,6 @@
-<%= form_with(model: [:post, @progress], local: true) do |f| %>
+<%= form_with(model: [@post, @progress], local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <div class="progress_field">
+  <div class="field">
     <%= f.text_area :content, class: 'form-control', id: 'progress_content', placeholder: 'その後はいかがですか？' %>
   </div>
   <%= f.submit yield(:button_text), class: 'btn btn-primary' %>

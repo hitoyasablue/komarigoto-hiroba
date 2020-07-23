@@ -15,7 +15,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @user = Post.find_by(id: params[:id]).user
+    @post = Post.find_by(id: params[:id])
+    @user = @post.user
     @like = Like.new(user_id: current_user.id)
   end
 
@@ -34,6 +35,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find_by(id: params[:id])
   end
 
   def update

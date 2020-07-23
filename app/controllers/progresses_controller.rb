@@ -3,12 +3,13 @@ class ProgressesController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
 
   def new
+    @post = Post.find_by(id: params[:post_id])
     @progress = Progress.new
   end
 
   def create
-    post = Post.find_by(id: params[:post_id])
-    @progress = post.progresses.new(progress_params)
+    @post = Post.find_by(id: params[:post_id])
+    @progress = @post.progresses.new(progress_params)
     if @progress.save
       flash[:success] = '進捗を記録しました'
       redirect_to posts_url
@@ -20,14 +21,23 @@ class ProgressesController < ApplicationController
   def show
     @user = Post.find_by(id: params[:post_id]).user
     @post = Post.find_by(id: params[:post_id])
+    @progress = Progress.find_by(id: params[:id])
   end
 
   def edit
+    @post = Post.find_by(id: params[:post_id])
+    @progress = Progress.find_by(id: params[:id])
   end
 
   def update
-    post = Post.find_by(id: params[:post_id])
-    @progress = Progress.find_by(id: params[:post_id])
+    @post = Post.find_by(id: params[:post_id])
+    @progress = Progress.find_by(id: params[:id])
+    if @progress.update(progress_params)
+      flash[:success] = '進捗を更新しました'
+      redirect_to @post
+    else
+      render 'edit'
+    end
   end
 
   def destroy

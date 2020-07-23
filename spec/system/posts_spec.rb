@@ -13,34 +13,6 @@ describe '投稿のシステムテスト', type: :system do
     click_button 'ログイン'
   end
 
-  shared_examples_for 'ユーザーAが作成した投稿が表示される' do
-    it { expect(page).to have_content 'Aの投稿' }
-  end
-
-  describe 'ユーザー詳細ページ表示機能' do
-    context 'ユーザーAがログインしているとき' do
-      let(:login_user) { user_a }
-
-      # before do
-      #   visit user_path(user_a)
-      # end
-
-      it_behaves_like 'ユーザーAが作成した投稿が表示される'
-    end
-
-    context 'ユーザーBがログインしているとき' do
-      let(:login_user) { user_b }
-
-      # before do
-      #   visit user_path(user_a)
-      # end
-
-      it 'ユーザーAが作成した投稿が表示されない' do
-        expect(page).to have_no_content 'Aの投稿'
-      end
-    end
-  end
-
   describe '新規投稿機能' do
     let(:login_user) { user_a }
 
@@ -50,18 +22,18 @@ describe '投稿のシステムテスト', type: :system do
       click_button '投稿'
     end
 
-    context '新規作成画面で内容を入力したとき' do
-      let(:post_content) { '困っています！' }
+    context '内容を入力して投稿ボタンを押した場合' do
+      let(:post_content) { 'Aの投稿2つ目' }
 
       it '正常に登録される' do
         expect(page).to have_selector '.alert-success', text: '投稿しました'
       end
     end
 
-    context '新規作成画面で内容を入力しなかったとき' do
+    context '内容を入力せずに投稿ボタンを押した場合' do
       let(:post_content) { '' }
 
-      it 'エラーとなる' do
+      it 'エラーメッセージが表示される' do
         within '#error_explanation' do
           expect(page).to have_content '内容を入力してください'
         end
@@ -77,7 +49,7 @@ describe '投稿のシステムテスト', type: :system do
         visit posts_path
       end
 
-      it 'ユーザーA,Bが作成したタスクが表示される' do
+      it 'ユーザーA,Bが作成した投稿が表示される' do
         expect(page).to have_content 'Aの投稿'
         expect(page).to have_content 'Bの投稿'
       end
@@ -92,7 +64,9 @@ describe '投稿のシステムテスト', type: :system do
         visit post_path(post_a)
       end
 
-      it_behaves_like 'ユーザーAが作成した投稿が表示される'
+      it 'ユーザーAが作成した投稿が表示される' do
+        expect(page).to have_content 'Aの投稿'
+      end
     end
   end
 
@@ -104,10 +78,20 @@ describe '投稿のシステムテスト', type: :system do
       click_link '編集'
     end
 
-    it '投稿の編集処理' do
-      fill_in 'post_content', with: 'Aの投稿更新成功！'
-      click_button '更新'
-      expect(page).to have_selector '.alert-success', text: '投稿を更新しました'
+    context '内容を入力して更新ボタンを押した場合' do
+      it '正常に更新される' do
+        fill_in 'post_content', with: 'Aの投稿更新成功！'
+        click_button '更新'
+        expect(page).to have_selector '.alert-success', text: '投稿を更新しました'
+      end
+    end
+
+    context '内容を入力せずに更新ボタンを押した場合' do
+      it 'エラーメッセージが表示される' do
+        fill_in 'post_content', with: ''
+        click_button '更新'
+        expect(page).to have_content '内容を入力してください'
+      end
     end
   end
 
@@ -150,6 +134,17 @@ describe '投稿のシステムテスト', type: :system do
 
       it '検索結果は1件も表示されない' do
         expect(page).to have_content '一致する困りごとはありません'
+      end
+    end
+
+    context '何も入力しなかった場合' do
+      before do
+        fill_in 'search_word', with: ''
+        click_button '検索'
+      end
+
+      it '投稿一覧ページから検索一覧ページに移行しない' do
+        expect(page).to have_content 'Aの投稿'
       end
     end
   end
