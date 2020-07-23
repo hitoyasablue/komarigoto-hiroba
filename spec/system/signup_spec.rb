@@ -5,10 +5,10 @@ describe 'ユーザー登録のシステムテスト', type: :system do
 
   before do
     visit new_user_path
-    fill_in 'signup_name', with: '井上'
-    fill_in 'signup_email', with: 'inoue@example.com'
-    fill_in 'signup_password', with: 'inoueinoue'
-    fill_in 'signup_password_confirmation', with: 'inoueinoue'
+    fill_in 'user_name', with: '井上'
+    fill_in 'user_email', with: 'inoue@example.com'
+    fill_in 'user_password', with: 'inoueinoue'
+    fill_in 'user_password_confirmation', with: 'inoueinoue'
   end
 
   context '有効な情報を送信した場合' do
@@ -23,7 +23,7 @@ describe 'ユーザー登録のシステムテスト', type: :system do
 
   context '名前を入力しなかった場合' do
     before do
-      fill_in 'signup_name', with: ''
+      fill_in 'user_name', with: ''
       click_button '登録'
     end
 
@@ -34,7 +34,7 @@ describe 'ユーザー登録のシステムテスト', type: :system do
 
   context '不正なメールアドレスを入力した場合' do
     before do
-      fill_in 'signup_email', with: 'invalid_email'
+      fill_in 'user_email', with: 'invalid_email'
       click_button '登録'
     end
 
@@ -45,8 +45,8 @@ describe 'ユーザー登録のシステムテスト', type: :system do
 
   context '無効なパスワードを入力した場合' do
     before do
-      fill_in 'signup_password', with: 'a'
-      fill_in 'signup_password_confirmation', with: 'a'
+      fill_in 'user_password', with: 'a'
+      fill_in 'user_password_confirmation', with: 'a'
       click_button '登録'
     end
 
