@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @q = Post.search(search_posts)
+    @q = Post.ransack(params[:q], search_posts)
     @posts = @q.result.all.order(id: 'DESC').page(params[:page]).per(10)
   end
 
