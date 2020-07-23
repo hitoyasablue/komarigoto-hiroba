@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe '「えらい」のシステムテスト' do
+describe '「えらい」のシステムテスト', type: :system do
   let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com') }
   let!(:post_a) { FactoryBot.create(:post, content: 'Aの投稿', user: user_a) }
 

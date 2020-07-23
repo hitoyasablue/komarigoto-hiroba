@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe '通知のシステムテスト' do
+describe '通知のシステムテスト', type: :system do
   let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com') }
   let(:user_b) { FactoryBot.create(:user, name: 'ユーザーB', email: 'b@example.com') }
   let!(:post_a) { FactoryBot.create(:post, content: 'Aの投稿', user: user_a) }
