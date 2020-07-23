@@ -4,6 +4,8 @@
   <div class="col-md-8 offset-md-2">
       <% if @posts.any? %>
         <%= render 'post' %>
+      <% else %>
+        <p>一致する困りごとはありません</p>
       <% end %>
   </div>
 </div>
