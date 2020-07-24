@@ -6,7 +6,7 @@ class WakarusController < ApplicationController
     wakaru.save
     @user = User.find_by(id: current_user.id)
     @post = Post.find_by(id: params[:post_id])
-    # @post.create_notification_wakaru!(current_user)
+    @post.create_notification_wakaru!(current_user)
   end
 
   def destroy
