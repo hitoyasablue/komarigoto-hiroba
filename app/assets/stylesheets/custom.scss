@@ -57,6 +57,10 @@ textarea {
   margin-bottom: 10px;
 }
 
+li {
+  list-style: none;
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -84,10 +88,6 @@ input {
 //     color: red;
 //   }
 // }
-
-li {
-  list-style: none;
-}
 
 /* ページネーション */
 
@@ -208,5 +208,26 @@ span.image {
   margin-top: 10px;
   input {
     border: 0;
+  }
+}
+
+/* アコーディオン */
+
+.accordion {
+  p {
+    display: block;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border:#666 1px groove;
+    cursor: pointer;
+  }
+
+  .accordion-elements {
+    background: #f2f2f2;
+    text-align: center;
+    border: #666 1px groove;
+    display: none;
   }
 }
