@@ -24,6 +24,7 @@
   <%= link_to '削除', @post, method: :delete, data: {confirm: 'この投稿を削除します。よろしいですか？'}, class: 'btn btn-danger' %>
 <% end %>
 
-<% if @user == current_user %>
-  <%= render 'progresses/progress', post: @post %>
+<% if @post.user == current_user %>
+  <%= link_to 'その後の進捗を記録する', new_post_progress_path(post_id: @post.id) %>
 <% end %>
+<%= render 'progresses/progress', post: @post %>
