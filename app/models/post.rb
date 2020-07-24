@@ -2,11 +2,16 @@ class Post < ApplicationRecord
   validates :content, presence: true
   belongs_to :user
   has_many :likes, dependent: :destroy
+  has_many :wakarus, dependent: :destroy
   has_many :progresses, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  def liked?(user)
+  def has_likes?(user)
     self.likes.exists?(user_id: user.id)
+  end
+
+  def has_wakarus?(user)
+    self.wakarus.exists?(user_id: user.id)
   end
 
   def create_notification_like!(current_user)

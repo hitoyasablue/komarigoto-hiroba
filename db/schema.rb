@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_24_034836) do
+ActiveRecord::Schema.define(version: 2020_07_24_051855) do
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -62,6 +62,16 @@ ActiveRecord::Schema.define(version: 2020_07_24_034836) do
     t.string "password_digest"
     t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "wakarus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_wakarus_on_post_id"
+    t.index ["user_id", "post_id"], name: "index_wakarus_on_user_id_and_post_id", unique: true
+    t.index ["user_id"], name: "index_wakarus_on_user_id"
   end
 
   add_foreign_key "progresses", "posts"

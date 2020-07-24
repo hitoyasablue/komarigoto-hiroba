@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users
   resources :posts do
     resources :likes, only: [:create, :destroy]
+    resources :wakarus, only: [:create, :destroy]
     resources :progresses, only: [:new, :create, :show, :edit, :update, :destroy]
   end
   resources :notifications, only: [:index]
