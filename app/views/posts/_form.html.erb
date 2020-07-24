@@ -18,19 +18,19 @@
     <div class="accordion-elements">
       <div class="field">
         <%= f.label :困りごとのきっかけは何でしたか？ %>
-        <%= f.text_area :content, class: 'form-control', id: 'post_content' %>
+        <%= f.text_area :optional_content, class: 'form-control' %>
       </div>
       <div class="field">
         <%= f.label :困りごとはどのような状況で発生しますか？ %>
-        <%= f.text_area :content, class: 'form-control', id: 'post_content' %>
+        <%= f.text_area :optional_content, class: 'form-control' %>
       </div>
       <div class="field">
         <%= f.label :どうなればうれしいですか？ %>
-        <%= f.text_area :content, class: 'form-control', id: 'post_content' %>
+        <%= f.text_area :optional_content, class: 'form-control' %>
       </div>
       <div class="field">
         <%= f.label :今どのように感じていますか？ %>
-        <%= f.text_area :content, class: 'form-control', id: 'post_content' %>
+        <%= f.text_area :optional_content, class: 'form-control' %>
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@
     <div class="accordion-elements">
       <div class="field">
         <%= f.label :よくしていくために、これからどうしますか？ %>
-        <%= f.text_area :content, class: 'form-control' %>
+        <%= f.text_area :optional_content, class: 'form-control' %>
       </div>
     </div>
   </div>
