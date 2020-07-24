@@ -6,11 +6,11 @@ class Post < ApplicationRecord
   has_many :progresses, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  def has_likes?(user)
+  def has_like?(user)
     self.likes.exists?(user_id: user.id)
   end
 
-  def has_wakarus?(user)
+  def has_wakaru?(user)
     self.wakarus.exists?(user_id: user.id)
   end
 

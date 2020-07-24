@@ -19,8 +19,8 @@ class ProgressesController < ApplicationController
   end
 
   def show
-    @user = Post.find_by(id: params[:post_id]).user
     @post = Post.find_by(id: params[:post_id])
+    @user = @post.user
     @progress = Progress.find_by(id: params[:id])
   end
 

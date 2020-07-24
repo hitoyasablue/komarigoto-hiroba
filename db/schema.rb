@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_24_051855) do
+ActiveRecord::Schema.define(version: 2020_07_24_062433) do
+
+  create_table "erais", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "progress_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["progress_id"], name: "index_erais_on_progress_id"
+    t.index ["user_id", "progress_id"], name: "index_erais_on_user_id_and_progress_id", unique: true
+    t.index ["user_id"], name: "index_erais_on_user_id"
+  end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false

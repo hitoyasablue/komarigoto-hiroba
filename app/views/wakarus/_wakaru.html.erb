@@ -1,7 +1,7 @@
 <% if logged_in? %>
   <% wakaru = post.wakarus.find_by(user_id: current_user.id) %>
   <div id="wakaru_button_<%= post.id %>">
-    <% if post.has_wakarus?(current_user) %>
+    <% if post.has_wakaru?(current_user) %>
       <div class="wakaru">
         <div class="row">
           <div class="col-md-4 offset-md-4">

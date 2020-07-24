@@ -2,6 +2,11 @@ class Progress < ApplicationRecord
   validates :content, presence: true
   belongs_to :post
   has_many :notifications, dependent: :destroy
+  has_many :erais, dependent: :destroy
+
+  def has_erai?(user)
+    self.erais.exists?(user_id: user.id)
+  end
 
   def create_notification_like!(current_user)
     temp = Notification.where(['visitor_id = ? and visited_id = ? and progress_id = ? and action = ?', current_user.id, user_id, id, 'like'])
