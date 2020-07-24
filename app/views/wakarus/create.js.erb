@@ -1,0 +1,1 @@
+$('#wakaru_button_<%= @post.id %>').html("<%= j(render partial: 'wakarus/wakaru', locals: {post: @post, user: @user}) %>");
