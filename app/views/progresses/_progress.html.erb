@@ -1,3 +1,6 @@
-<% post.progresses.each do |progress| %>
-  <%= link_to progress.content, post_progress_path(post_id: post.id, id: progress.id) %>
+<% post.progresses.order(id: 'DESC').each do |progress| %>
+  <span class="timestamp">
+    <%= time_ago_in_words(post.created_at) %>前
+  </span>
+  <%= link_to progress.content.truncate(20), post_progress_path(post_id: post.id, id: progress.id) %>
 <% end %>

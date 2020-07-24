@@ -17,6 +17,11 @@ ja:
         updated_at: 更新日時
       progress:
         content: 内容
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認用）
 
   date:
     abbr_day_names:
