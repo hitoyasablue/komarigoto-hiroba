@@ -6,7 +6,7 @@ class EraisController < ApplicationController
     erai.save
     @user = User.find_by(id: current_user.id)
     @progress = Progress.find_by(id: params[:progress_id])
-    # @progress.create_notification_erai!(current_user)
+    @progress.create_notification_erai!(current_user)
   end
 
   def destroy

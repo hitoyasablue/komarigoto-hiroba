@@ -8,13 +8,13 @@ class Progress < ApplicationRecord
     self.erais.exists?(user_id: user.id)
   end
 
-  def create_notification_like!(current_user)
-    temp = Notification.where(['visitor_id = ? and visited_id = ? and progress_id = ? and action = ?', current_user.id, user_id, id, 'like'])
-    if temp.blank?
+  def create_notification_erai!(current_user)
+    tmp = Notification.where(['visitor_id = ? and visited_id = ? and progress_id = ? and action = ?', current_user.id, post.user_id, id, 'erai'])
+    if tmp.blank?
       notification = current_user.active_notifications.new(
         progress_id: id,
-        visited_id: user_id,
-        action: 'like'
+        visited_id: post.user_id,
+        action: 'erai'
       )
       if notification.visitor_id == notification.visited_id
         notification.checked = true

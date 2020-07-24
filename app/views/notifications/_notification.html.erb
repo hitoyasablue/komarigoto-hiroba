@@ -12,9 +12,17 @@
 
       <% case notification.action %>
       <% when 'like' then %>
-        <%= 'この投稿にえらいをしました' %>
+        <%= 'この投稿にそうなんだをしました' %>
         <br>
         <%= link_to notification.post.content, notification.post %>
+      <% when 'wakaru' then %>
+        <%= 'この投稿にわかるをしました' %>
+        <br>
+        <%= link_to notification.post.content, notification.post %>
+      <% when 'erai' then %>
+        <%= 'この進捗にえらいをしました' %>
+        <br>
+        <%= link_to notification.progress.content, notification.post %>
       <% end %>
     </span>
   </div>

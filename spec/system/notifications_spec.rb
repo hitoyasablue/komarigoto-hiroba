@@ -14,9 +14,9 @@ describe '通知のシステムテスト', type: :system do
   end
 
   describe '通知一覧ページ表示機能' do
-    context '他のユーザーが自分の投稿に「えらい」をしていた場合', js: true do
+    context '他のユーザーが自分の投稿に「そうなんだ」をしていた場合', js: true do
       before do
-        click_button 'えらい'
+        click_button 'そうなんだ'
         click_link 'アカウント'
         click_link 'ログアウト'
         visit login_path
@@ -27,11 +27,11 @@ describe '通知のシステムテスト', type: :system do
       end
 
       it '通知が来ている' do
-        expect(page).to have_content 'B さんが この投稿にえらいをしました'
+        expect(page).to have_content 'B さんが この投稿にそうなんだをしました'
       end
     end
 
-    context '他のユーザーが自分の投稿に「えらい」をしていない場合' do
+    context '他のユーザーが自分の投稿に「そうなんだ」をしていない場合' do
       before do
         visit notifications_path
       end

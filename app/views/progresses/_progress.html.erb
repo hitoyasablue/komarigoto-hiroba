@@ -1,4 +1,3 @@
-<%= link_to 'その後の進捗を記録する', new_post_progress_path(post_id: post.id) %>
 <% post.progresses.each do |progress| %>
   <%= link_to progress.content, post_progress_path(post_id: post.id, id: progress.id) %>
 <% end %>
