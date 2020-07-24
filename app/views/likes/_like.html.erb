@@ -1,7 +1,7 @@
 <% if logged_in? %>
   <% like = post.likes.find_by(user_id: current_user.id) %>
   <div id="like_button_<%= post.id %>">
-    <% if post.has_likes?(current_user) %>
+    <% if post.has_like?(current_user) %>
       <div class="like">
         <div class="row">
           <div class="col-md-4 offset-md-4">

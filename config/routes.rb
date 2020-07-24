@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :posts do
     resources :likes, only: [:create, :destroy]
     resources :wakarus, only: [:create, :destroy]
-    resources :progresses, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :progresses, only: [:new, :create, :show, :edit, :update, :destroy] do
+      resources :erais, only: [:create, :destroy]
+    end
   end
   resources :notifications, only: [:index]
 end

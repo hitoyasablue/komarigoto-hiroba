@@ -2,6 +2,8 @@
 
 <%= @progress.content %>
 
+<%= render 'erais/erai' %>
+
 <% if @user == current_user %>
   <%= link_to '編集', edit_post_progress_path, class: 'btn btn-primary mr-3' %>
   <%= link_to '削除', post_progress_path, method: :delete, data: {confirm: 'この進捗を削除します。よろしいですか？'}, class: 'btn btn-danger' %>
