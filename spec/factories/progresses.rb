@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :progress do
-    content { 'MyText' }
-    post { nil }
+    content { 'テスト進捗' }
+    post
   end
 end
