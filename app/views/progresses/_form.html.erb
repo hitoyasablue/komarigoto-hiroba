@@ -3,5 +3,27 @@
   <div class="field">
     <%= f.text_area :content, class: 'form-control', id: 'progress_content', placeholder: 'その後はいかがですか？' %>
   </div>
+  <script>
+    $(function(){
+      $(".accordion-elements").hide();
+
+      $(".accordion p").on("click", function() {
+        $(this).next().slideToggle();
+      });
+    });
+  </script>
+  <div class="accordion">
+    <p>ステップ2</p>
+    <div class="accordion-elements">
+      <div class="field">
+        <%= f.label :前回から何をしましたか？（今回の投稿までの間に、してよかったことはありますか？）%>
+        <%= f.text_area :optional_content, class: 'form-control' %>
+      </div>
+      <!--<div class="field">
+        <%= f.label :前回から心境の変化はありましたか？%>
+        <%= f.text_area :optional_content, class: 'form-control' %>
+      </div>-->
+    </div>
+  </div>
   <%= f.submit yield(:button_text), class: 'btn btn-primary' %>
 <% end %>

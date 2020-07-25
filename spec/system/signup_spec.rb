@@ -28,7 +28,7 @@ describe 'ユーザー登録のシステムテスト', type: :system do
     end
 
     it 'ユーザー登録ができない' do
-      expect(page).to have_selector '#error_explanation', text: 'Nameを入力してください'
+      expect(page).to have_selector '#error_explanation', text: '名前を入力してください'
     end
   end
 
@@ -39,7 +39,7 @@ describe 'ユーザー登録のシステムテスト', type: :system do
     end
 
     it 'ユーザー登録ができない' do
-      expect(page).to have_selector '#error_explanation', text: 'Emailは不正な値です'
+      expect(page).to have_selector '#error_explanation', text: 'メールアドレスは不正な値です'
     end
   end
 
@@ -51,7 +51,7 @@ describe 'ユーザー登録のシステムテスト', type: :system do
     end
 
     it 'ユーザー登録ができない' do
-      expect(page).to have_selector '#error_explanation', text: 'Passwordは6文字以上で入力してください'
+      expect(page).to have_selector '#error_explanation', text: 'パスワードは6文字以上で入力してください'
     end
   end
 end

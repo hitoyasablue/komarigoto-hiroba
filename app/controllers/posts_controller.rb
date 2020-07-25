@@ -61,7 +61,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:content)
+      params.require(:post).permit(:content, :optional_content, :optional_content_2, :optional_content_3, :optional_content_4)
     end
 
     def set_post
