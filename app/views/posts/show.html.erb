@@ -17,6 +17,22 @@
   </tbody>
 </table>
 
+<% unless @post.optional_content.blank? %>
+  <%= @post.optional_content %>
+<% end %>
+
+<% unless @post.optional_content_2.blank? %>
+  <%= @post.optional_content_2 %>
+<% end %>
+
+<% unless @post.optional_content_3.blank? %>
+  <%= @post.optional_content_3 %>
+<% end %>
+
+<% unless @post.optional_content_4.blank? %>
+  <%= @post.optional_content_4 %>
+<% end %>
+
 <%= render 'likes/like', post: @post %>
 
 <% if @user == current_user %>

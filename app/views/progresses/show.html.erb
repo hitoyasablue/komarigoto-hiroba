@@ -1,6 +1,9 @@
 <h1>進捗詳細</h1>
 
 <%= @progress.content %>
+<% unless @progress.optional_content.blank? %>
+  <%= @progress.optional_content %>
+<% end %>
 
 <%= render 'erais/erai' %>
 

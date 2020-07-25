@@ -49,6 +49,6 @@ class ProgressesController < ApplicationController
   private
 
     def progress_params
-      params.require(:progress).permit(:content)
+      params.require(:progress).permit(:content, :optional_content)
     end
 end
