@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :post do
-    content { '内容' }
+    content { 'テスト投稿' }
     user
   end
 end
