@@ -11,7 +11,11 @@ class ProgressesController < ApplicationController
     @post = Post.find_by(id: params[:post_id])
     @progress = @post.progresses.new(progress_params)
     if @progress.save
-      flash[:success] = '進捗を記録しました'
+      if @progress.optional_content.present? || @progress.optional_content_2.present?
+        flash[:success] = '最後まで書いてすごい！ あなたが今日こころ穏やかでありますように・・・'
+      else
+        flash[:success] = '進捗を記録しました！'
+      end
       redirect_to posts_url
     else
       render 'new'
@@ -49,6 +53,6 @@ class ProgressesController < ApplicationController
   private
 
     def progress_params
-      params.require(:progress).permit(:content, :optional_content, :checkbox_id)
+      params.require(:progress).permit(:content, :optional_content, :optional_content_2)
     end
 end
