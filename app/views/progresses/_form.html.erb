@@ -1,11 +1,12 @@
 <%= form_with(model: [@post, @progress], local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :content, class: 'form-control', id: 'progress_content', placeholder: 'その後はいかがですか？' %>
+    <%= f.label :その後はいかがですか？%>
+    <%= f.text_area :content, class: 'form-control', id: 'progress_content' %>
   </div>
   <script>
     $(function(){
-      $(".accordion-elements").hide();
+      $(".accordion_elements").hide();
 
       $(".accordion p").on("click", function() {
         $(this).next().slideToggle();
@@ -14,15 +15,15 @@
   </script>
   <div class="accordion">
     <p>ステップ2</p>
-    <div class="accordion-elements">
+    <div class="accordion_elements">
       <div class="field">
-        <%= f.label :前回から何をしましたか？（今回の投稿までの間に、してよかったことはありますか？）%>
+        <%= f.label :前回から今回の投稿までの間に、してよかったことはありますか？%>
         <%= f.text_area :optional_content, class: 'form-control' %>
       </div>
-      <!--<div class="field">
-        <%= f.label :前回から心境の変化はありましたか？%>
+      <div class="field">
+        <%= f.label :前回から心境の変化はありますか？%>
         <%= f.text_area :optional_content, class: 'form-control' %>
-      </div>-->
+      </div>
     </div>
   </div>
   <%= f.submit yield(:button_text), class: 'btn btn-primary' %>

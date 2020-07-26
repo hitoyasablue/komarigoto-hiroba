@@ -49,6 +49,6 @@ class ProgressesController < ApplicationController
   private
 
     def progress_params
-      params.require(:progress).permit(:content, :optional_content)
+      params.require(:progress).permit(:content, :optional_content, :checkbox_id)
     end
 end
