@@ -17,19 +17,19 @@
   </tbody>
 </table>
 
-<% unless @post.optional_content.blank? %>
+<% if @post.optional_content.present? %>
   <%= @post.optional_content %>
 <% end %>
 
-<% unless @post.optional_content_2.blank? %>
+<% if @post.optional_content_2.present? %>
   <%= @post.optional_content_2 %>
 <% end %>
 
-<% unless @post.optional_content_3.blank? %>
+<% if @post.optional_content_3.present? %>
   <%= @post.optional_content_3 %>
 <% end %>
 
-<% unless @post.optional_content_4.blank? %>
+<% if @post.optional_content_4.present? %>
   <%= @post.optional_content_4 %>
 <% end %>
 
