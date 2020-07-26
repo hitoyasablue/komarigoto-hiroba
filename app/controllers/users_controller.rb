@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.image = image
     if @user.save
       log_in @user
       flash[:success] = 'ログインしました'
@@ -51,7 +52,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
     end
 
     def correct_user
@@ -61,5 +62,43 @@ class UsersController < ApplicationController
 
     def admin_user
       redirect_to(root_url) unless current_user.admin?
+    end
+
+    def image
+      @user = User.new(user_params)
+      rand = rand(10)
+      if rand == 0
+        @user.image = 'hukurou.png'
+      end
+      if rand == 1
+        @user.image = 'inu.png'
+      end
+      if rand == 2
+        @user.image = 'inu2.png'
+      end
+      if rand == 3
+        @user.image = 'kame.png'
+      end
+      if rand == 4
+        @user.image = 'neko.png'
+      end
+      if rand == 5
+        @user.image = 'neko2.png'
+      end
+      if rand == 6
+        @user.image = 'neko3.png'
+      end
+      if rand == 7
+        @user.image = 'pengin.png'
+      end
+      if rand == 8
+        @user.image = 'pengin2.png'
+      end
+      if rand == 9
+        @user.image = 'tori.png'
+      end
+      if rand == 10
+        @user.image = 'tori2.png'
+      end
     end
 end

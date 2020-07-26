@@ -6,7 +6,7 @@
   </div>
   <script>
     $(function(){
-      $(".accordion-elements").hide();
+      $(".accordion_elements").hide();
 
       $(".accordion p").on("click", function() {
         $(this).next().slideToggle();
@@ -15,7 +15,7 @@
   </script>
   <div class="accordion">
     <p>ステップ2</p>
-    <div class="accordion-elements">
+    <div class="accordion_elements">
       <div class="field">
         <%= f.label :困りごとのきっかけは何でしたか？ %>
         <%= f.text_area :optional_content, class: 'form-control' %>
@@ -32,7 +32,7 @@
   </div>
   <div class="accordion">
     <p>ステップ3</p>
-    <div class="accordion-elements">
+    <div class="accordion_elements">
       <div class="field">
         <%= f.label :よくしていくために、これからどうしますか？ %>
         <%= f.text_area :optional_content_4, class: 'form-control' %>
