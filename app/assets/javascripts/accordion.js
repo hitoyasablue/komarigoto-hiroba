@@ -1,7 +1,7 @@
 $(function(){
   $(".accordion_elements").hide();
 
-  $(".accordion p").on("click", function() {
+  $(".accordion .accordion_title").on("click", function() {
     $(this).next().slideToggle();
   });
 });

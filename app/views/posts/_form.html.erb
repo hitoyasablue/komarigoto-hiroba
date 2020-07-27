@@ -1,44 +1,50 @@
 <%= form_with(model: @post, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <p>ステップ1</p>
-  <div class="field">
-    <%= f.text_area :content, class: 'form-control', id: 'post_content', placeholder: 'どんなことに困っていますか？' %>
-  </div>
   <script>
     $(function(){
-      $(".accordion_elements").hide();
-
-      $(".accordion p").on("click", function() {
-        $(this).next().slideToggle();
+      $('.accordion_title').on('click', function () {
+        $(this).next().slideToggle(400);
+        $(this).toggleClass('open', 400);
       });
     });
   </script>
-  <div class="accordion">
-    <p>ステップ2</p>
-    <div class="accordion_elements">
-      <div class="field">
-        <%= f.label :困りごとのきっかけは何でしたか？ %>
-        <%= f.text_area :optional_content, class: 'form-control' %>
-      </div>
-      <div class="field">
-        <%= f.label :困りごとはどのような状況で発生しますか？ %>
-        <%= f.text_area :optional_content_2, class: 'form-control' %>
-      </div>
-      <div class="field">
-        <%= f.label :どうなればうれしいですか？ %>
-        <%= f.text_area :optional_content_3, class: 'form-control' %>
+  <div class="wrapper">
+    <div class="accordion_wrapper">
+      <div class="accordion_title">ステップ1</div>
+      <div class="accordion_content_display">
+        <div class="field">
+          <%= f.label :どんなことに困っていますか？%>
+          <%= f.text_area :content, class: 'form-control', id: 'post_content', placeholder: 'どんなことに困っていますか？' %>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion">
-    <p>ステップ3</p>
-    <div class="accordion_elements">
-      <div class="field">
-        <%= f.label :よくしていくために、これからどうしますか？ %>
-        <%= f.text_area :optional_content_4, class: 'form-control' %>
+    <div class="accordion_wrapper">
+      <div class="accordion_title">ステップ2</div>
+        <div class="accordion_content">
+          <div class="field">
+            <%= f.label :困りごとのきっかけは何でしたか？ %>
+            <%= f.text_area :optional_content, class: 'form-control' %>
+          </div>
+          <div class="field">
+            <%= f.label :困りごとはどのような状況で発生しますか？ %>
+            <%= f.text_area :optional_content_2, class: 'form-control' %>
+          </div>
+          <div class="field">
+            <%= f.label :どうなればうれしいですか？ %>
+            <%= f.text_area :optional_content_3, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="accordion_wrapper">
+        <div class="accordion_title">ステップ3</div>
+        <div class="accordion_content">
+          <div class="field">
+            <%= f.label :よくしていくために、これからどうしますか？ %>
+            <%= f.text_area :optional_content_4, class: 'form-control' %>
+          </div>
+        </div>
       </div>
     </div>
+    <%= f.submit yield(:button_text), class: 'btn btn-primary' %>
   </div>
-
-  <%= f.submit yield(:button_text), class: 'btn btn-primary' %>
 <% end %>
