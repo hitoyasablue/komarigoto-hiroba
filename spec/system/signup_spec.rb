@@ -21,14 +21,14 @@ describe 'ユーザー登録のシステムテスト', type: :system do
     end
   end
 
-  context '名前を入力しなかった場合' do
+  context 'ニックネームを入力しなかった場合' do
     before do
       fill_in 'user_name', with: ''
       click_button '登録'
     end
 
     it 'ユーザー登録ができない' do
-      expect(page).to have_selector '#error_explanation', text: '名前を入力してください'
+      expect(page).to have_selector '#error_explanation', text: 'ニックネームを入力してください'
     end
   end
 
