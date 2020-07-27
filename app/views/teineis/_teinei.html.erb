@@ -1,0 +1,24 @@
+<% if logged_in? %>
+  <% teinei = post.teineis.find_by(user_id: current_user.id) %>
+  <div id="teinei_button_<%= post.id %>">
+    <% if post.has_teinei?(current_user) %>
+      <div class="teinei">
+        <div class="row">
+          <div class="col-md-4 offset-md-4">
+            <%= button_to 'ていねい済', post_teinei_path(id: teinei.id, post_id: post.id), class: 'btn btn-outline-info', id: 'unteinei-button', method: :delete, remote: true %>
+            <%= post.teineis.count %>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="unteinei">
+        <div class="row">
+          <div class="col-md-4 offset-md-4">
+            <%= button_to 'ていねい', post_teineis_path(post_id: post.id), class: 'btn btn-outline-info', id: 'teinei-button', method: :post, remote: true %>
+            <%= post.teineis.count %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

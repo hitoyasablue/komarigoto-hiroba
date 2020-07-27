@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :wakarus, dependent: :destroy
+  has_many :teineis, dependent: :destroy
   has_many :progresses, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
@@ -12,6 +13,10 @@ class Post < ApplicationRecord
 
   def has_wakaru?(user)
     self.wakarus.exists?(user_id: user.id)
+  end
+
+  def has_teinei?(user)
+    self.teineis.exists?(user_id: user.id)
   end
 
   def create_notification_like!(current_user)
