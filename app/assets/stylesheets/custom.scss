@@ -61,7 +61,31 @@ li {
   list-style: none;
 }
 
-/* forms */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+}
+
+.user_icon {
+  width: 50px;
+}
+
+/* テーブル */
+
+.table {
+  margin: 0 auto;
+}
+
+/* フォーム */
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
@@ -105,17 +129,7 @@ input {
   border-radius: 15px;
 }
 
-/* miscellaneous */
-
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
-}
-
-/* sidebar */
+/* サイドバー */
 
 aside {
   section.user_info {
@@ -152,7 +166,7 @@ aside {
   margin-top: 15px;
 }
 
-/* Users index */
+/* ユーザー一覧 */
 
 .users {
   list-style: none;
@@ -164,7 +178,7 @@ aside {
   }
 }
 
-/* posts */
+/* 投稿 */
 
 .posts {
   list-style: none;
@@ -213,25 +227,61 @@ span.image {
 
 /* アコーディオン */
 
-.accordion {
-  p {
+.accordion_wrapper {
+  position: relative;
+  margin: 1.875em auto;
+  width: 100%;
+  border-top: none;
+  outline: 0;
+  cursor: pointer;
+
+  .accordion_title {
     display: block;
-    width: 200px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    border:#666 1px groove;
+    padding: 0.625em 0.625em 0.625em 2em;
+    font-size: 1.25em;
+    font-weight: normal;
+    color: #fff;
+    background: #1abc9c;
     cursor: pointer;
   }
 
-  .accordion_elements {
-    background: #f2f2f2;
-    text-align: center;
-    border: #666 1px groove;
+  .accordion_content {
     display: none;
+    padding-left: 2.3125em;
+  }
+
+  .accordion_content_display {
+    padding-left: 2.3125em;
+  }
+
+  .accordion_title:after {
+    content: "";
+    position: absolute;
+    right: 25px;
+    top: 38%;
+    transition: all 0.2s ease-in-out;
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-top: solid 2px #fff;
+    border-right: solid 2px #fff;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+
+  .accordion_title.open:after {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 45%;
   }
 }
 
-.user_icon {
-  width: 50px;
+/* その他 */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
 }

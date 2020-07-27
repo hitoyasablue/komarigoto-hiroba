@@ -1,9 +1,74 @@
 <h1>進捗詳細</h1>
 
-<%= @progress.content %>
-<% unless @progress.optional_content.blank? %>
-  <%= @progress.optional_content %>
-<% end %>
+<script>
+  $(function(){
+    $('.accordion_title').on('click', function () {
+      $(this).next().slideToggle(400);
+      $(this).toggleClass('open', 400);
+    });
+  });
+</script>
+
+<div class="wrapper">
+  <div class="accordion_wrapper">
+    <div class="accordion_title">困りごとの内容</div>
+    <div class="accordion_content">
+      <table class="table table-hover">
+        <tbody>
+          <tr>
+            <th>どんなことに困っていますか？</th>
+            <td><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: 'div') %></td>
+          </tr>
+          <% if @post.optional_content.present? %>
+          <tr>
+            <th>困りごとのきっかけは何でしたか？</th>
+            <td><%= simple_format(h(@post.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></td>
+          </tr>
+          <% end %>
+          <% if @post.optional_content_2.present? %>
+          <tr>
+            <th>困りごとはどのような状況で発生しますか？</th>
+            <td><%= simple_format(h(@post.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></td>
+          </tr>
+          <% end %>
+          <% if @post.optional_content_3.present? %>
+          <tr>
+            <th>どうなればうれしいですか？</th>
+            <td><%= simple_format(h(@post.optional_content_3), {}, sanitize: false, wrapper_tag: 'div') %></td>
+          </tr>
+          <% end %>
+          <% if @post.optional_content_4.present? %>
+          <tr>
+            <th>よくしていくために、これからどうしますか？</th>
+            <td><%= simple_format(h(@post.optional_content_4), {}, sanitize: false, wrapper_tag: 'div') %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <table class="table table-hover">
+    <tbody>
+      <tr>
+        <th>その後はいかがですか？</th>
+        <td><%= simple_format(h(@progress.content), {}, sanitize: false, wrapper_tag: 'div') %></td>
+      </tr>
+      <% if @progress.optional_content.present? %>
+      <tr>
+        <th>前回から今回の投稿までの間に、してよかったことはありますか？</th>
+        <td><%= simple_format(h(@progress.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></td>
+      </tr>
+      <% end %>
+      <% if @progress.optional_content_2.present? %>
+      <tr>
+        <th>前回から心境の変化はありますか？</th>
+        <td><%= simple_format(h(@progress.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <%= render 'erais/erai' %>
 

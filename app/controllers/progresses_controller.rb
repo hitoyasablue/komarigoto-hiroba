@@ -12,7 +12,7 @@ class ProgressesController < ApplicationController
     @progress = @post.progresses.new(progress_params)
     if @progress.save
       if @progress.optional_content.present? || @progress.optional_content_2.present?
-        flash[:success] = '最後まで書いてすごい！ あなたが今日こころ穏やかでありますように・・・'
+        flash[:success] = '最後まで書いてすごい！ あなたが今日心おだやかでありますように・・・'
       else
         flash[:success] = '進捗を記録しました！'
       end
