@@ -1,7 +1,7 @@
 <%= form_with(model: @user, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="user_field">
-    <%= f.label :名前 %>
+    <%= f.label :ニックネーム %>
     <%= f.text_field :name, class: 'form-control', id: 'user_name' %>
 
     <%= f.label :メールアドレス %>
