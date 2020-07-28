@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :progresses, only: [:new, :create, :show, :edit, :update, :destroy] do
       resources :erais, only: [:create, :destroy]
       resources :sounandas, only: [:create, :destroy]
+      resources :ouen2s, only: [:create, :destroy]
+      resources :teinei2s, only: [:create, :destroy]
     end
   end
   resources :notifications, only: [:index]
