@@ -70,8 +70,10 @@
   </table>
 </div>
 
-<%= render 'erais/erai' %>
 <%= render 'sounandas/sounanda' %>
+<%= render 'erais/erai' %>
+<%= render 'teinei2s/teinei2' %>
+<%= render 'ouen2s/ouen2' %>
 
 <% if @user == current_user %>
   <%= link_to '編集', edit_post_progress_path, class: 'btn btn-primary mr-3' %>

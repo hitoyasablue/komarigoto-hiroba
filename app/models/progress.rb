@@ -4,6 +4,8 @@ class Progress < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :erais, dependent: :destroy
   has_many :sounandas, dependent: :destroy
+  has_many :ouen2s, dependent: :destroy
+  has_many :teinei2s, dependent: :destroy
 
   def has_erai?(user)
     self.erais.exists?(user_id: user.id)
@@ -11,6 +13,14 @@ class Progress < ApplicationRecord
 
   def has_sounanda?(user)
     self.sounandas.exists?(user_id: user.id)
+  end
+
+  def has_ouen2?(user)
+    self.ouen2s.exists?(user_id: user.id)
+  end
+
+  def has_teinei2?(user)
+    self.teinei2s.exists?(user_id: user.id)
   end
 
   def create_notification_erai!(current_user)
