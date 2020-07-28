@@ -5,7 +5,7 @@
       <div class="erai">
         <div class="row">
           <div class="col-md-4 offset-md-4">
-            <%= button_to 'えらい済', post_progress_erai_path(progress_id: @progress.id, id: erai.id), class: 'btn btn-outline-info', id: 'unerai-button', method: :delete, remote: true %>
+            <%= button_to 'よかった済', post_progress_erai_path(progress_id: @progress.id, id: erai.id), class: 'btn btn-outline-info', id: 'unerai-button', method: :delete, remote: true %>
             <%= @progress.erais.count %>
           </div>
         </div>
@@ -14,7 +14,7 @@
       <div class="unerai">
         <div class="row">
           <div class="col-md-4 offset-md-4">
-            <%= button_to 'えらい', post_progress_erais_path(progress_id: @progress.id), class: 'btn btn-outline-info', id: 'erai-button', method: :post, remote: true %>
+            <%= button_to 'よかった', post_progress_erais_path(progress_id: @progress.id), class: 'btn btn-outline-info', id: 'erai-button', method: :post, remote: true %>
             <%= @progress.erais.count %>
           </div>
         </div>

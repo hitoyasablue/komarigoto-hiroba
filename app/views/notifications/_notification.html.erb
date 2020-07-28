@@ -8,19 +8,27 @@
           <%= visitor.name %>
         </strong>
       <% end %>
-      <%= 'さんが' %>
+      さんから
 
       <% case notification.action %>
       <% when 'like' then %>
-        <%= 'この投稿にそうなんだをしました' %>
+        この投稿にそうなんだをしました
         <br>
         <%= link_to notification.post.content, notification.post %>
       <% when 'wakaru' then %>
-        <%= 'この投稿にわかるをしました' %>
+        この投稿にわかるをしました
+        <br>
+        <%= link_to notification.post.content, notification.post %>
+      <% when 'teinei' then %>
+        この投稿にていねいをしました
+        <br>
+        <%= link_to notification.post.content, notification.post %>
+      <% when 'ouen' then %>
+        この投稿におうえんをしました
         <br>
         <%= link_to notification.post.content, notification.post %>
       <% when 'erai' then %>
-        <%= 'この進捗にえらいをしました' %>
+        この進捗によかったをしました
         <br>
         <%= link_to notification.progress.content, notification.post %>
       <% end %>
