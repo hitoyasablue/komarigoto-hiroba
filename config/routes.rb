@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :ouens, only: [:create, :destroy]
     resources :progresses, only: [:new, :create, :show, :edit, :update, :destroy] do
       resources :erais, only: [:create, :destroy]
+      resources :sounandas, only: [:create, :destroy]
     end
   end
   resources :notifications, only: [:index]

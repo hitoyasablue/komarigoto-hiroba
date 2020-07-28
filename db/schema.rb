@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_122001) do
+ActiveRecord::Schema.define(version: 2020_07_28_132504) do
 
   create_table "erais", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -77,6 +77,16 @@ ActiveRecord::Schema.define(version: 2020_07_28_122001) do
     t.text "optional_content"
     t.text "optional_content_2"
     t.index ["post_id"], name: "index_progresses_on_post_id"
+  end
+
+  create_table "sounandas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "progress_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["progress_id"], name: "index_sounandas_on_progress_id"
+    t.index ["user_id", "progress_id"], name: "index_sounandas_on_user_id_and_progress_id", unique: true
+    t.index ["user_id"], name: "index_sounandas_on_user_id"
   end
 
   create_table "teineis", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
