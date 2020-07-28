@@ -6,7 +6,7 @@ class Ouen2sController < ApplicationController
     ouen2.save
     @user = User.find_by(id: current_user.id)
     @progress = Progress.find_by(id: params[:progress_id])
-    # @progress.create_notification_ouen2!(current_user)
+    @progress.create_notification_ouen2!(current_user)
   end
 
   def destroy
