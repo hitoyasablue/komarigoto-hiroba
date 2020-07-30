@@ -1,8 +1,8 @@
 <h1>みんなの困りごと</h1>
 
+<%= render 'search_form' %>
 <div class="row">
-  <div class="col-md-8 offset-md-2">
-    <%= render 'search_form' %>
+  <div class="col-md-7 offset-md-2">
     <% if @posts.any? %>
       <%= render 'post' %>
     <% end %>

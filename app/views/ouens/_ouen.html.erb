@@ -1,24 +1,16 @@
-<% if logged_in? %>
-  <% ouen = post.ouens.find_by(user_id: current_user.id) %>
+<% ouen = post.ouens.find_by(user_id: current_user.id) %>
+<div class="ouen_button">
   <div id="ouen_button_<%= post.id %>">
     <% if post.has_ouen?(current_user) %>
       <div class="ouen">
-        <div class="row">
-          <div class="col-md-4 offset-md-4">
-            <%= button_to 'おうえん済', post_ouen_path(id: ouen.id, post_id: post.id), class: 'btn btn-outline-info', id: 'unouen-button', method: :delete, remote: true %>
-            <%= post.ouens.count %>
-          </div>
-        </div>
+        <%= button_to 'おうえん', post_ouen_path(id: ouen.id, post_id: post.id), class: 'btn btn-success', id: 'unouen-button', method: :delete, remote: true %>
+        <%= post.ouens.count %>
       </div>
     <% else %>
       <div class="unouen">
-        <div class="row">
-          <div class="col-md-4 offset-md-4">
-            <%= button_to 'おうえん', post_ouens_path(post_id: post.id), class: 'btn btn-outline-info', id: 'ouen-button', method: :post, remote: true %>
-            <%= post.ouens.count %>
-          </div>
-        </div>
+        <%= button_to 'おうえん', post_ouens_path(post_id: post.id), class: 'btn btn-outline-success', id: 'ouen-button', method: :post, remote: true %>
+        <%= post.ouens.count %>
       </div>
     <% end %>
   </div>
-<% end %>
+</div>

@@ -1,24 +1,22 @@
-<% if logged_in? %>
-  <% erai = @progress.erais.find_by(user_id: current_user.id) %>
-  <div id="erai_button_<%= @progress.id %>">
-    <% if @progress.has_erai?(current_user) %>
-      <div class="erai">
-        <div class="row">
-          <div class="col-md-4 offset-md-4">
-            <%= button_to 'よかった済', post_progress_erai_path(progress_id: @progress.id, id: erai.id), class: 'btn btn-outline-info', id: 'unerai-button', method: :delete, remote: true %>
-            <%= @progress.erais.count %>
-          </div>
+<% erai = @progress.erais.find_by(user_id: current_user.id) %>
+<div id="erai_button_<%= @progress.id %>">
+  <% if @progress.has_erai?(current_user) %>
+    <div class="erai">
+      <div class="row">
+        <div class="col-md-4 offset-md-4">
+          <%= button_to 'よかった済', post_progress_erai_path(progress_id: @progress.id, id: erai.id), class: 'btn btn-outline-info', id: 'unerai-button', method: :delete, remote: true %>
+          <%= @progress.erais.count %>
         </div>
       </div>
-    <% else %>
-      <div class="unerai">
-        <div class="row">
-          <div class="col-md-4 offset-md-4">
-            <%= button_to 'よかった', post_progress_erais_path(progress_id: @progress.id), class: 'btn btn-outline-info', id: 'erai-button', method: :post, remote: true %>
-            <%= @progress.erais.count %>
-          </div>
+    </div>
+  <% else %>
+    <div class="unerai">
+      <div class="row">
+        <div class="col-md-4 offset-md-4">
+          <%= button_to 'よかった', post_progress_erais_path(progress_id: @progress.id), class: 'btn btn-outline-info', id: 'erai-button', method: :post, remote: true %>
+          <%= @progress.erais.count %>
         </div>
       </div>
-    <% end %>
-  </div>
-<% end %>
+    </div>
+  <% end %>
+</div>

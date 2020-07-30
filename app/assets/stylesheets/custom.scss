@@ -75,10 +75,6 @@ li {
   display: flex;
 }
 
-.user_icon {
-  width: 50px;
-}
-
 /* テーブル */
 
 .table {
@@ -157,15 +153,6 @@ aside {
   }
 }
 
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
-.gravatar_edit {
-  margin-top: 15px;
-}
-
 /* ユーザー一覧 */
 
 .users {
@@ -187,27 +174,46 @@ aside {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
+
   .user {
     margin-top: 5em;
     padding-top: 0;
   }
-  .content {
-    display: block;
-    margin-left: 60px;
-    img {
-      display: block;
-      padding: 5px 0;
-    }
+
+  .user_icon {
+    width: 50px;
   }
+
+  // .content {
+  //   padding-bottom: 20px;
+  // }
+
   .timestamp {
     color: gray;
-    display: block;
+    display: inline-block;
     margin-left: 60px;
   }
-  .gravatar {
-    float: left;
-    margin-right: 10px;
-    margin-top: 5px;
+
+
+  .wakaru_button {
+    padding-left: 80px;
+    display: inline-block;
+  }
+
+  .like_button {
+    display: inline-block;
+  }
+
+  .teinei_button {
+    display: inline-block;
+  }
+
+  .ouen_button {
+    display: inline-block;
+  }
+
+  #progress_button {
+    width: 40%;
   }
 }
 
@@ -225,20 +231,27 @@ span.image {
   }
 }
 
+#search_form {
+  position: absolute;
+  top: 100px;
+  right: 100px;
+}
+
 /* アコーディオン */
 
 .accordion_wrapper {
   position: relative;
-  margin: 1.875em auto;
+  margin: 37.5px auto;
   width: 100%;
   border-top: none;
   outline: 0;
   cursor: pointer;
 
   .accordion_title {
+    position: relative;
     display: block;
-    padding: 0.625em 0.625em 0.625em 2em;
-    font-size: 1.25em;
+    padding: 12.5px 12.5px 12.5px 40px;
+    font-size: 20px;
     font-weight: normal;
     color: #fff;
     background: #1abc9c;
@@ -247,11 +260,11 @@ span.image {
 
   .accordion_content {
     display: none;
-    padding-left: 2.3125em;
+    padding: 20px 20px 0 20px;
   }
 
   .accordion_content_display {
-    padding-left: 2.3125em;
+    padding: 20px 20px 0 20px;
   }
 
   .accordion_title:after {

@@ -1,24 +1,16 @@
-<% if logged_in? %>
-  <% wakaru = post.wakarus.find_by(user_id: current_user.id) %>
+<% wakaru = post.wakarus.find_by(user_id: current_user.id) %>
+<div class="wakaru_button">
   <div id="wakaru_button_<%= post.id %>">
     <% if post.has_wakaru?(current_user) %>
       <div class="wakaru">
-        <div class="row">
-          <div class="col-md-4 offset-md-4">
-            <%= button_to 'わかる済', post_wakaru_path(id: wakaru.id, post_id: post.id), class: 'btn btn-outline-info', id: 'unwakaru-button', method: :delete, remote: true %>
-            <%= post.wakarus.count %>
-          </div>
-        </div>
+        <%= button_to 'わかる', post_wakaru_path(id: wakaru.id, post_id: post.id), class: 'btn btn-success', id: 'unwakaru-button', method: :delete, remote: true %>
+        <%= post.wakarus.count %>
       </div>
     <% else %>
       <div class="unwakaru">
-        <div class="row">
-          <div class="col-md-4 offset-md-4">
-            <%= button_to 'わかる', post_wakarus_path(post_id: post.id), class: 'btn btn-outline-info', id: 'wakaru-button', method: :post, remote: true %>
-            <%= post.wakarus.count %>
-          </div>
-        </div>
+        <%= button_to 'わかる', post_wakarus_path(post_id: post.id), class: 'btn btn-outline-success', id: 'wakaru-button', method: :post, remote: true %>
+        <%= post.wakarus.count %>
       </div>
     <% end %>
   </div>
-<% end %>
+</div>

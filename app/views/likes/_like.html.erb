@@ -1,24 +1,16 @@
-<% if logged_in? %>
-  <% like = post.likes.find_by(user_id: current_user.id) %>
+<% like = post.likes.find_by(user_id: current_user.id) %>
+<div class="like_button">
   <div id="like_button_<%= post.id %>">
     <% if post.has_like?(current_user) %>
       <div class="like">
-        <div class="row">
-          <div class="col-md-4 offset-md-4">
-            <%= button_to 'そうなんだ済', post_like_path(id: like.id, post_id: post.id), class: 'btn btn-outline-info', id: 'unlike-button', method: :delete, remote: true %>
-            <%= post.likes.count %>
-          </div>
-        </div>
+        <%= button_to 'そうなんだ', post_like_path(id: like.id, post_id: post.id), class: 'btn btn-success', id: 'unlike-button', method: :delete, remote: true %>
+        <%= post.likes.count %>
       </div>
     <% else %>
       <div class="unlike">
-        <div class="row">
-          <div class="col-md-4 offset-md-4">
-            <%= button_to 'そうなんだ', post_likes_path(post_id: post.id), class: 'btn btn-outline-info', id: 'like-button', method: :post, remote: true %>
-            <%= post.likes.count %>
-          </div>
-        </div>
+        <%= button_to 'そうなんだ', post_likes_path(post_id: post.id), class: 'btn btn-outline-success', id: 'like-button', method: :post, remote: true %>
+        <%= post.likes.count %>
       </div>
     <% end %>
   </div>
-<% end %>
+</div>

@@ -1,24 +1,22 @@
-<% if logged_in? %>
-  <% ouen2 = @progress.ouen2s.find_by(user_id: current_user.id) %>
-  <div id="ouen2_button_<%= @progress.id %>">
-    <% if @progress.has_ouen2?(current_user) %>
-      <div class="ouen2">
-        <div class="row">
-          <div class="col-md-4 offset-md-4">
-            <%= button_to 'おうえん済', post_progress_ouen2_path(progress_id: @progress.id, id: ouen2.id), class: 'btn btn-outline-info', id: 'unouen2-button', method: :delete, remote: true %>
-            <%= @progress.ouen2s.count %>
-          </div>
+<% ouen2 = @progress.ouen2s.find_by(user_id: current_user.id) %>
+<div id="ouen2_button_<%= @progress.id %>">
+  <% if @progress.has_ouen2?(current_user) %>
+    <div class="ouen2">
+      <div class="row">
+        <div class="col-md-4 offset-md-4">
+          <%= button_to 'おうえん済', post_progress_ouen2_path(progress_id: @progress.id, id: ouen2.id), class: 'btn btn-outline-info', id: 'unouen2-button', method: :delete, remote: true %>
+          <%= @progress.ouen2s.count %>
         </div>
       </div>
-    <% else %>
-      <div class="unouen2">
-        <div class="row">
-          <div class="col-md-4 offset-md-4">
-            <%= button_to 'おうえん', post_progress_ouen2s_path(progress_id: @progress.id), class: 'btn btn-outline-info', id: 'ouen2-button', method: :post, remote: true %>
-            <%= @progress.ouen2s.count %>
-          </div>
+    </div>
+  <% else %>
+    <div class="unouen2">
+      <div class="row">
+        <div class="col-md-4 offset-md-4">
+          <%= button_to 'おうえん', post_progress_ouen2s_path(progress_id: @progress.id), class: 'btn btn-outline-info', id: 'ouen2-button', method: :post, remote: true %>
+          <%= @progress.ouen2s.count %>
         </div>
       </div>
-    <% end %>
-  </div>
-<% end %>
+    </div>
+  <% end %>
+</div>
