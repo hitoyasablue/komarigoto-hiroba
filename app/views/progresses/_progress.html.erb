@@ -1,3 +1,6 @@
+<% if post.progresses.present? %>
+  <p>【進捗】</p>
+<% end %>
 <% post.progresses.order(id: 'DESC').each do |progress| %>
   <span class="timestamp">
     <%= time_ago_in_words(post.created_at) %>前

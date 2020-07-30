@@ -1,24 +1,16 @@
-<% if logged_in? %>
-  <% teinei = post.teineis.find_by(user_id: current_user.id) %>
+<% teinei = post.teineis.find_by(user_id: current_user.id) %>
+<div class="teinei_button">
   <div id="teinei_button_<%= post.id %>">
     <% if post.has_teinei?(current_user) %>
       <div class="teinei">
-        <div class="row">
-          <div class="col-md-4 offset-md-4">
-            <%= button_to 'ていねい済', post_teinei_path(id: teinei.id, post_id: post.id), class: 'btn btn-outline-info', id: 'unteinei-button', method: :delete, remote: true %>
-            <%= post.teineis.count %>
-          </div>
-        </div>
+        <%= button_to 'ていねい', post_teinei_path(id: teinei.id, post_id: post.id), class: 'btn btn-success', id: 'unteinei-button', method: :delete, remote: true %>
+        <%= post.teineis.count %>
       </div>
     <% else %>
       <div class="unteinei">
-        <div class="row">
-          <div class="col-md-4 offset-md-4">
-            <%= button_to 'ていねい', post_teineis_path(post_id: post.id), class: 'btn btn-outline-info', id: 'teinei-button', method: :post, remote: true %>
-            <%= post.teineis.count %>
-          </div>
-        </div>
+        <%= button_to 'ていねい', post_teineis_path(post_id: post.id), class: 'btn btn-outline-success', id: 'teinei-button', method: :post, remote: true %>
+        <%= post.teineis.count %>
       </div>
     <% end %>
   </div>
-<% end %>
+</div>

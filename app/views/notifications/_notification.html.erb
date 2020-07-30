@@ -4,43 +4,41 @@
   <div class="form-inline">
     <span>
       <%= link_to user_path(visitor) do %>
-        <strong>
-          <%= visitor.name %>
-        </strong>
+        <b><%= visitor.name %></b>
       <% end %>
-      さんから
+      さんが
 
       <% case notification.action %>
       <% when 'like' then %>
-        この投稿にそうなんだをしました
+        この投稿にそうなんだと言っています
         <br>
         <%= link_to notification.post.content, notification.post %>
       <% when 'wakaru' then %>
-        この投稿にわかるをしました
+        この投稿にわかると言っています
         <br>
         <%= link_to notification.post.content, notification.post %>
       <% when 'teinei' then %>
-        この投稿にていねいをしました
+        この投稿にていねいと言っています
         <br>
         <%= link_to notification.post.content, notification.post %>
       <% when 'ouen' then %>
-        この投稿におうえんをしました
+        この投稿におうえんをしてくれています
         <br>
         <%= link_to notification.post.content, notification.post %>
       <% when 'erai' then %>
-        この進捗によかったをしました
+        この進捗によかったと言っています
         <br>
         <%= link_to notification.progress.content, notification.post %>
       <% when 'sounanda' then %>
-        この進捗にそうなんだをしました
+        この進捗にそうなんだと言っています
         <br>
         <%= link_to notification.progress.content, notification.post %>
       <% when 'teinei2' then %>
-        この進捗にていねいをしました
+        この進捗にていねいと言っています
         <br>
         <%= link_to notification.progress.content, notification.post %>
       <% when 'ouen2' then %>
-        この進捗におうえんをしました
+        この進捗におうえんをしてくれています
         <br>
         <%= link_to notification.progress.content, notification.post %>
       <% end %>

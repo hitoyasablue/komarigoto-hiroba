@@ -3,17 +3,23 @@
     <li id="post-<%= post.id %>">
       <%= image_tag post.user.image, class: 'user_icon' %>
       <span class="user"><%= link_to post.user.name, post.user %></span>
-      <%= link_to post.content.truncate(140), post %>
       <span class="timestamp">
         <%= time_ago_in_words(post.created_at) %>前
       </span>
+      <% if post.user == current_user %>
+        <%= button_to 'その後の進捗を記録する', new_post_progress_path(post_id: post.id), class: 'btn btn-outline-secondary', id: 'progress_button'%>
+      <% end %>
+      <div class="row">
+        <div class="col-md-10 offset-md-1">
+          <%= link_to post.content.truncate(140), post %>
+        </div>
+      </div>
+      <div class="buttons">
       <%= render 'wakarus/wakaru', post: post %>
       <%= render 'likes/like', post: post %>
       <%= render 'teineis/teinei', post: post %>
       <%= render 'ouens/ouen', post: post %>
-      <% if post.user == current_user %>
-        <%= link_to 'その後の進捗を記録する', new_post_progress_path(post_id: post.id) %>
-      <% end %>
+      </div>
       <%= render 'progresses/progress', post: post %>
     </li>
   <% end %>
