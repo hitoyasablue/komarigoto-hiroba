@@ -3,13 +3,15 @@
   <div id="teinei_button_<%= post.id %>">
     <% if post.has_teinei?(current_user) %>
       <div class="teinei">
-        <%= button_to 'ていねい', post_teinei_path(id: teinei.id, post_id: post.id), class: 'btn btn-success', id: 'unteinei-button', method: :delete, remote: true %>
-        <%= post.teineis.count %>
+        <%= button_to "ていねい   #{post.teineis.count}", post_teinei_path(id: teinei.id, post_id: post.id), class: 'btn btn-success', id: 'unteinei-button', method: :delete, remote: true %>
       </div>
     <% else %>
       <div class="unteinei">
-        <%= button_to 'ていねい', post_teineis_path(post_id: post.id), class: 'btn btn-outline-success', id: 'teinei-button', method: :post, remote: true %>
-        <%= post.teineis.count %>
+        <% if post.teineis.count == 0 %>
+          <%= button_to "ていねい", post_teineis_path(post_id: post.id), class: 'btn btn-outline-success', id: 'teinei-button', method: :post, remote: true %>
+        <% else %>
+          <%= button_to "ていねい   #{post.teineis.count}", post_teineis_path(post_id: post.id), class: 'btn btn-outline-success', id: 'teinei-button', method: :post, remote: true %>
+        <% end %>
       </div>
     <% end %>
   </div>

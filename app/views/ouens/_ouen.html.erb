@@ -3,13 +3,16 @@
   <div id="ouen_button_<%= post.id %>">
     <% if post.has_ouen?(current_user) %>
       <div class="ouen">
-        <%= button_to 'おうえん', post_ouen_path(id: ouen.id, post_id: post.id), class: 'btn btn-success', id: 'unouen-button', method: :delete, remote: true %>
-        <%= post.ouens.count %>
+        <%= button_to "おうえん   #{post.ouens.count}", post_ouen_path(id: ouen.id, post_id: post.id), class: 'btn btn-success', id: 'unouen-button', method: :delete, remote: true %>
+        <%=  %>
       </div>
     <% else %>
       <div class="unouen">
-        <%= button_to 'おうえん', post_ouens_path(post_id: post.id), class: 'btn btn-outline-success', id: 'ouen-button', method: :post, remote: true %>
-        <%= post.ouens.count %>
+        <% if post.ouens.count == 0 %>
+          <%= button_to "おうえん", post_ouens_path(post_id: post.id), class: 'btn btn-outline-success', id: 'ouen-button', method: :post, remote: true %>
+        <% else %>
+          <%= button_to "おうえん   #{post.ouens.count}", post_ouens_path(post_id: post.id), class: 'btn btn-outline-success', id: 'ouen-button', method: :post, remote: true %>
+        <% end %>
       </div>
     <% end %>
   </div>

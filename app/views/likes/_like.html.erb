@@ -3,13 +3,15 @@
   <div id="like_button_<%= post.id %>">
     <% if post.has_like?(current_user) %>
       <div class="like">
-        <%= button_to 'そうなんだ', post_like_path(id: like.id, post_id: post.id), class: 'btn btn-success', id: 'unlike-button', method: :delete, remote: true %>
-        <%= post.likes.count %>
+        <%= button_to "そうなんだ   #{post.likes.count}", post_like_path(id: like.id, post_id: post.id), class: 'btn btn-success', id: 'unlike-button', method: :delete, remote: true %>
       </div>
     <% else %>
       <div class="unlike">
-        <%= button_to 'そうなんだ', post_likes_path(post_id: post.id), class: 'btn btn-outline-success', id: 'like-button', method: :post, remote: true %>
-        <%= post.likes.count %>
+        <% if post.likes.count == 0 %>
+          <%= button_to "そうなんだ", post_likes_path(post_id: post.id), class: 'btn btn-outline-success', id: 'like-button', method: :post, remote: true %>
+        <% else %>
+          <%= button_to "そうなんだ   #{post.likes.count}", post_likes_path(post_id: post.id), class: 'btn btn-outline-success', id: 'like-button', method: :post, remote: true %>
+        <% end %>
       </div>
     <% end %>
   </div>
