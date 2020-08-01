@@ -39,6 +39,7 @@ line-height: 1.7em;
 body {
   //margin-top: 0px;
   padding-top: 60px;
+  // background-color: #fffaf1;
 }
 
 section {
@@ -70,8 +71,8 @@ li {
   display: flex;
   flex-direction: column;
 
-  ul {
-    border: solid 1px #f07f5d;
+  .post_items {
+    border: solid 1.5px rgba(165, 42, 42, 0.808);
     background: #fffaf1;
     padding: 0.5em 1em 0.5em 2.3em;
     position: relative;
@@ -79,7 +80,6 @@ li {
     li {
       line-height: 1.5;
       padding: 0.5em 0;
-      list-style-type: none!important;
     }
   }
 }
@@ -128,18 +128,23 @@ input {
 
 /* ページネーション */
 
-.pagenation>li>a {
-  border: none;
-  color: #696969;
-}
+.pagenation {
+  li{
+    a {
+    border: none;
+    color: #696969;
+    }
 
-.pagenation>.active>a {
-  background: #93c9ff;
-  border-radius: 15px;
-}
-
-.pagenation>li>a:hover {
-  border-radius: 15px;
+    a:hover {
+      border-radius: 15px;
+    }
+  }
+  .active {
+    a {
+    background: #93c9ff;
+    border-radius: 15px;
+    }
+  }
 }
 
 /* サイドバー */
@@ -198,9 +203,9 @@ aside {
     padding-top: 0;
   }
 
-  // .content {
-  //   padding-bottom: 20px;
-  // }
+  .content {
+    padding: 30px;
+  }
 
   .timestamp {
     color: gray;
@@ -209,6 +214,9 @@ aside {
   }
 
   #progress_button {
+    position: relative;
+    bottom: 45px;
+    left: 300px;
     width: 40%;
   }
 }

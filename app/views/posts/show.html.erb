@@ -1,39 +1,36 @@
 <h1>投稿詳細</h1>
 
-<table class="table table-hover">
-  <tbody>
-    <tr>
-      <th>どんなことに困っていますか？</th>
-      <td><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: 'div') %></td>
-    </tr>
-    <% if @post.optional_content.present? %>
-    <tr>
-      <th>困りごとのきっかけは何でしたか？</th>
-      <td><%= simple_format(h(@post.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></td>
-    </tr>
-    <% end %>
-    <% if @post.optional_content_2.present? %>
-    <tr>
-      <th>困りごとはどのような状況で発生しますか？</th>
-      <td><%= simple_format(h(@post.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></td>
-    </tr>
-    <% end %>
-    <% if @post.optional_content_3.present? %>
-    <tr>
-      <th>どうなればうれしいですか？</th>
-      <td><%= simple_format(h(@post.optional_content_3), {}, sanitize: false, wrapper_tag: 'div') %></td>
-    </tr>
-    <% end %>
-    <% if @post.optional_content_4.present? %>
-    <tr>
-      <th>よくしていくために、これからどうしますか？</th>
-      <td><%= simple_format(h(@post.optional_content_4), {}, sanitize: false, wrapper_tag: 'div') %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+<div class="col-md-8 offset-md-2">
+<div class="wrapper">
+<ul class="post_items">
+  <li><i class="fa fa-paw fa-fw"></i>どんなことに困っていますか？</p>
+  <p><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: 'div') %></p>
+  <% if @post.optional_content.present? %>
+    <li><i class="fa fa-paw fa-fw"></i>困りごとのきっかけは何でしたか？</p>
+    <p><%= simple_format(h(@post.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></p>
+  <% end %>
+  <% if @post.optional_content_2.present? %>
+    <li><i class="fa fa-paw fa-fw"></i>困りごとはどのような状況で発生しますか？</p>
+    <p><%= simple_format(h(@post.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
+  <% end %>
+  <% if @post.optional_content_3.present? %>
+    <li><i class="fa fa-paw fa-fw"></i>どうなればうれしいですか？</p>
+    <p><%= simple_format(h(@post.optional_content_3), {}, sanitize: false, wrapper_tag: 'div') %></p>
+  <% end %>
+  <% if @post.optional_content_4.present? %>
+    <li><i class="fa fa-paw fa-fw"></i>よくしていくために、これからどうしますか？</p>
+    <p><%= simple_format(h(@post.optional_content_4), {}, sanitize: false, wrapper_tag: 'div') %></p>
+  <% end %>
+</ul>
 
-<%= render 'likes/like', post: @post %>
+<div class="buttons">
+  <%= render 'likes/like', post: @post %>
+  <%= render 'wakarus/wakaru', post: @post %>
+  <%= render 'teineis/teinei', post: @post %>
+  <%= render 'ouens/ouen', post: @post %>
+</div>
+</div>
 
 <% if @user == current_user %>
   <%= link_to '編集', edit_post_path, class: 'btn btn-primary mr-3' %>
@@ -44,3 +41,5 @@
   <%= link_to 'その後の進捗を記録する', new_post_progress_path(post_id: @post.id) %>
 <% end %>
 <%= render 'progresses/progress', post: @post %>
+</div>
+</div>

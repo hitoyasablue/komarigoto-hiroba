@@ -13,8 +13,8 @@
       <div class="accordion_title">ステップ1</div>
       <div class="accordion_content_display">
         <div class="field">
-          <%= f.label :どんなことに困っていますか？%>
-          <%= f.text_area :content, class: 'form-control', id: 'post_content', placeholder: 'どんなことに困っていますか？' %>
+          <i class="fa fa-paw fa-fw"></i><%= f.label :どんなことに困っていますか？%>
+          <%= f.text_area :content, class: 'form-control', id: 'post_content' %>
         </div>
       </div>
     </div>
@@ -22,15 +22,15 @@
       <div class="accordion_title">ステップ2</div>
         <div class="accordion_content">
           <div class="field">
-            <%= f.label :困りごとのきっかけは何でしたか？ %>
+            <i class="fa fa-paw fa-fw"></i><%= f.label :困りごとのきっかけは何でしたか？ %>
             <%= f.text_area :optional_content, class: 'form-control' %>
           </div>
           <div class="field">
-            <%= f.label :困りごとはどのような状況で発生しますか？ %>
+            <i class="fa fa-paw fa-fw"></i><%= f.label :困りごとはどのような状況で発生しますか？ %>
             <%= f.text_area :optional_content_2, class: 'form-control' %>
           </div>
           <div class="field">
-            <%= f.label :どうなればうれしいですか？ %>
+            <i class="fa fa-paw fa-fw"></i><%= f.label :どうなればうれしいですか？ %>
             <%= f.text_area :optional_content_3, class: 'form-control' %>
           </div>
         </div>
@@ -39,7 +39,7 @@
         <div class="accordion_title">ステップ3</div>
         <div class="accordion_content">
           <div class="field">
-            <%= f.label :よくしていくために、これからどうしますか？ %>
+            <i class="fa fa-paw fa-fw"></i><%= f.label :よくしていくために、これからどうしますか？ %>
             <%= f.text_area :optional_content_4, class: 'form-control' %>
           </div>
         </div>
