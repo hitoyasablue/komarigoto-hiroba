@@ -14,7 +14,8 @@
 <div class="wrapper">
   <div class="accordion_wrapper">
     <div class="accordion_title">困りごとの内容</div>
-    <ul class="accordion_content">
+    <div class="accordion_content">
+    <ul class="post_items">
       <li><i class="fa fa-paw fa-fw"></i>どんなことに困っていますか？</p>
       <p><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: 'div') %></p>
       <% if @post.optional_content.present? %>
@@ -34,6 +35,7 @@
         <p><%= simple_format(h(@post.optional_content_4), {}, sanitize: false, wrapper_tag: 'div') %></p>
       <% end %>
     </ul>
+    </div>
   </div>
 
   <p><i class="fa fa-paw fa-fw"></i>その後はいかがですか？</p>
