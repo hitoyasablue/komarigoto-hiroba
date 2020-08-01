@@ -61,10 +61,27 @@ li {
   list-style: none;
 }
 
+.user_icon {
+  width: 50px;
+}
+
 
 .wrapper {
   display: flex;
   flex-direction: column;
+
+  ul {
+    border: solid 1px #f07f5d;
+    background: #fffaf1;
+    padding: 0.5em 1em 0.5em 2.3em;
+    position: relative;
+
+    li {
+      line-height: 1.5;
+      padding: 0.5em 0;
+      list-style-type: none!important;
+    }
+  }
 }
 
 .field {
@@ -170,6 +187,7 @@ aside {
 .posts {
   list-style: none;
   padding: 0;
+
   li {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
@@ -178,10 +196,6 @@ aside {
   .user {
     margin-top: 5em;
     padding-top: 0;
-  }
-
-  .user_icon {
-    width: 50px;
   }
 
   // .content {
@@ -194,28 +208,54 @@ aside {
     margin-left: 60px;
   }
 
-
-  .wakaru_button {
-    padding-left: 80px;
-    display: inline-block;
-  }
-
-  .like_button {
-    display: inline-block;
-  }
-
-  .teinei_button {
-    display: inline-block;
-  }
-
-  .ouen_button {
-    display: inline-block;
-  }
-
   #progress_button {
     width: 40%;
   }
 }
+
+
+
+
+.buttons {
+  margin: 10px 0;
+  text-align: center;
+
+    .wakaru_button {
+      display: inline-block;
+    }
+
+    .like_button {
+      display: inline-block;
+    }
+
+    .teinei_button {
+      display: inline-block;
+    }
+
+    .ouen_button {
+      display: inline-block;
+    }
+
+    .sounanda_button {
+      display: inline-block;
+    }
+
+    .erai_button {
+      display: inline-block;
+    }
+
+    .teinei2_button {
+      display: inline-block;
+    }
+
+    .ouen2_button {
+      display: inline-block;
+    }
+}
+
+
+
+
 
 aside {
   textarea {

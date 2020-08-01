@@ -1,22 +1,18 @@
 <% teinei2 = @progress.teinei2s.find_by(user_id: current_user.id) %>
-<div id="teinei2_button_<%= @progress.id %>">
-  <% if @progress.has_teinei2?(current_user) %>
-    <div class="teinei2">
-      <div class="row">
-        <div class="col-md-4 offset-md-4">
-          <%= button_to 'ていねい済', post_progress_teinei2_path(progress_id: @progress.id, id: teinei2.id), class: 'btn btn-outline-info', id: 'unteinei2-button', method: :delete, remote: true %>
-          <%= @progress.teinei2s.count %>
-        </div>
+<div class="teinei2_button">
+  <div id="teinei2_button_<%= @progress.id %>">
+    <% if @progress.has_teinei2?(current_user) %>
+      <div class="teinei2">
+        <%= button_to "ていねい   #{@progress.teinei2s.count}", post_progress_teinei2_path(progress_id: @progress.id, id: teinei2.id), class: 'btn btn-success', id: 'unteinei2-button', method: :delete, remote: true %>
       </div>
-    </div>
-  <% else %>
-    <div class="unteinei2">
-      <div class="row">
-        <div class="col-md-4 offset-md-4">
-          <%= button_to 'ていねい', post_progress_teinei2s_path(progress_id: @progress.id), class: 'btn btn-outline-info', id: 'teinei2-button', method: :post, remote: true %>
-          <%= @progress.teinei2s.count %>
-        </div>
+    <% else %>
+      <div class="unteinei2">
+        <% if @progress.teinei2s.count == 0 %>
+          <%= button_to "ていねい", post_progress_teinei2s_path(progress_id: @progress.id), class: 'btn btn-outline-success', id: 'teinei2-button', method: :post, remote: true %>
+        <% else %>
+          <%= button_to "ていねい   #{@progress.teinei2s.count}", post_progress_teinei2s_path(progress_id: @progress.id), class: 'btn btn-outline-success', id: 'teinei2-button', method: :post, remote: true %>
+        <% end %>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

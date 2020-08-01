@@ -1,22 +1,18 @@
 <% sounanda = @progress.sounandas.find_by(user_id: current_user.id) %>
-<div id="sounanda_button_<%= @progress.id %>">
-  <% if @progress.has_sounanda?(current_user) %>
-    <div class="sounanda">
-      <div class="row">
-        <div class="col-md-4 offset-md-4">
-          <%= button_to 'そうなんだ済', post_progress_sounanda_path(progress_id: @progress.id, id: sounanda.id), class: 'btn btn-outline-info', id: 'unsounanda-button', method: :delete, remote: true %>
-          <%= @progress.sounandas.count %>
-        </div>
+<div class="sounanda_button">
+  <div id="sounanda_button_<%= @progress.id %>">
+    <% if @progress.has_sounanda?(current_user) %>
+      <div class="sounanda">
+        <%= button_to "そうなんだ   #{@progress.sounandas.count}", post_progress_sounanda_path(progress_id: @progress.id, id: sounanda.id), class: 'btn btn-success', id: 'unsounanda-button', method: :delete, remote: true %>
       </div>
-    </div>
-  <% else %>
-    <div class="unsounanda">
-      <div class="row">
-        <div class="col-md-4 offset-md-4">
-          <%= button_to 'そうなんだ', post_progress_sounandas_path(progress_id: @progress.id), class: 'btn btn-outline-info', id: 'sounanda-button', method: :post, remote: true %>
-          <%= @progress.sounandas.count %>
-        </div>
+    <% else %>
+      <div class="unsounanda">
+        <% if @progress.sounandas.count == 0 %>
+          <%= button_to "そうなんだ", post_progress_sounandas_path(progress_id: @progress.id), class: 'btn btn-outline-success', id: 'sounanda-button', method: :post, remote: true %>
+        <% else %>
+          <%= button_to "そうなんだ   #{@progress.sounandas.count}", post_progress_sounandas_path(progress_id: @progress.id), class: 'btn btn-outline-success', id: 'sounanda-button', method: :post, remote: true %>
+        <% end %>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

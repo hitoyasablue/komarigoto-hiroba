@@ -9,73 +9,55 @@
   });
 </script>
 
+<div class="row">
+<div class="col-md-8 offset-md-2">
 <div class="wrapper">
   <div class="accordion_wrapper">
     <div class="accordion_title">困りごとの内容</div>
-    <div class="accordion_content">
-      <table class="table table-hover">
-        <tbody>
-          <tr>
-            <th>どんなことに困っていますか？</th>
-            <td><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: 'div') %></td>
-          </tr>
-          <% if @post.optional_content.present? %>
-          <tr>
-            <th>困りごとのきっかけは何でしたか？</th>
-            <td><%= simple_format(h(@post.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></td>
-          </tr>
-          <% end %>
-          <% if @post.optional_content_2.present? %>
-          <tr>
-            <th>困りごとはどのような状況で発生しますか？</th>
-            <td><%= simple_format(h(@post.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></td>
-          </tr>
-          <% end %>
-          <% if @post.optional_content_3.present? %>
-          <tr>
-            <th>どうなればうれしいですか？</th>
-            <td><%= simple_format(h(@post.optional_content_3), {}, sanitize: false, wrapper_tag: 'div') %></td>
-          </tr>
-          <% end %>
-          <% if @post.optional_content_4.present? %>
-          <tr>
-            <th>よくしていくために、これからどうしますか？</th>
-            <td><%= simple_format(h(@post.optional_content_4), {}, sanitize: false, wrapper_tag: 'div') %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+    <ul class="accordion_content">
+      <li><i class="fa fa-paw fa-fw"></i>どんなことに困っていますか？</p>
+      <p><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: 'div') %></p>
+      <% if @post.optional_content.present? %>
+        <li><i class="fa fa-paw fa-fw"></i>困りごとのきっかけは何でしたか？</p>
+        <p><%= simple_format(h(@post.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></p>
+      <% end %>
+      <% if @post.optional_content_2.present? %>
+        <li><i class="fa fa-paw fa-fw"></i>困りごとはどのような状況で発生しますか？</p>
+        <p><%= simple_format(h(@post.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
+      <% end %>
+      <% if @post.optional_content_3.present? %>
+        <li><i class="fa fa-paw fa-fw"></i>どうなればうれしいですか？</p>
+        <p><%= simple_format(h(@post.optional_content_3), {}, sanitize: false, wrapper_tag: 'div') %></p>
+      <% end %>
+      <% if @post.optional_content_4.present? %>
+        <li><i class="fa fa-paw fa-fw"></i>よくしていくために、これからどうしますか？</p>
+        <p><%= simple_format(h(@post.optional_content_4), {}, sanitize: false, wrapper_tag: 'div') %></p>
+      <% end %>
+    </ul>
   </div>
 
-  <table class="table table-hover">
-    <tbody>
-      <tr>
-        <th>その後はいかがですか？</th>
-        <td><%= simple_format(h(@progress.content), {}, sanitize: false, wrapper_tag: 'div') %></td>
-      </tr>
-      <% if @progress.optional_content.present? %>
-      <tr>
-        <th>前回から今回の投稿までの間に、してよかったことはありますか？</th>
-        <td><%= simple_format(h(@progress.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></td>
-      </tr>
-      <% end %>
-      <% if @progress.optional_content_2.present? %>
-      <tr>
-        <th>前回から心境の変化はありますか？</th>
-        <td><%= simple_format(h(@progress.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <p><i class="fa fa-paw fa-fw"></i>その後はいかがですか？</p>
+  <p><%= simple_format(h(@progress.content), {}, sanitize: false, wrapper_tag: 'div') %></p>
+  <% if @progress.optional_content.present? %>
+    <p><i class="fa fa-paw fa-fw"></i>前回から今回の投稿までの間に、してよかったことはありますか？</p>
+    <p><%= simple_format(h(@progress.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></p>
+  <% end %>
+  <% if @progress.optional_content_2.present? %>
+    <p><i class="fa fa-paw fa-fw"></i>前回から心境の変化はありますか？</p>
+    <p><%= simple_format(h(@progress.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
+  <% end %>
 </div>
 
-<%= render 'sounandas/sounanda' %>
-<%= render 'erais/erai' %>
-<%= render 'teinei2s/teinei2' %>
-<%= render 'ouen2s/ouen2' %>
+<div class="buttons">
+  <%= render 'sounandas/sounanda' %>
+  <%= render 'erais/erai' %>
+  <%= render 'teinei2s/teinei2' %>
+  <%= render 'ouen2s/ouen2' %>
+</div>
 
 <% if @user == current_user %>
   <%= link_to '編集', edit_post_progress_path, class: 'btn btn-primary mr-3' %>
   <%= link_to '削除', post_progress_path, method: :delete, data: {confirm: 'この進捗を削除します。よろしいですか？'}, class: 'btn btn-danger' %>
 <% end %>
+</div>
+</div>

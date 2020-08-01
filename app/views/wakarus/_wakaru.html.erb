@@ -3,13 +3,15 @@
   <div id="wakaru_button_<%= post.id %>">
     <% if post.has_wakaru?(current_user) %>
       <div class="wakaru">
-        <%= button_to 'わかる', post_wakaru_path(id: wakaru.id, post_id: post.id), class: 'btn btn-success', id: 'unwakaru-button', method: :delete, remote: true %>
-        <%= post.wakarus.count %>
+        <%= button_to "わかる   #{post.wakarus.count}", post_wakaru_path(id: wakaru.id, post_id: post.id), class: 'btn btn-success', id: 'unwakaru-button', method: :delete, remote: true %>
       </div>
     <% else %>
       <div class="unwakaru">
-        <%= button_to 'わかる', post_wakarus_path(post_id: post.id), class: 'btn btn-outline-success', id: 'wakaru-button', method: :post, remote: true %>
-        <%= post.wakarus.count %>
+        <% if post.wakarus.count == 0 %>
+          <%= button_to 'わかる', post_wakarus_path(post_id: post.id), class: 'btn btn-outline-success', id: 'wakaru-button', method: :post, remote: true %>
+        <% else %>
+          <%= button_to "わかる   #{post.wakarus.count}", post_wakarus_path(post_id: post.id), class: 'btn btn-outline-success', id: 'wakaru-button', method: :post, remote: true %>
+        <% end %>
       </div>
     <% end %>
   </div>
