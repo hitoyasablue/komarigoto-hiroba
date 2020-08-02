@@ -4,14 +4,14 @@
 <div class="col-md-8 offset-md-2">
 <div class="wrapper">
 <ul class="post_items">
-  <li><i class="fa fa-paw fa-fw"></i>どんなことに困っていますか？</p>
+  <li><i class="fa fa-paw fa-fw"></i>どんなことに困っていますか？</li>
   <p><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: 'div') %></p>
   <% if @post.optional_content.present? %>
-    <li><i class="fa fa-paw fa-fw"></i>どうなればうれしいですか？</p>
+    <li><i class="fa fa-paw fa-fw"></i>どうなればうれしいですか？</li>
     <p><%= simple_format(h(@post.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></p>
   <% end %>
   <% if @post.optional_content_2.present? %>
-    <li><i class="fa fa-paw fa-fw"></i>よくしていくために、これからどうしますか？</p>
+    <li><i class="fa fa-paw fa-fw"></i>よくしていくために、これからどうしますか？</li>
     <p><%= simple_format(h(@post.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
   <% end %>
 </ul>
