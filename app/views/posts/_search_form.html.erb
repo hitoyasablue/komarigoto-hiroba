@@ -1,6 +1,8 @@
 <div id="search_form">
   <%= search_form_for @q, url: posts_search_path do |f| %>
-    <%= f.search_field :content_cont, id: 'search_word', placeholder: '検索ワードを入力...', required: true %>
-    <%= f.submit ('検索'), class: 'btn btn-secondary' %>
+    <%= f.search_field :content_cont, id: 'search_word', placeholder: 'キーワードで投稿を検索...', required: true %>
+    <%= button_tag type: 'submit', id: 'search_icon', class: 'btn' do %>
+      <i class="fa fa-search"></i>
+    <% end %>
   <% end %>
 </div>
