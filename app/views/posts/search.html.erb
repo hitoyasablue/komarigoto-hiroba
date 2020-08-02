@@ -1,11 +1,11 @@
-<h1>みんなの困りごと</h1>
+<h1>検索結果</h1>
 
 <div class="row">
-  <div class="col-md-8 offset-md-2">
+  <div class="col-md-6 offset-md-3">
       <% if @posts.any? %>
         <%= render 'post' %>
       <% else %>
-        <p>一致する困りごとはありません</p>
+        <p>一致する投稿はありません</p>
       <% end %>
   </div>
 </div>

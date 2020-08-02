@@ -133,7 +133,7 @@ describe '投稿のシステムテスト', type: :system do
       end
 
       it '検索結果は1件も表示されない' do
-        expect(page).to have_content '一致する困りごとはありません'
+        expect(page).to have_content '一致する投稿はありません'
       end
     end
 

@@ -5,7 +5,7 @@ $gray-medium-light: #eaeaea;
 
 @font-face {
   font-family: "web_font";
-  src: font-url("HigashiOme-Gothic-1.3i.ttf") format("truetype");
+  src: font-url("Koruri-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -41,6 +41,10 @@ color: #777;
 p {
 font-size: 1.1em;
 line-height: 1.7em;
+}
+
+a {
+  color: black;
 }
 
 body {
@@ -136,7 +140,7 @@ input {
 
 /* ページネーション */
 
-.pagenation {
+.pagination {
   li{
     a {
     border: none;
@@ -201,7 +205,7 @@ aside {
   list-style: none;
   padding: 0;
 
-  li {
+  post {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
@@ -211,8 +215,11 @@ aside {
     padding-top: 0;
   }
 
-  .content {
-    padding: 30px;
+  .post_items {
+    margin-bottom: 30px;
+    div {
+      border-bottom: 1px solid #e8e8e8;
+    }
   }
 
   .timestamp {
@@ -294,6 +301,8 @@ span.image {
 
   #search_word {
     display: inline-block;
+    border-radius: 3px;
+    height: 150%;
     width: 30%;
   }
 
