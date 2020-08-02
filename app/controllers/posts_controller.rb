@@ -27,10 +27,8 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      if @post.optional_content_4.present?
+      if @post.optional_content_2.present?
         flash[:success] = '最後まで書いてすごい！ あなたが今日心おだやかでありますように・・・'
-      elsif @post.optional_content.present? || @post.optional_content_2.present? || @post.optional_content_3.present?
-        flash[:success] = 'ステップ2まで書いてすごいです！'
       else
         flash[:success] = '困りごとを投稿しました！'
       end

@@ -16,26 +16,18 @@
           <li><i class="fa fa-paw fa-fw"></i>どんなことに困っていますか？</p>
           <p><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: 'div') %></p>
           <% if @post.optional_content.present? %>
-            <li><i class="fa fa-paw fa-fw"></i>困りごとのきっかけは何でしたか？</p>
+            <li><i class="fa fa-paw fa-fw"></i>どうなればうれしいですか？</p>
             <p><%= simple_format(h(@post.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></p>
           <% end %>
           <% if @post.optional_content_2.present? %>
-            <li><i class="fa fa-paw fa-fw"></i>困りごとはどのような状況で発生しますか？</p>
-            <p><%= simple_format(h(@post.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
-          <% end %>
-          <% if @post.optional_content_3.present? %>
-            <li><i class="fa fa-paw fa-fw"></i>どうなればうれしいですか？</p>
-            <p><%= simple_format(h(@post.optional_content_3), {}, sanitize: false, wrapper_tag: 'div') %></p>
-          <% end %>
-          <% if @post.optional_content_4.present? %>
             <li><i class="fa fa-paw fa-fw"></i>よくしていくために、これからどうしますか？</p>
-            <p><%= simple_format(h(@post.optional_content_4), {}, sanitize: false, wrapper_tag: 'div') %></p>
+            <p><%= simple_format(h(@post.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
           <% end %>
         </ul>
         </div>
     </div>
     <div class="accordion_wrapper">
-      <div class="accordion_title">ステップ1</div>
+      <div class="accordion_title">必須項目</div>
       <div class="accordion_content_display">
         <div class="field">
           <i class="fa fa-paw fa-fw"></i><%= f.label :その後はいかがですか？%>
@@ -44,7 +36,7 @@
       </div>
     </div>
     <div class="accordion_wrapper">
-      <div class="accordion_title">ステップ2</div>
+      <div class="accordion_title">余裕があれば</div>
       <div class="accordion_content">
         <div class="field">
           <i class="fa fa-paw fa-fw"></i><%= f.label :前回から今回の投稿までの間に、してよかったことはありますか？%>

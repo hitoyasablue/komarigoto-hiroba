@@ -1,6 +1,8 @@
-<div class="center jumbotron">
-  <h1>困りごとをことばにする場所</h1>
-  <% unless logged_in? %>
-    <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-primary' %>
-  <% end %>
+<div class="top_wrapper">
+  <div class="center jumbotron">
+    <h1>困りごとをことばにする場所</h1>
+    <% unless logged_in? %>
+      <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-primary' %>
+    <% end %>
+  </div>
 </div>

@@ -11,7 +11,7 @@ class ProgressesController < ApplicationController
     @post = Post.find_by(id: params[:post_id])
     @progress = @post.progresses.new(progress_params)
     if @progress.save
-      if @progress.optional_content.present? || @progress.optional_content_2.present?
+      if @progress.optional_content.present?
         flash[:success] = '最後まで書いてすごい！ あなたが今日心おだやかでありますように・・・'
       else
         flash[:success] = '進捗を記録しました！'

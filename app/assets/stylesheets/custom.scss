@@ -3,6 +3,13 @@
 
 $gray-medium-light: #eaeaea;
 
+@font-face {
+  font-family: "web_font";
+  src: font-url("HigashiOme-Gothic-1.3i.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
@@ -39,6 +46,7 @@ line-height: 1.7em;
 body {
   //margin-top: 0px;
   padding-top: 60px;
+  font-family: "web_font";
   // background-color: #fffaf1;
 }
 
@@ -48,6 +56,7 @@ section {
 
 textarea {
   resize: vertical;
+  font-family: "Hiragino Kaku Gothic ProN";
 }
 
 .center {
@@ -65,7 +74,6 @@ li {
 .user_icon {
   width: 50px;
 }
-
 
 .wrapper {
   display: flex;
@@ -280,9 +288,23 @@ span.image {
 }
 
 #search_form {
-  position: absolute;
-  top: 100px;
-  right: 100px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  text-align: center;
+
+  #search_word {
+    display: inline-block;
+    width: 30%;
+  }
+
+  #search_icon {
+    display: inline-block;
+    width: 5%;
+    height: 50%;
+    position: relative;
+    right: 50px;
+    bottom: 2px;
+  }
 }
 
 /* アコーディオン */
