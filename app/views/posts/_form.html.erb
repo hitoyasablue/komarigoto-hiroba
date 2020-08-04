@@ -13,7 +13,7 @@
       <div class="accordion_title">必須項目</div>
       <div class="accordion_content_display">
         <div class="field">
-          <i class="fa fa-paw fa-fw"></i><%= f.label :どんなことに困っていますか？%>
+          <i class="fa fa-paw fa-fw"></i><%= f.label :'今どんなことに困っていますか？' %>
           <%= f.text_area :content, class: 'form-control', id: 'post_content' %>
         </div>
       </div>
@@ -22,12 +22,20 @@
       <div class="accordion_title">余裕があれば</div>
         <div class="accordion_content">
           <div class="field">
-            <i class="fa fa-paw fa-fw"></i><%= f.label :どうなればうれしいですか？ %>
-            <%= f.text_area :optional_content_1, class: 'form-control' %>
+            <i class="fa fa-paw fa-fw"></i><%= f.label :'理想の状態を10点とすると、今の状態は何点ですか？理由もかんたんに記入してください' %>
+            <%= f.text_area :optional_content, class: 'form-control' %>
           </div>
           <div class="field">
-            <i class="fa fa-paw fa-fw"></i><%= f.label :よくしていくために、今あなたにできることはありますか？ %>
+            <i class="fa fa-paw fa-fw"></i><%= f.label :'どのような状態になれば、困りごとが解決された（10点になった）と言えますか？' %>
             <%= f.text_area :optional_content_2, class: 'form-control' %>
+          </div>
+          <div class="field">
+            <i class="fa fa-paw fa-fw"></i><%= f.label :'1つ点数を上げるために、今あなたにできることはありますか？' %>
+            <%= f.text_area :optional_content_3, class: 'form-control' %>
+          </div>
+          <div class="field">
+            <i class="fa fa-paw fa-fw"></i><%= f.label :'それをいつまでにしますか？' %>
+            <%= f.text_area :optional_content_4, class: 'form-control' %>
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_142218) do
+ActiveRecord::Schema.define(version: 2020_08_04_154109) do
 
   create_table "erais", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -86,6 +86,9 @@ ActiveRecord::Schema.define(version: 2020_07_28_142218) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "optional_content"
     t.text "optional_content_2"
+    t.text "optional_content_3"
+    t.text "optional_content_4"
+    t.text "content_2"
     t.index ["post_id"], name: "index_progresses_on_post_id"
   end
 

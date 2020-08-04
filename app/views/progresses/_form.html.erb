@@ -16,12 +16,20 @@
           <li><i class="fa fa-paw fa-fw"></i>どんなことに困っていますか？</li>
           <p><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: 'div') %></p>
           <% if @post.optional_content.present? %>
-            <li><i class="fa fa-paw fa-fw"></i>どうなればうれしいですか？</li>
+            <li><i class="fa fa-paw fa-fw"></i>理想の状態を10点とすると、今の状態は何点ですか？理由もかんたんに記入してください</li>
             <p><%= simple_format(h(@post.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></p>
           <% end %>
           <% if @post.optional_content_2.present? %>
-            <li><i class="fa fa-paw fa-fw"></i>よくしていくために、これからどうしますか？</li>
+            <li><i class="fa fa-paw fa-fw"></i>どのような状態になれば、困りごとが解決された（10点になった）と言えますか？</li>
             <p><%= simple_format(h(@post.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
+          <% end %>
+          <% if @post.optional_content_3.present? %>
+            <li><i class="fa fa-paw fa-fw"></i>1つ点数を上げるために、今あなたにできることはありますか？</li>
+            <p><%= simple_format(h(@post.optional_content_3), {}, sanitize: false, wrapper_tag: 'div') %></p>
+          <% end %>
+          <% if @post.optional_content_4.present? %>
+            <li><i class="fa fa-paw fa-fw"></i>それをいつまでにしますか？</li>
+            <p><%= simple_format(h(@post.optional_content_4), {}, sanitize: false, wrapper_tag: 'div') %></p>
           <% end %>
         </ul>
         </div>
@@ -30,8 +38,12 @@
       <div class="accordion_title">必須項目</div>
       <div class="accordion_content_display">
         <div class="field">
-          <i class="fa fa-paw fa-fw"></i><%= f.label :その後はいかがですか？%>
+          <i class="fa fa-paw fa-fw"></i><%= f.label :'前回の投稿から、困りごとに関して変わったことを教えてください（特にない場合は「なし」と記入してください）'%>
           <%= f.text_area :content, class: 'form-control', id: 'progress_content' %>
+        </div>
+        <div class="field">
+          <i class="fa fa-paw fa-fw"></i><%= f.label :'前回の投稿から心境の変化があれば教えてください（特にない場合は「なし」と記入してください）' %>
+          <%= f.text_area :content_2, class: 'form-control' %>
         </div>
       </div>
     </div>
@@ -39,12 +51,16 @@
       <div class="accordion_title">余裕があれば</div>
       <div class="accordion_content">
         <div class="field">
-          <i class="fa fa-paw fa-fw"></i><%= f.label :前回から今回の投稿までの間に、してよかったことはありますか？%>
+          <i class="fa fa-paw fa-fw"></i><%= f.label :'理想の状態を10点とすると、今の状態は何点ですか？理由もかんたんに記入してください' %>
           <%= f.text_area :optional_content, class: 'form-control' %>
         </div>
         <div class="field">
-          <i class="fa fa-paw fa-fw"></i><%= f.label :前回から心境の変化はありますか？%>
+          <i class="fa fa-paw fa-fw"></i><%= f.label :'1つ点数を上げるために、今あなたにできることはありますか？' %>
           <%= f.text_area :optional_content_2, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <i class="fa fa-paw fa-fw"></i><%= f.label :'それをいつまでにしますか？' %>
+          <%= f.text_area :optional_content_3, class: 'form-control' %>
         </div>
       </div>
     </div>
