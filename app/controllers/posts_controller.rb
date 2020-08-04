@@ -27,8 +27,12 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      if @post.optional_content_2.present?
+      if @post.optional_content_4.present?
         flash[:success] = '最後まで書いてすごい！ あなたが今日心おだやかでありますように・・・'
+      elsif @post.optional_content_3.present?
+        flash[:success] = '無理のない範囲で、できることを実行してみてくださいね。おうえんしています'
+      elsif @post.optional_content_2.present?
+        flash[:success] = 'あなたが今日心おだやかでありますように・・・'
       else
         flash[:success] = '困りごとを投稿しました！'
       end
@@ -61,7 +65,7 @@ class PostsController < ApplicationController
   private
 
     def search_posts
-      params.require(:q).permit(:content_cont)
+      params.require(:q).permit(:content_or_optional_content_or_optional_content_2_or_optional_content_3_or_optional_content_4cont)
     end
 
     def post_params

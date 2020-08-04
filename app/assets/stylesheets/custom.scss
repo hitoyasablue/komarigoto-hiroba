@@ -119,10 +119,6 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
-input {
-  height: auto !important;
-}
-
 #error_explanation {
   color: red;
   ul {
@@ -205,8 +201,8 @@ aside {
   list-style: none;
   padding: 0;
 
-  post {
-    padding: 10px 0;
+  .post {
+    padding: 20px 0;
     border-top: 1px solid #e8e8e8;
   }
 
@@ -218,7 +214,9 @@ aside {
   .post_items {
     margin-bottom: 30px;
     div {
-      border-bottom: 1px solid #e8e8e8;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #e8e8e8;
+      // font-weight: bold;
     }
   }
 

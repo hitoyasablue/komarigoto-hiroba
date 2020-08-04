@@ -19,27 +19,43 @@
       <li><i class="fa fa-paw fa-fw"></i>どんなことに困っていますか？</li>
       <p><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: 'div') %></p>
       <% if @post.optional_content.present? %>
-        <li><i class="fa fa-paw fa-fw"></i>どうなればうれしいですか？</li>
+        <li><i class="fa fa-paw fa-fw"></i>理想の状態を10点とすると、今の状態は何点ですか？理由もかんたんに記入してください</li>
         <p><%= simple_format(h(@post.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></p>
       <% end %>
       <% if @post.optional_content_2.present? %>
-        <li><i class="fa fa-paw fa-fw"></i>よくしていくために、これからどうしますか？</li>
+        <li><i class="fa fa-paw fa-fw"></i>どのような状態になれば、困りごとが解決された（10点になった）と言えますか？</li>
         <p><%= simple_format(h(@post.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
+      <% end %>
+      <% if @post.optional_content_3.present? %>
+        <li><i class="fa fa-paw fa-fw"></i>1つ点数を上げるために、今あなたにできることはありますか？</li>
+        <p><%= simple_format(h(@post.optional_content_3), {}, sanitize: false, wrapper_tag: 'div') %></p>
+      <% end %>
+      <% if @post.optional_content_4.present? %>
+        <li><i class="fa fa-paw fa-fw"></i>それをいつまでにしますか？</li>
+        <p><%= simple_format(h(@post.optional_content_4), {}, sanitize: false, wrapper_tag: 'div') %></p>
       <% end %>
     </ul>
     </div>
   </div>
 
-  <p><i class="fa fa-paw fa-fw"></i>その後はいかがですか？</p>
-  <p><%= simple_format(h(@progress.content), {}, sanitize: false, wrapper_tag: 'div') %></p>
-  <% if @progress.optional_content.present? %>
-    <p><i class="fa fa-paw fa-fw"></i>前回から今回の投稿までの間に、してよかったことはありますか？</p>
-    <p><%= simple_format(h(@progress.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></p>
-  <% end %>
-  <% if @progress.optional_content_2.present? %>
-    <p><i class="fa fa-paw fa-fw"></i>前回から心境の変化はありますか？</p>
-    <p><%= simple_format(h(@progress.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
-  <% end %>
+  <ul class="progress_items">
+    <li><i class="fa fa-paw fa-fw"></i>前回の投稿から、困りごとに関して変わったことを教えてください（特にない場合は「なし」と記入してください）</li>
+    <p><%= simple_format(h(@progress.content), {}, sanitize: false, wrapper_tag: 'div') %></p>
+    <li><i class="fa fa-paw fa-fw"></i>前回の投稿から心境の変化があれば教えてください（特にない場合は「なし」と記入してください）</li>
+    <p><%= simple_format(h(@progress.content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
+    <% if @progress.optional_content.present? %>
+      <li><i class="fa fa-paw fa-fw"></i>理想の状態を10点とすると、今の状態は何点ですか？理由もかんたんに記入してください</li>
+      <p><%= simple_format(h(@progress.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></p>
+    <% end %>
+    <% if @progress.optional_content_2.present? %>
+      <li><i class="fa fa-paw fa-fw"></i>1つ点数を上げるために、今あなたにできることはありますか？</li>
+      <p><%= simple_format(h(@progress.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
+    <% end %>
+    <% if @progress.optional_content_3.present? %>
+      <li><i class="fa fa-paw fa-fw"></i>それをいつまでにしますか？</li>
+      <p><%= simple_format(h(@progress.optional_content_3), {}, sanitize: false, wrapper_tag: 'div') %></p>
+    <% end %>
+  </ul>
 </div>
 
 <div class="buttons">
