@@ -46,6 +46,10 @@ class ProgressesController < ApplicationController
     end
   end
 
+  def index
+    @post = Post.find_by(id: params[:post_id])
+  end
+
   def destroy
     Progress.find_by(id: params[:id]).destroy
     flash[:success] = '進捗を削除しました'

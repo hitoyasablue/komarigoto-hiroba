@@ -38,8 +38,9 @@
 <% end %>
 
 <% if @post.user == current_user %>
-  <%= link_to 'その後の進捗を記録する', new_post_progress_path(post_id: @post.id) %>
+  <%= button_to 'その後の進捗を記録する', new_post_progress_path(post_id: @post.id), method: :get, class: 'btn btn-outline-primary progress_form_button' %>
 <% end %>
+
 <%= render 'progresses/progress', post: @post %>
 </div>
 </div>
