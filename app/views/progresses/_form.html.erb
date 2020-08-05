@@ -11,8 +11,7 @@
   <div class="wrapper">
     <div class="accordion_wrapper">
       <div class="accordion_title">困りごとの内容</div>
-        <div class="accordion_content">
-        <ul class="post_items">
+        <ul class="accordion_content">
           <li><i class="fa fa-paw fa-fw"></i>どんなことに困っていますか？</li>
           <p><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: 'div') %></p>
           <% if @post.optional_content.present? %>
@@ -32,17 +31,17 @@
             <p><%= simple_format(h(@post.optional_content_4), {}, sanitize: false, wrapper_tag: 'div') %></p>
           <% end %>
         </ul>
-        </div>
+      </div>
     </div>
     <div class="accordion_wrapper">
       <div class="accordion_title">必須項目</div>
       <div class="accordion_content_display">
         <div class="field">
-          <i class="fa fa-paw fa-fw"></i><%= f.label :'前回の投稿から、困りごとに関して変わったことを教えてください（特にない場合は「なし」と記入してください）'%>
+          <i class="fa fa-paw fa-fw"></i><%= f.label :'前回の投稿から、何か変わったことがあれば教えてください（特にない場合は「なし」でかまいません）'%>
           <%= f.text_area :content, class: 'form-control', id: 'progress_content' %>
         </div>
         <div class="field">
-          <i class="fa fa-paw fa-fw"></i><%= f.label :'前回の投稿から心境の変化があれば教えてください（特にない場合は「なし」と記入してください）' %>
+          <i class="fa fa-paw fa-fw"></i><%= f.label :'前回の投稿から、心境の変化があれば教えてください（特にない場合は「なし」でかまいません）' %>
           <%= f.text_area :content_2, class: 'form-control' %>
         </div>
       </div>

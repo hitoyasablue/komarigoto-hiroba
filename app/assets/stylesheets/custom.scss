@@ -47,6 +47,10 @@ a {
   color: black;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 body {
   //margin-top: 0px;
   padding-top: 60px;
@@ -79,28 +83,28 @@ li {
   width: 50px;
 }
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
+// .wrapper {
+//   display: flex;
+//   flex-direction: column;
 
-  .post_items {
-    border: solid 1.5px rgba(165, 42, 42, 0.808);
-    background: #fffaf1;
-    padding: 0.5em 1em 0.5em 2.3em;
-    position: relative;
+//   .post_items {
+//     border: solid 1.5px rgba(165, 42, 42, 0.808);
+//     background: #fffaf1;
+//     padding: 0.5em 1em 0.5em 2.3em;
+//     position: relative;
 
-    li {
-      line-height: 1.5;
-      padding: 0.5em 0;
-    }
-  }
-}
+//     li {
+//       line-height: 1.5;
+//       padding: 0.5em 0;
+//     }
+//   }
+// }
 
 .field {
   margin: 0 auto;
 }
 
-.header {
+header {
   display: flex;
 }
 
@@ -135,23 +139,26 @@ input, textarea, select, .uneditable-input {
 // }
 
 /* ページネーション */
+nav {
+  .pagination {
+    margin: 0 auto;
+    width: 200%;
+    li{
+      a {
+      border: none;
+      color: #696969;
+      }
 
-.pagination {
-  li{
-    a {
-    border: none;
-    color: #696969;
+      // a:hover {
+      //   border-radius: 15px;
+      // }
     }
-
-    a:hover {
-      border-radius: 15px;
-    }
-  }
-  .active {
-    a {
-    background: #93c9ff;
-    border-radius: 15px;
-    }
+    // .active {
+    //   a {
+    //   background: #93c9ff;
+    //   border-radius: 15px;
+    //   }
+    // }
   }
 }
 
@@ -201,18 +208,21 @@ aside {
   list-style: none;
   padding: 0;
 
+  .top {
+    li {
+      display: inline-block;
+      position: relative;
+      right: 30px;
+    }
+  }
+
   .post {
     padding: 20px 0;
     border-top: 1px solid #e8e8e8;
   }
 
-  .user {
-    margin-top: 5em;
-    padding-top: 0;
-  }
-
   .post_items {
-    margin-bottom: 30px;
+    margin: 30px 0;
     div {
       padding-bottom: 10px;
       border-bottom: 3px solid #e8e8e8;
@@ -223,14 +233,19 @@ aside {
   .timestamp {
     color: gray;
     display: inline-block;
-    margin-left: 60px;
+    margin-left: 30px;
   }
 
-  #progress_button {
-    position: relative;
-    bottom: 45px;
-    left: 300px;
-    width: 40%;
+  .progress_form_button {
+    width: 70%;
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+
+  .progress_index_button {
+    width: 70%;
+    display: inline-block;
+    text-align: center;
   }
 }
 
@@ -337,11 +352,11 @@ span.image {
 
   .accordion_content {
     display: none;
-    padding: 20px 20px 0 20px;
+    padding: 20px;
   }
 
   .accordion_content_display {
-    padding: 20px 20px 0 20px;
+    padding: 20px;
   }
 
   .accordion_title:after {

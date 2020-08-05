@@ -1,14 +1,13 @@
 <ul class="posts">
   <% @posts.each do |post| %>
     <li id="post-<%= post.id %>" class="post">
-      <%= image_tag post.user.image, class: 'user_icon' %>
-      <span class="user"><%= link_to post.user.name, post.user %></span>
-      <span class="timestamp">
-        <%= time_ago_in_words(post.created_at) %>前
-      </span>
-      <% if post.user == current_user %>
-        <%= button_to 'その後の進捗を記録する', new_post_progress_path(post_id: post.id), method: :get, class: 'btn btn-outline-primary', id: 'progress_button' %>
-      <% end %>
+      <ul class="top">
+        <li><%= image_tag post.user.image, class: 'user_icon' %></li>
+        <li class="user"><%= link_to post.user.name, post.user %></li>
+        <li class="timestamp">
+          <%= time_ago_in_words(post.created_at) %>前
+        </li>
+      </ul>
       <div class="row">
         <div class="col-md-11 offset-md-0">
           <ul class="post_items">
@@ -39,13 +38,16 @@
         <%= render 'teineis/teinei', post: post %>
         <%= render 'ouens/ouen', post: post %>
       </div>
-      <%= render 'progresses/progress', post: post %>
+      <% if post.progresses.present? %>
+        <%= button_to 'その後の進捗を見る', post_progresses_path(post_id: post.id), method: :get, class: 'btn btn-outline-primary progress_index_button' %>
+      <% end %>
+      <% if post.user == current_user %>
+        <%= button_to 'その後の進捗を記録する', new_post_progress_path(post_id: post.id), method: :get, class: 'btn btn-outline-primary progress_form_button' %>
+      <% end %>
     </li>
   <% end %>
 </ul>
 
-<div class="row">
-  <div class="col-md-8 offset-md-2" >
-      <%= paginate @posts %>
-  </div>
+<div class="paginate">
+  <%= paginate @posts %>
 </div>
