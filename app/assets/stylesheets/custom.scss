@@ -139,10 +139,9 @@ input, textarea, select, .uneditable-input {
 // }
 
 /* ページネーション */
-nav {
+.paginate {
+  width: 100%;
   .pagination {
-    margin: 0 auto;
-    width: 200%;
     li{
       a {
       border: none;
@@ -213,6 +212,24 @@ aside {
       display: inline-block;
       position: relative;
       right: 30px;
+
+      .fa-angle-down {
+        position: relative;
+        left: 230px;
+        top: 5px;
+      }
+
+      .my-size {
+        font-size: 1.7em;
+      }
+
+      .dropdown-menu {
+        width: 20%;
+      }
+
+      .fa-angle-down:hover {
+        cursor: pointer;
+      }
     }
   }
 
@@ -236,16 +253,18 @@ aside {
     margin-left: 30px;
   }
 
-  .progress_form_button {
-    width: 70%;
-    margin-top: 10px;
-    margin-left: 20px;
-  }
-
-  .progress_index_button {
-    width: 70%;
-    display: inline-block;
+  .progress_buttons {
     text-align: center;
+
+    .progress_form_button {
+      width: 70%;
+      display: inline-block;
+    }
+
+    .progress_index_button {
+      width: 70%;
+      display: inline-block;
+    }
   }
 }
 
