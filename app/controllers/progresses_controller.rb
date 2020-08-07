@@ -14,9 +14,9 @@ class ProgressesController < ApplicationController
       if @progress.optional_content_3.present?
         flash[:success] = '最後まで書いてすごい！ あなたが今日心おだやかでありますように・・・'
       elsif @progress.optional_content_2.present?
-        flash[:success] = '無理のない範囲で、できることを実行してみてくださいね。おうえんしています'
+        flash[:success] = '無理のない範囲で、今できることを実行してみてくださいね。おうえんしています'
       else
-        flash[:success] = '進捗を記録しました！'
+        flash[:success] = '進捗を投稿しました！'
       end
       redirect_to posts_url
     else

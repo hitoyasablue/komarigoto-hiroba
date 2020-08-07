@@ -1,50 +1,38 @@
 <% visitor = User.find_by(id: notification.visitor_id) %>
 <% visited = User.find_by(id: notification.visited_id) %>
-<div class="col-md-6.mx-auto">
-  <div class="form-inline">
-    <span>
-      <%= link_to user_path(visitor) do %>
-        <b><%= visitor.name %></b>
-      <% end %>
-      さんが
+<div class="form-inline">
+  <div>
+    <%= link_to user_path(visitor) do %>
+      <%= image_tag visitor.image, class: 'user_icon' %>
+      <%= visitor.name %>
+    <% end %>
+    さんが
 
-      <% case notification.action %>
-      <% when 'like' then %>
-        この投稿にそうなんだと言っています
-        <br>
-        <%= link_to notification.post.content, notification.post %>
-      <% when 'wakaru' then %>
-        この投稿にわかると言っています
-        <br>
-        <%= link_to notification.post.content, notification.post %>
-      <% when 'teinei' then %>
-        この投稿にていねいと言っています
-        <br>
-        <%= link_to notification.post.content, notification.post %>
-      <% when 'ouen' then %>
-        この投稿におうえんをしてくれています
-        <br>
-        <%= link_to notification.post.content, notification.post %>
-      <% when 'erai' then %>
-        この進捗にえらいと言っています
-        <br>
-        <%= link_to notification.progress.content, notification.post %>
-      <% when 'sounanda' then %>
-        この進捗にそうなんだと言っています
-        <br>
-        <%= link_to notification.progress.content, notification.post %>
-      <% when 'teinei2' then %>
-        この進捗にていねいと言っています
-        <br>
-        <%= link_to notification.progress.content, notification.post %>
-      <% when 'ouen2' then %>
-        この進捗におうえんをしてくれています
-        <br>
-        <%= link_to notification.progress.content, notification.post %>
-      <% end %>
-    </span>
-  </div>
-  <div class="small text-muted text-right">
-    <%= time_ago_in_words(notification.created_at).upcase %>
+    <% case notification.action %>
+    <% when 'like' then %>
+      この投稿にそうなんだと言っています
+      <p><%= link_to notification.post.content, notification.post %></p>
+    <% when 'wakaru' then %>
+      この投稿にわかると言っています
+      <p><%= link_to notification.post.content, notification.post %></p>
+    <% when 'teinei' then %>
+      この投稿にていねいな文章と言っています
+      <p><%= link_to notification.post.content, notification.post %></p>
+    <% when 'ouen' then %>
+      この投稿におうえんをしてくれています
+      <p><%= link_to notification.post.content, notification.post %></p>
+    <% when 'erai' then %>
+      この進捗にえらいと言っています
+      <p><%= link_to notification.progress.content, notification.post %></p>
+    <% when 'sounanda' then %>
+      この進捗にそうなんだと言っています
+      <p><%= link_to notification.progress.content, notification.post %></p>
+    <% when 'teinei2' then %>
+      この進捗の文章をていねいと言っています
+      <p><%= link_to notification.progress.content, notification.post %></p>
+    <% when 'ouen2' then %>
+      この進捗におうえんをしてくれています
+      <p><%= link_to notification.progress.content, notification.post %></p>
+    <% end %>
   </div>
 </div>
