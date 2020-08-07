@@ -164,7 +164,14 @@ input, textarea, select, .uneditable-input {
 /* サイドバー */
 
 aside {
-  section.user_info {
+  .user_info {
+    h1 {
+      display: inline-block;
+    }
+    span {
+      margin-left: 40px;
+      display: inline-block;
+    }
     margin-top: 20px;
   }
   section {
@@ -271,7 +278,7 @@ aside {
 
 
 
-.buttons {
+.reaction_buttons {
   margin: 10px 0;
   text-align: center;
 
@@ -308,8 +315,29 @@ aside {
     }
 }
 
+.manage_buttons {
+  text-align: center;
 
+  .edit_button {
+    display: inline-block;
+    width: 40%;
+    margin-right: 20px;
+  }
 
+  .delete_button {
+    display: inline-block;
+    width: 40%;
+  }
+}
+
+.notifications {
+  .form-inline {
+    margin: 30px 0;
+    p {
+      margin-left: 55px;
+    }
+  }
+}
 
 
 aside {
@@ -374,7 +402,7 @@ span.image {
     padding: 20px;
   }
 
-  .accordion_content_display {
+  .accordion_content_open {
     padding: 20px;
   }
 

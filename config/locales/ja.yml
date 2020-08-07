@@ -12,11 +12,12 @@ ja:
     attributes:
       post:
         id: ID
-        content: 内容
+        content: 必須項目
         created_at: 登録日時
         updated_at: 更新日時
       progress:
-        content: 内容
+        content: 必須項目の1問目
+        content_2: 必須項目の2問目
       user:
         name: ニックネーム
         email: メールアドレス

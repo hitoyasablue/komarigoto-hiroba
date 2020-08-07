@@ -30,9 +30,9 @@ class PostsController < ApplicationController
       if @post.optional_content_4.present?
         flash[:success] = '最後まで書いてすごい！ あなたが今日心おだやかでありますように・・・'
       elsif @post.optional_content_3.present?
-        flash[:success] = '無理のない範囲で、できることを実行してみてくださいね。おうえんしています'
-      elsif @post.optional_content_2.present?
-        flash[:success] = 'あなたが今日心おだやかでありますように・・・'
+        flash[:success] = '無理のない範囲で、今できることを実行してみてくださいね。おうえんしています'
+      elsif @post.optional_content.present? || @post.optional_content_2.present?
+        flash[:success] = '困りごとを投稿しました。追加項目も書いてすごい！'
       else
         flash[:success] = '困りごとを投稿しました！'
       end

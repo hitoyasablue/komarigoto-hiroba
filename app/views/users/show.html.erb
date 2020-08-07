@@ -1,5 +1,3 @@
-<h1>自分の困りごと一覧</h1>
-
 <div class="row">
   <aside class="col-md-4 offset-md-4">
     <section class="user_info">
@@ -7,7 +5,7 @@
         <%= image_tag @user.image, class: 'user_icon' %>
         <%= @user.name %>
       </h1>
-      <span><%= pluralize(@posts.count, '個投稿しています') %></span>
+      <span><%= pluralize(@posts.count, 'posts') %></span>
     </section>
   </aside>
 </div>

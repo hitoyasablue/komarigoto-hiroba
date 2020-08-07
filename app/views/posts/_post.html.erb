@@ -41,19 +41,19 @@
           </ul>
         </div>
       </div>
-      <div class="buttons">
-        <%= render 'wakarus/wakaru', post: post %>
+      <div class="reaction_buttons">
         <%= render 'likes/like', post: post %>
+        <%= render 'wakarus/wakaru', post: post %>
         <%= render 'teineis/teinei', post: post %>
         <%= render 'ouens/ouen', post: post %>
       </div>
       <div class="progress_buttons">
-      <% if post.user == current_user %>
-        <%= button_to 'その後の進捗を記録する', new_post_progress_path(post_id: post.id), method: :get, class: 'btn btn-outline-primary progress_form_button' %>
-      <% end %>
-      <% if post.progresses.present? %>
-        <%= button_to 'その後の進捗を見る', post_progresses_path(post_id: post.id), method: :get, class: 'btn btn-outline-primary progress_index_button' %>
-      <% end %>
+        <% if post.user == current_user %>
+          <%= button_to 'その後の進捗を記録する', new_post_progress_path(post_id: post.id), method: :get, class: 'btn btn-outline-primary progress_form_button' %>
+        <% end %>
+        <% if post.progresses.present? %>
+          <%= button_to 'その後の進捗を見る', post_progresses_path(post_id: post.id), method: :get, class: 'btn btn-outline-primary progress_index_button' %>
+        <% end %>
       </div>
     </li>
   <% end %>
