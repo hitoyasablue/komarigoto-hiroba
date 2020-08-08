@@ -1,13 +1,15 @@
 <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
 <% if notifications.exists? %>
   <div class="notifications row">
-    <div class="col-md-6 offset-md-3">
+    <div class="col-md-7 offset-md-3">
       <% notifications.each do |notification| %>
         <%= render 'notification', notification: notification %>
       <% end %>
+      <div class="paginate">
+        <%= paginate notifications, window: 10 %>
+      </div>
     </div>
   </div>
-  <%= paginate notifications %>
 <% else %>
   <div class="row">
     <div class="col-md-8 offset-md-2">
