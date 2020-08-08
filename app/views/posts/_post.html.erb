@@ -59,6 +59,10 @@
   <% end %>
 </ul>
 
-<div class="paginate">
-  <%= paginate @posts %>
+<div class="row">
+  <div class="col-md-10 offset-md-1">
+    <div class="paginate">
+      <%= paginate @posts, window: 10 %>
+    </div>
+  </div>
 </div>

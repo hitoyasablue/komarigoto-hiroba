@@ -1,46 +1,46 @@
 <h1>投稿詳細</h1>
 
 <div class="row">
-<div class="col-md-8 offset-md-2">
-<div class="wrapper">
-<ul class="post_items">
-  <li><i class="fa fa-paw fa-fw"></i>どんなことに困っていますか？</li>
-  <p><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: 'div') %></p>
-  <% if @post.optional_content.present? %>
-    <li><i class="fa fa-paw fa-fw"></i>理想の状態を10点とすると、今の状態は何点ですか？理由もかんたんに記入してください</li>
-    <p><%= simple_format(h(@post.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></p>
-  <% end %>
-  <% if @post.optional_content_2.present? %>
-    <li><i class="fa fa-paw fa-fw"></i>どのような状態になれば、困りごとが解決された（10点になった）と言えますか？</li>
-    <p><%= simple_format(h(@post.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
-  <% end %>
-  <% if @post.optional_content_3.present? %>
-    <li><i class="fa fa-paw fa-fw"></i>1つ点数を上げるために、今あなたにできることはありますか？</li>
-    <p><%= simple_format(h(@post.optional_content_3), {}, sanitize: false, wrapper_tag: 'div') %></p>
-  <% end %>
-  <% if @post.optional_content_4.present? %>
-    <li><i class="fa fa-paw fa-fw"></i>それをいつまでにしますか？</li>
-    <p><%= simple_format(h(@post.optional_content_4), {}, sanitize: false, wrapper_tag: 'div') %></p>
-  <% end %>
-</ul>
+  <div class="col-md-8 offset-md-2">
+    <div class="wrapper">
+      <ul class="post_items">
+        <li><i class="fa fa-paw fa-fw"></i>どんなことに困っていますか？</li>
+        <p><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: 'div') %></p>
+        <% if @post.optional_content.present? %>
+          <li><i class="fa fa-paw fa-fw"></i>理想の状態を10点とすると、今の状態は何点ですか？理由もかんたんに記入してください</li>
+          <p><%= simple_format(h(@post.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></p>
+        <% end %>
+        <% if @post.optional_content_2.present? %>
+          <li><i class="fa fa-paw fa-fw"></i>どのような状態になれば、困りごとが解決された（10点になった）と言えますか？</li>
+          <p><%= simple_format(h(@post.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
+        <% end %>
+        <% if @post.optional_content_3.present? %>
+          <li><i class="fa fa-paw fa-fw"></i>1つ点数を上げるために、今あなたにできることはありますか？</li>
+          <p><%= simple_format(h(@post.optional_content_3), {}, sanitize: false, wrapper_tag: 'div') %></p>
+        <% end %>
+        <% if @post.optional_content_4.present? %>
+          <li><i class="fa fa-paw fa-fw"></i>それをいつまでにしますか？</li>
+          <p><%= simple_format(h(@post.optional_content_4), {}, sanitize: false, wrapper_tag: 'div') %></p>
+        <% end %>
+      </ul>
 
-<div class="reaction_buttons">
-  <%= render 'likes/like', post: @post %>
-  <%= render 'wakarus/wakaru', post: @post %>
-  <%= render 'teineis/teinei', post: @post %>
-  <%= render 'ouens/ouen', post: @post %>
-</div>
-</div>
+      <div class="reaction_buttons">
+        <%= render 'likes/like', post: @post %>
+        <%= render 'wakarus/wakaru', post: @post %>
+        <%= render 'teineis/teinei', post: @post %>
+        <%= render 'ouens/ouen', post: @post %>
+      </div>
+    </div>
 
-<% if @user == current_user %>
-  <%= link_to '編集', edit_post_path, class: 'btn btn-primary mr-3' %>
-  <%= link_to '削除', @post, method: :delete, data: {confirm: 'この投稿を削除します。よろしいですか？'}, class: 'btn btn-danger' %>
-<% end %>
+  <% if @user == current_user %>
+    <%= link_to '編集', edit_post_path, class: 'btn btn-primary mr-3' %>
+    <%= link_to '削除', @post, method: :delete, data: {confirm: 'この投稿を削除します。よろしいですか？'}, class: 'btn btn-danger' %>
+  <% end %>
 
-<% if @post.user == current_user %>
-  <%= button_to 'その後の進捗を記録する', new_post_progress_path(post_id: @post.id), method: :get, class: 'btn btn-outline-primary progress_form_button' %>
-<% end %>
+  <% if @post.user == current_user %>
+    <%= button_to 'その後の進捗を記録する', new_post_progress_path(post_id: @post.id), method: :get, class: 'btn btn-outline-primary progress_form_button' %>
+  <% end %>
 
-<%= render 'progresses/progress', post: @post %>
-</div>
+  <%= render 'progresses/progress', post: @post %>
+  </div>
 </div>

@@ -1,13 +1,7 @@
+<%= javascript_include_tag 'accordion.js' %>
+
 <%= form_with(model: @post, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <script>
-    $(function(){
-      $('.accordion_title').on('click', function () {
-        $(this).next().slideToggle(400);
-        $(this).toggleClass('open', 400);
-      });
-    });
-  </script>
   <div class="wrapper">
     <div class="accordion_wrapper">
       <div class="accordion_title">必須項目</div>

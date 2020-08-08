@@ -1,11 +1,4 @@
-<script>
-  $(function(){
-    $('.accordion_title').on('click', function () {
-      $(this).next().slideToggle(400);
-      $(this).toggleClass('open', 400);
-    });
-  });
-</script>
+<%= javascript_include_tag 'accordion.js' %>
 
 <div class="row">
   <div class="col-md-6 offset-md-3">
