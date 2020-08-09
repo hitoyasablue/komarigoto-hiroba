@@ -4,7 +4,7 @@ describe '進捗のシステムテスト', type: :system do
   let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com', image: 'inu.png') }
   let(:user_b) { FactoryBot.create(:user, name: 'ユーザーB', email: 'b@example.com', image: 'inu2.png') }
   let!(:post_a) { FactoryBot.create(:post, content: 'Aの投稿', user: user_a) }
-  let!(:progress_a) { FactoryBot.create(:progress, content: 'Aの進捗', post: post_a) }
+  let!(:progress_a) { FactoryBot.create(:progress, content: 'Aの進捗その1', content_2: 'Aの進捗その2', post: post_a) }
 
   before do
     visit login_path
@@ -18,22 +18,23 @@ describe '進捗のシステムテスト', type: :system do
 
     before do
       visit post_path(post_a)
-      click_link 'その後の進捗を記録する'
+      click_button 'その後の進捗を記録する'
     end
 
     context '内容を入力して記録ボタンを押した場合' do
       it '正常に記録される' do
         fill_in 'progress_content', with: 'こういう進捗がありました！'
-        click_button '記録'
-        expect(page).to have_selector '.alert-success', text: '進捗を記録しました'
+        fill_in 'progress_content_2', with: 'こういう進捗もありました！'
+        click_button '進捗を記録'
+        expect(page).to have_selector '.alert-success', text: '進捗を投稿しました！'
       end
     end
 
     context '内容を入力せずに記録ボタンを押した場合' do
       it 'エラーメッセージが表示される' do
         fill_in 'progress_content', with: ''
-        click_button '記録'
-        expect(page).to have_content '内容を入力してください'
+        click_button '進捗を記録'
+        expect(page).to have_content '必須項目1を入力してください'
       end
     end
   end
@@ -46,7 +47,7 @@ describe '進捗のシステムテスト', type: :system do
     end
 
     it 'ユーザーAが作成した進捗が表示される' do
-      expect(page).to have_content 'Aの進捗'
+      expect(page).to have_content 'Aの進捗その1'
     end
   end
 
@@ -70,7 +71,7 @@ describe '進捗のシステムテスト', type: :system do
       it 'エラーメッセージが表示される' do
         fill_in 'progress_content', with: ''
         click_button '更新'
-        expect(page).to have_content '内容を入力してください'
+        expect(page).to have_content '必須項目1を入力してください'
       end
     end
   end

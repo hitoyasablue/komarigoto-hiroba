@@ -35,7 +35,7 @@ describe '投稿のシステムテスト', type: :system do
 
       it 'エラーメッセージが表示される' do
         within '#error_explanation' do
-          expect(page).to have_content '内容を入力してください'
+          expect(page).to have_content '必須項目を入力してください'
         end
       end
     end
@@ -90,7 +90,7 @@ describe '投稿のシステムテスト', type: :system do
       it 'エラーメッセージが表示される' do
         fill_in 'post_content', with: ''
         click_button '更新'
-        expect(page).to have_content '内容を入力してください'
+        expect(page).to have_content '必須項目を入力してください'
       end
     end
   end
@@ -118,7 +118,7 @@ describe '投稿のシステムテスト', type: :system do
     context 'いずれかの投稿内容と一致する検索ワードを送信した場合' do
       before do
         fill_in 'search_word', with: 'Aの'
-        click_button '検索'
+        click_button 'search_icon'
       end
 
       it '検索結果が表示される' do
@@ -129,7 +129,7 @@ describe '投稿のシステムテスト', type: :system do
     context 'どの投稿内容とも一致しない検索ワードを送信した場合' do
       before do
         fill_in 'search_word', with: 'Cの'
-        click_button '検索'
+        click_button 'search_icon'
       end
 
       it '検索結果は1件も表示されない' do
@@ -140,7 +140,7 @@ describe '投稿のシステムテスト', type: :system do
     context '何も入力しなかった場合' do
       before do
         fill_in 'search_word', with: ''
-        click_button '検索'
+        click_button 'search_icon'
       end
 
       it '投稿一覧ページから検索一覧ページに移行しない' do
