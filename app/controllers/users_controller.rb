@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    @posts = @user.posts.order(created_at: :desc)
+    @posts = @user.posts.order(id: 'DESC').page(params[:page]).per(10)
   end
 
   def new

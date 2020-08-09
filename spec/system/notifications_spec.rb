@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe '通知のシステムテスト', type: :system do
-  let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com') }
-  let(:user_b) { FactoryBot.create(:user, name: 'ユーザーB', email: 'b@example.com') }
+  let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com', image: 'inu.png') }
+  let(:user_b) { FactoryBot.create(:user, name: 'ユーザーB', email: 'b@example.com', image: 'inu2.png') }
   let!(:post_a) { FactoryBot.create(:post, content: 'Aの投稿', user: user_a) }
 
   before do
@@ -27,7 +27,7 @@ describe '通知のシステムテスト', type: :system do
       end
 
       it '通知が来ている' do
-        expect(page).to have_content 'B さんが この投稿にそうなんだをしました'
+        expect(page).to have_content 'B さんが この投稿にそうなんだと言っています'
       end
     end
 

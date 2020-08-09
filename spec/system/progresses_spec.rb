@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe '進捗のシステムテスト', type: :system do
-  let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com') }
-  let(:user_b) { FactoryBot.create(:user, name: 'ユーザーB', email: 'b@example.com') }
+  let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com', image: 'inu.png') }
+  let(:user_b) { FactoryBot.create(:user, name: 'ユーザーB', email: 'b@example.com', image: 'inu2.png') }
   let!(:post_a) { FactoryBot.create(:post, content: 'Aの投稿', user: user_a) }
   let!(:progress_a) { FactoryBot.create(:progress, content: 'Aの進捗', post: post_a) }
 
