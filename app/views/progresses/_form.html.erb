@@ -13,7 +13,7 @@
             <p><%= simple_format(h(@post.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></p>
           <% end %>
           <% if @post.optional_content_2.present? %>
-            <li><i class="fa fa-paw fa-fw"></i>どのような状態になれば、困りごとが解決された（10点になった）と言えますか？</li>
+            <li><i class="fa fa-paw fa-fw"></i>どのような状態になれば、理想の状態（10点）であると言えますか？</li>
             <p><%= simple_format(h(@post.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
           <% end %>
           <% if @post.optional_content_3.present? %>

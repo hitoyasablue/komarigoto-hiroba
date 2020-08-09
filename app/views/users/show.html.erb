@@ -10,19 +10,59 @@
   </aside>
 </div>
 
-<div class="row">
-  <div class="col-md-6 offset-md-3">
-    <% if @posts.any? %>
-      <ul class="posts">
-        <% @posts.each do |post| %>
-          <li>
-            <%= link_to post.content, post %>
-            <span class="timestamp">
+<ul class="posts">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <% @posts.each do |post| %>
+        <li class="post">
+          <ul class="top">
+            <li class="timestamp">
               <%= time_ago_in_words(post.created_at) %>前
-            </span>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
+            </li>
+            <% if @user == current_user %>
+              <li class="dropdown">
+                <i class="fa fa-angle-down my-size" id="dropdownMenu1" data-toggle="dropdown"></i>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <%= link_to '編集', edit_post_path(id: post.id), class: 'dropdown-item' %>
+                  <%= link_to '削除', post_path(id: post.id), method: :delete, class: 'dropdown-item' %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+          <div class="row">
+            <div class="col-md-11 offset-md-0">
+              <ul class="post_items">
+                <li><i class="fa fa-paw fa-fw"></i>どんなことに困っていますか？</li>
+                <p><%= simple_format(h(post.content.truncate(140)), {}, sanitize: false, wrapper_tag: 'div') %></p>
+                <% if post.optional_content.present? %>
+                  <li><i class="fa fa-paw fa-fw"></i>理想の状態を10点とすると、今の状態は何点ですか？理由もかんたんに記入してください</li>
+                  <p><%= simple_format(h(post.optional_content.truncate(140)), {}, sanitize: false, wrapper_tag: 'div') %></p>
+                <% end %>
+                <% if post.optional_content_2.present? %>
+                  <li><i class="fa fa-paw fa-fw"></i>どのような状態になれば、理想の状態（10点）であると言えますか？</li>
+                  <p><%= simple_format(h(post.optional_content_2.truncate(140)), {}, sanitize: false, wrapper_tag: 'div') %></p>
+                <% end %>
+                <% if post.optional_content_3.present? %>
+                  <li><i class="fa fa-paw fa-fw"></i>1つ点数を上げるために、今あなたにできることはありますか？</li>
+                  <p><%= simple_format(h(post.optional_content_3.truncate(140)), {}, sanitize: false, wrapper_tag: 'div') %></p>
+                <% end %>
+                <% if post.optional_content_4.present? %>
+                  <li><i class="fa fa-paw fa-fw"></i>それをいつまでにしますか？</li>
+                  <p><%= simple_format(h(post.optional_content_4.truncate(140)), {}, sanitize: false, wrapper_tag: 'div') %></p>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </div>
+  </div>
+</ul>
+
+<div class="row">
+  <div class="col-md-6 offset-md-5">
+    <div class="paginate">
+      <%= paginate @posts, window: 10 %>
+    </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe '「そうなんだ」のシステムテスト', type: :system do
-  let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com') }
+  let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com', image: 'inu.png') }
   let!(:post_a) { FactoryBot.create(:post, content: 'Aの投稿', user: user_a) }
 
   before do

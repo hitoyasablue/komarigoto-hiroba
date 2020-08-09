@@ -1,5 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe "Teineis", type: :request do
-
+RSpec.describe 'Teineis', type: :request do
 end
