@@ -4,7 +4,6 @@
     <% if post.has_ouen?(current_user) %>
       <div class="ouen">
         <%= button_to "おうえん   #{post.ouens.count}", post_ouen_path(id: ouen.id, post_id: post.id), class: 'btn btn-success', id: 'unouen-button', method: :delete, remote: true %>
-        <%=  %>
       </div>
     <% else %>
       <div class="unouen">

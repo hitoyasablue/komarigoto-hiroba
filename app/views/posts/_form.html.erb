@@ -1,6 +1,6 @@
 <%= javascript_include_tag 'accordion.js' %>
 
-<%= form_with(model: @post, local: true) do |f| %>
+<%= form_with(model: @post, local: true, class: 'form_post_ajax') do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="wrapper">
     <div class="accordion_wrapper">
@@ -8,7 +8,7 @@
       <div class="accordion_content_open">
         <div class="field">
           <i class="fa fa-paw fa-fw"></i><%= f.label :'今どんなことに困っていますか？' %>
-          <%= f.text_area :content, class: 'form-control', id: 'post_content' %>
+          <%= f.text_area :content, class: 'form-control form-control-1', id: 'post_content' %>
         </div>
       </div>
     </div>
@@ -17,23 +17,31 @@
         <div class="accordion_content">
           <div class="field">
             <i class="fa fa-paw fa-fw"></i><%= f.label :'理想の状態を10点とすると、今の状態は何点ですか？理由もかんたんに記入してください' %>
-            <%= f.text_area :optional_content, class: 'form-control' %>
+            <%= f.text_area :optional_content, class: 'form-control form-control-2' %>
           </div>
           <div class="field">
             <i class="fa fa-paw fa-fw"></i><%= f.label :'どのような状態になれば、理想の状態（10点）であると言えますか？' %>
-            <%= f.text_area :optional_content_2, class: 'form-control' %>
+            <%= f.text_area :optional_content_2, class: 'form-control form-control-3' %>
           </div>
           <div class="field">
             <i class="fa fa-paw fa-fw"></i><%= f.label :'1つ点数を上げるために、今あなたにできることはありますか？' %>
-            <%= f.text_area :optional_content_3, class: 'form-control' %>
+            <%= f.text_area :optional_content_3, class: 'form-control form-control-4' %>
           </div>
           <div class="field">
             <i class="fa fa-paw fa-fw"></i><%= f.label :'それをいつまでにしますか？' %>
-            <%= f.text_area :optional_content_4, class: 'form-control' %>
+            <%= f.text_area :optional_content_4, class: 'form-control form-control-5' %>
           </div>
         </div>
       </div>
     </div>
-    <%= f.submit yield(:button_text), class: 'btn btn-primary' %>
+    <%= f.submit yield(:button_text), class: 'btn btn-primary js-modal-open submit_ajax' %>
   </div>
 <% end %>
+
+<div class="modal js-modal">
+  <div class="modal__bg js-modal-close"></div>
+  <div class="modal__content">
+    <p>ここにモーダルウィンドウで表示したいコンテンツを入れます。モーダルウィンドウを閉じる場合は下の「閉じる」をクリックするか、背景の黒い部分をクリックしても閉じることができます。</p>
+    <a class="js-modal-close" href="">閉じる</a>
+  </div>
+</div>
