@@ -1,8 +1,41 @@
 <%= render 'search_form' %>
+
+<div class="js-modal-open">
+  <div class="modal js-modal">
+    <div class="modal__bg js-modal-close"></div>
+    <div class="modal__content">
+      <p>SNSで共有しませんか？</p>
+      <%= link_to 'Twitter', "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' %>
+      <a class="js-modal-close" href="">閉じる</a>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(function(){
+  $('.js-modal-open').on('click',function(){
+    $('.js-modal').fadeIn();
+    return false;
+  });
+  $('.js-modal-close').on('click',function(){
+    $('.js-modal').fadeOut();
+    return false;
+  });
+});
+</script>
+
 <div class="row">
   <div class="col-md-6 offset-md-3">
     <% if @posts.exists? %>
       <%= render 'post' %>
+    <% end %>
+    <% if flash[:success] == ('困りごとを投稿しました！' || '困りごとを投稿しました。追加項目も書いてすごい！' || '無理のない範囲で、今できることを実行してみてくださいね。おうえんしています' || '最後まで書いてすごい！ あなたが今日心おだやかでありますように・・・') %>
+      <script>
+      $(function(){
+        $('.js-modal-open').trigger('click');
+        });
+      </script>
     <% end %>
   </div>
 </div>

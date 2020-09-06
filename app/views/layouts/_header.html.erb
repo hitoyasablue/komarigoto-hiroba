@@ -1,6 +1,10 @@
 <header class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <div class="navbar-brand"><%= link_to '困りごとひろば', root_path %><i class="fa fa-paw fa-fw"></i></div>
+    <div class="navbar-brand">
+      <%= link_to root_path do %>
+      困りごとひろば<i class="fa fa-paw fa-fw"></i>
+      <% end %>
+    </div>
     <% if logged_in? %>
       <li><%= link_to '困りごとを投稿', new_post_path %></li>
       <li><%= link_to 'みんなの困りごと', posts_path %></li>
