@@ -1,4 +1,5 @@
 <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+<div class="container">
 <% if notifications.exists? %>
   <div class="notifications row">
     <div class="col-md-7 offset-md-3">
@@ -17,3 +18,4 @@
     </div>
   </div>
 <% end %>
+</div>

@@ -29,14 +29,6 @@ margin-bottom: 30px;
 text-align: center;
 }
 
-h2 {
-font-size: 1.2em;
-letter-spacing: -1px;
-margin-bottom: 30px;
-text-align: center;
-font-weight: normal;
-color: #777;
-}
 
 p {
 font-size: 1.1em;
@@ -55,6 +47,7 @@ body {
   //margin-top: 0px;
   padding-top: 60px;
   font-family: "web_font";
+  margin: 0;
   // background-color: #fffaf1;
 }
 
@@ -71,9 +64,6 @@ textarea {
   text-align: center;
 }
 
-.center h1 {
-  margin-bottom: 10px;
-}
 
 li {
   list-style: none;
@@ -106,6 +96,82 @@ li {
 
 header {
   display: flex;
+  background-color: #1a967d;
+}
+
+.navbar a {
+  color: white;
+}
+
+.dropdown-menu a {
+  color: black;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+.navbar {
+  background-color: #1a967d;
+}
+
+.unloggedin-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+.unloggedin-header .signup {
+  margin-right: 50px;
+  margin-top: 10px;
+}
+
+.unloggedin-header .login {
+  margin-top: 10px;
+}
+
+.loggedin-header {
+  text-align: right;
+}
+
+.loggedin-header .header-post {
+  position: absolute;
+  bottom: 30%;
+  right: 57%;
+}
+
+.loggedin-header .header-posts {
+  position: absolute;
+  bottom: 30%;
+  right: 43%;
+}
+
+.loggedin-header .header-myposts {
+  position: absolute;
+  bottom: 30%;
+  right: 30%;
+}
+
+.loggedin-header .header-notification {
+  position: absolute;
+  bottom: 30%;
+  right: 22%;
+}
+
+.loggedin-header .dropdown {
+  position: absolute;
+  right: 10%;
+  bottom: 30%;
+}
+
+
+.login-heading {
+  padding-top: 40px;
+}
+
+.signup-heading {
+  padding-top: 40px;
 }
 
 /* テーブル */
@@ -137,6 +203,92 @@ input, textarea, select, .uneditable-input {
 //     color: red;
 //   }
 // }
+
+.top_wrapper {
+  width:100%;
+  overflow:hidden;
+}
+
+.masthead {
+  min-height: 40rem;
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  background-image:  linear-gradient(90deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%),image-url("mori.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.masthead h1, h3 {
+  font-weight: 700;
+  text-align: center;
+  font-family: 'Source Sans Pro';
+}
+
+.masthead h1 {
+  font-size: 3.5rem;
+  margin-top: 100px;
+}
+
+.jumbotron2 {
+  background-color: #1a967d;
+  min-height: 35rem;
+  margin-bottom: 40px;
+}
+
+.content-section {
+  padding-top: 7.5rem;
+  padding-bottom: 7.5rem;
+}
+
+.jumbotron h2 {
+  letter-spacing: -1px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 3.1rem;
+  font-weight: 700;
+  color: white;
+}
+
+.jumbotron h4 {
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  color: white;
+  font-size: 1.6rem;
+}
+
+.jumbotron p {
+  font-size: 1.1rem;
+  color: white;
+}
+
+.service-icon {
+  background-color: #fff;
+  color: #1a967d;
+  height: 7rem;
+  width: 7rem;
+  display: block;
+  line-height: 7.5rem;
+  font-size: 2.25rem;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.icon-1 {
+  font-size: 60px;
+  margin: 28px 0px 0px 9px;
+}
+
+.icon-2 {
+  font-size: 60px;
+  margin: 28px 0px 0px 2px;
+}
+
 
 /* ページネーション */
 .paginate {
@@ -421,7 +573,7 @@ span.image {
     font-size: 20px;
     font-weight: normal;
     color: #fff;
-    background: #1abc9c;
+    background: #1a967d;
     cursor: pointer;
   }
 
