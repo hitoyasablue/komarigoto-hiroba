@@ -1,7 +1,8 @@
-<h1>ログイン</h1>
+<h1 class="login-heading">ログイン</h1>
 
+<div class="container">
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 offset-md-3">
     <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
       <%= f.label :メールアドレス, 'メールアドレス'%>
       <%= f.email_field :email, class: 'form-control', id: 'login_email' %>
@@ -12,4 +13,5 @@
     <p>ユーザー登録をされていない方は<%= link_to 'こちら', signup_path %></p>
     <%= render 'test_login' %>
   </div>
+</div>
 </div>

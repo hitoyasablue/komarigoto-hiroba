@@ -1,4 +1,4 @@
-<header class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+<header class="navbar fixed-top text-white">
   <div class="container">
     <div class="navbar-brand">
       <%= link_to root_path do %>
@@ -6,10 +6,11 @@
       <% end %>
     </div>
     <% if logged_in? %>
-      <li><%= link_to '困りごとを投稿', new_post_path %></li>
-      <li><%= link_to 'みんなの困りごと', posts_path %></li>
-      <li><%= link_to '自分の困りごと', current_user %></li>
-      <li>
+    <ul class="loggedin-header">
+      <li class="header-post"><%= link_to '困りごとを投稿', new_post_path %></li>
+      <li class="header-posts"><%= link_to 'みんなの困りごと', posts_path %></li>
+      <li class="header-myposts"><%= link_to '自分の困りごと', current_user %></li>
+      <li class="header-notification">
         <%= link_to(notifications_path) do %>
           <% if unchecked_notifications.any? %>
             <i class="fa fa-circle" style="color: gold;"></i>
@@ -27,12 +28,16 @@
           <li><%= link_to 'プロフィール編集', edit_user_path(current_user) %></li>
           <li class="divider"></li>
           <li>
-              <%= link_to 'ログアウト', logout_path, method: :delete %>
+            <%= link_to 'ログアウト', logout_path, method: :delete %>
           </li>
         </ul>
       </li>
+    </ul>
     <% else %>
-      <li><%= link_to 'ログイン', login_path %></li>
+    <ul class="unloggedin-header">
+      <li class="signup"><%= link_to 'ユーザー登録', signup_path %></li>
+      <li class="login"><%= link_to 'ログイン', login_path %></li>
+    </ul>
     <% end %>
   </div>
 </header>
