@@ -17,7 +17,7 @@ $gray-medium-light: #eaeaea;
 }
 
 
-/* universal */
+/// アプリ全般 ///
 
 h1, h2, h3, h4, h5, h6 {
     line-height: 1;
@@ -74,6 +74,11 @@ li {
   width: 50px;
 }
 
+.top_wrapper {
+  width:100%;
+  overflow:hidden;
+}
+
 // .wrapper {
 //   display: flex;
 //   flex-direction: column;
@@ -94,6 +99,8 @@ li {
 .field {
   margin: 0 auto;
 }
+
+/// ヘッダー ////
 
 header {
   display: flex;
@@ -168,21 +175,26 @@ header {
 }
 
 
+/// ログインページ ///
+
 .login-heading {
   padding-top: 40px;
 }
+
+
+/// 新規ユーザー登録ページ ///
 
 .signup-heading {
   padding-top: 40px;
 }
 
-/* テーブル */
+/// テーブル ///
 
 .table {
   margin: 0 auto;
 }
 
-/* フォーム */
+/// フォーム ///
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
@@ -206,10 +218,7 @@ input, textarea, select, .uneditable-input {
 //   }
 // }
 
-.top_wrapper {
-  width:100%;
-  overflow:hidden;
-}
+/// トップページ ///
 
 .masthead {
   min-height: 40rem;
@@ -293,7 +302,7 @@ input, textarea, select, .uneditable-input {
 }
 
 
-/* ページネーション */
+/// ページネーション ///
 .paginate {
   width: 100%;
   .pagination {
@@ -315,6 +324,8 @@ input, textarea, select, .uneditable-input {
     // }
   }
 }
+
+/// 新規投稿ページ ///
 
 .modal{
   display: none;
@@ -344,9 +355,67 @@ input, textarea, select, .uneditable-input {
   text-align: center;
 }
 
-/* サイドバー */
+/// アコーディオンパネル ///
+
+.accordion_wrapper {
+  position: relative;
+  margin: 37.5px auto;
+  width: 100%;
+  border-top: none;
+  outline: 0;
+  cursor: pointer;
+
+  .accordion_title {
+    position: relative;
+    display: block;
+    padding: 12.5px 12.5px 12.5px 40px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #fff;
+    background-color: #1a967d;
+    opacity: 0.85;
+    cursor: pointer;
+  }
+
+  .accordion_content {
+    display: none;
+    padding: 20px;
+  }
+
+  .accordion_content_open {
+    padding: 20px;
+  }
+
+  .accordion_title:after {
+    content: "";
+    position: absolute;
+    right: 25px;
+    top: 38%;
+    transition: all 0.2s ease-in-out;
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-top: solid 2px #fff;
+    border-right: solid 2px #fff;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+
+  .accordion_title.open:after {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 45%;
+  }
+}
+
+/// サイドバー ///
 
 aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+
   .user_info {
     h1 {
       display: inline-block;
@@ -379,7 +448,14 @@ aside {
   }
 }
 
-/* ユーザー一覧 */
+span.image {
+  margin-top: 10px;
+  input {
+    border: 0;
+  }
+}
+
+/// ユーザ一覧ページ ///
 
 .users {
   list-style: none;
@@ -391,7 +467,7 @@ aside {
   }
 }
 
-/* 投稿 */
+/// 投稿一覧ページ ///
 
 .posts {
   list-style: none;
@@ -458,6 +534,9 @@ aside {
   }
 }
 
+
+/// 進捗一覧ページ ///
+
 .progress_items {
   border-top: 3px solid #e8e8e8;
 
@@ -503,6 +582,7 @@ aside {
 }
 
 
+/// リアクションボタン ///
 
 .reaction_buttons {
   margin: 10px 0;
@@ -556,6 +636,8 @@ aside {
   }
 }
 
+/// 通知一覧ページ ///
+
 .notifications {
   .form-inline {
     margin: 30px 0;
@@ -566,19 +648,7 @@ aside {
 }
 
 
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
-  }
-}
-
-span.image {
-  margin-top: 10px;
-  input {
-    border: 0;
-  }
-}
+/// 検索一覧ページ ///
 
 #search_form {
   margin-bottom: 50px;
@@ -602,60 +672,7 @@ span.image {
   }
 }
 
-/* アコーディオン */
-
-.accordion_wrapper {
-  position: relative;
-  margin: 37.5px auto;
-  width: 100%;
-  border-top: none;
-  outline: 0;
-  cursor: pointer;
-
-  .accordion_title {
-    position: relative;
-    display: block;
-    padding: 12.5px 12.5px 12.5px 40px;
-    font-size: 20px;
-    font-weight: normal;
-    color: #fff;
-    background-color: #1a967d;
-    opacity: 0.85;
-    cursor: pointer;
-  }
-
-  .accordion_content {
-    display: none;
-    padding: 20px;
-  }
-
-  .accordion_content_open {
-    padding: 20px;
-  }
-
-  .accordion_title:after {
-    content: "";
-    position: absolute;
-    right: 25px;
-    top: 38%;
-    transition: all 0.2s ease-in-out;
-    display: block;
-    width: 8px;
-    height: 8px;
-    border-top: solid 2px #fff;
-    border-right: solid 2px #fff;
-    -webkit-transform: rotate(135deg);
-    transform: rotate(135deg);
-  }
-
-  .accordion_title.open:after {
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    top: 45%;
-  }
-}
-
-/* その他 */
+/// その他 ///
 
 .debug_dump {
   clear: both;
