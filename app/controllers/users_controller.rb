@@ -77,27 +77,18 @@ class UsersController < ApplicationController
         @user.image = 'inu2.png'
       end
       if rand == 3
-        @user.image = 'kame.png'
-      end
-      if rand == 4
         @user.image = 'neko.png'
       end
-      if rand == 5
+      if rand == 4
         @user.image = 'neko2.png'
       end
-      if rand == 6
+      if rand == 5
         @user.image = 'neko3.png'
       end
-      if rand == 7
-        @user.image = 'pengin.png'
-      end
-      if rand == 8
-        @user.image = 'pengin2.png'
-      end
-      if rand == 9
+      if rand == 6
         @user.image = 'tori.png'
       end
-      if rand == 10
+      if rand == 7
         @user.image = 'tori2.png'
       end
     end
