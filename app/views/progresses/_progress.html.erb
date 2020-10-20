@@ -1,9 +1,64 @@
-<% if post.progresses.present? %>
-  <p>【進捗】</p>
-<% end %>
+<h3 class="progress_post_header">困りごとの内容</h3>
+<ul class="progress_post_items">
+  <li><i class="fa fa-paw fa-fw"></i>どんなことに困っていますか？</li>
+  <p><%= simple_format(h(post.content), {}, sanitize: false, wrapper_tag: 'div') %></p>
+  <% if post.optional_content.present? %>
+    <li><i class="fa fa-paw fa-fw"></i>理想の状態を10点とすると、今の状態は何点ですか？理由もかんたんに記入してください</li>
+    <p><%= simple_format(h(post.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></p>
+  <% end %>
+  <% if post.optional_content_2.present? %>
+    <li><i class="fa fa-paw fa-fw"></i>どのような状態になれば、理想の状態（10点）であると言えますか？</li>
+    <p><%= simple_format(h(post.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
+  <% end %>
+  <% if post.optional_content_3.present? %>
+    <li><i class="fa fa-paw fa-fw"></i>1つ点数を上げるために、今あなたにできることはありますか？</li>
+    <p><%= simple_format(h(post.optional_content_3), {}, sanitize: false, wrapper_tag: 'div') %></p>
+  <% end %>
+  <% if post.optional_content_4.present? %>
+    <li><i class="fa fa-paw fa-fw"></i>それをいつまでにしますか？</li>
+    <p><%= simple_format(h(post.optional_content_4), {}, sanitize: false, wrapper_tag: 'div') %></p>
+  <% end %>
+</ul>
+
+<h3 class="progress_header">進捗一覧</h3>
 <% post.progresses.order(id: 'DESC').each do |progress| %>
-  <span class="timestamp">
-    <%= time_ago_in_words(post.created_at) %>前
-  </span>
-  <%= link_to progress.content.truncate(20), post_progress_path(post_id: post.id, id: progress.id) %>
+    <ul class="progress_items">
+      <ul class="top">
+        <li class="timestamp">
+          <%= time_ago_in_words(progress.created_at) %>前
+        </li>
+        <% if post.user == current_user %>
+        <li class="dropdown">
+          <i class="fa fa-angle-down my-size" id="dropdownMenu1" data-toggle="dropdown"></i>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <%= link_to '編集', edit_post_progress_path(post, progress), class: 'dropdown-item' %>
+            <%= link_to '削除', post_progress_path(post, progress), method: :delete, data: {confirm: 'この進捗を削除します。よろしいですか？'}, class: 'dropdown-item' %>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+      <li><i class="fa fa-paw fa-fw"></i>前回の投稿から、何か変わったことがあれば教えてください（特にない場合は「なし」でかまいません）</li>
+      <p><%= simple_format(h(progress.content), {}, sanitize: false, wrapper_tag: 'div') %></p>
+      <li><i class="fa fa-paw fa-fw"></i>前回の投稿から、心境の変化があれば教えてください（特にない場合は「なし」でかまいません）</li>
+      <p><%= simple_format(h(progress.content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
+      <% if progress.optional_content.present? %>
+        <li><i class="fa fa-paw fa-fw"></i>理想の状態を10点とすると、今の状態は何点ですか？理由もかんたんに記入してください</li>
+        <p><%= simple_format(h(progress.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></p>
+      <% end %>
+      <% if progress.optional_content_2.present? %>
+        <li><i class="fa fa-paw fa-fw"></i>1つ点数を上げるために、今あなたにできることはありますか？</li>
+        <p><%= simple_format(h(progress.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
+      <% end %>
+      <% if progress.optional_content_3.present? %>
+        <li><i class="fa fa-paw fa-fw"></i>それをいつまでにしますか？</li>
+        <p><%= simple_format(h(progress.optional_content_3), {}, sanitize: false, wrapper_tag: 'div') %></p>
+      <% end %>
+
+      <div class="reaction_buttons">
+        <%= render 'sounandas/sounanda', post: post, progress: progress %>
+        <%= render 'erais/erai', post: post, progress: progress %>
+        <%= render 'teinei2s/teinei2', post: post, progress: progress %>
+        <%= render 'ouen2s/ouen2', post: post, progress: progress %>
+      </div>
+    </ul>
 <% end %>

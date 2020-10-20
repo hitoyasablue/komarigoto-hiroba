@@ -40,7 +40,7 @@ class ProgressesController < ApplicationController
     @progress = Progress.find_by(id: params[:id])
     if @progress.update(progress_params)
       flash[:success] = '進捗を更新しました'
-      redirect_to @post
+      redirect_to post_progresses_url
     else
       render 'edit'
     end
@@ -48,6 +48,7 @@ class ProgressesController < ApplicationController
 
   def index
     @post = Post.find_by(id: params[:post_id])
+    @progress = Progress.find_by(id: params[:id])
   end
 
   def destroy

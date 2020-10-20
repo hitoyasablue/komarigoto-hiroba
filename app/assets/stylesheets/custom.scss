@@ -16,6 +16,7 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+
 /* universal */
 
 h1, h2, h3, h4, h5, h6 {
@@ -45,7 +46,7 @@ a:hover {
 
 body {
   //margin-top: 0px;
-  padding-top: 60px;
+  padding-top: 65px;
   font-family: "web_font";
   margin: 0;
   // background-color: #fffaf1;
@@ -113,6 +114,7 @@ header {
 
 .navbar {
   background-color: #1a967d;
+  opacity: 0.85;
 }
 
 .unloggedin-header {
@@ -120,49 +122,49 @@ header {
   justify-content: center;
   align-items: center;
   list-style: none;
-}
 
-.unloggedin-header .signup {
-  margin-right: 50px;
-  margin-top: 10px;
-}
+  .signup {
+    margin-right: 50px;
+    margin-top: 10px;
+  }
 
-.unloggedin-header .login {
-  margin-top: 10px;
+  .login {
+    margin-top: 10px;
+  }
 }
 
 .loggedin-header {
   text-align: right;
-}
 
-.loggedin-header .header-post {
-  position: absolute;
-  bottom: 30%;
-  right: 57%;
-}
+  .header-post {
+    position: absolute;
+    bottom: 30%;
+    right: 57%;
+  }
 
-.loggedin-header .header-posts {
-  position: absolute;
-  bottom: 30%;
-  right: 43%;
-}
+  .header-posts {
+    position: absolute;
+    bottom: 30%;
+    right: 43%;
+  }
 
-.loggedin-header .header-myposts {
-  position: absolute;
-  bottom: 30%;
-  right: 30%;
-}
+  .header-myposts {
+    position: absolute;
+    bottom: 30%;
+    right: 30%;
+  }
 
-.loggedin-header .header-notification {
-  position: absolute;
-  bottom: 30%;
-  right: 22%;
-}
+  .header-notification {
+    position: absolute;
+    bottom: 30%;
+    right: 22%;
+  }
 
-.loggedin-header .dropdown {
-  position: absolute;
-  right: 10%;
-  bottom: 30%;
+  .dropdown {
+    position: absolute;
+    right: 10%;
+    bottom: 30%;
+  }
 }
 
 
@@ -223,7 +225,7 @@ input, textarea, select, .uneditable-input {
   background-size: cover;
 }
 
-.masthead h1, h3 {
+.masthead h1, .masthead h3 {
   font-weight: 700;
   text-align: center;
   font-family: 'Source Sans Pro';
@@ -238,6 +240,7 @@ input, textarea, select, .uneditable-input {
   background-color: #1a967d;
   min-height: 35rem;
   margin-bottom: 40px;
+  // opacity: 0.85;
 }
 
 .content-section {
@@ -422,14 +425,14 @@ aside {
 
   .post {
     padding: 20px 0;
-    border-top: 1px solid #e8e8e8;
+    border-top: 3px solid #dbccc2 // #e8e8e8;
   }
 
   .post_items {
     margin: 30px 0;
     div {
       padding-bottom: 10px;
-      border-bottom: 3px solid #e8e8e8;
+      border-bottom: 2px solid #dbccc2 //#e8e8e8;
       // font-weight: bold;
     }
   }
@@ -455,6 +458,49 @@ aside {
   }
 }
 
+.progress_items {
+  border-top: 3px solid #e8e8e8;
+
+  .top {
+    .timestamp {
+      position: relative;
+      right: 35px;
+    }
+
+    li {
+      display: inline-block;
+      margin: 15px 0;
+
+      .fa-angle-down {
+        position: relative;
+        left: 350px;
+        top: 5px;
+      }
+
+      .my-size {
+        font-size: 1.7em;
+      }
+
+      .dropdown-menu {
+        width: 20%;
+      }
+
+      .fa-angle-down:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.progress_post_items {
+  border-top: 3px solid #e8e8e8;
+}
+
+.progress_header, .progress_post_header{
+  margin-top: 45px;
+  font-weight: 700;
+  text-align: center;
+}
 
 
 
@@ -573,7 +619,8 @@ span.image {
     font-size: 20px;
     font-weight: normal;
     color: #fff;
-    background: #1a967d;
+    background-color: #1a967d;
+    opacity: 0.85;
     cursor: pointer;
   }
 
