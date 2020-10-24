@@ -209,10 +209,6 @@ span.image {
   }
 }
 
-.dropdown-menu a {
-  color: black;
-}
-
 .navbar-brand {
   color: white;
 }
@@ -225,6 +221,10 @@ span.image {
   a {
     color: white;
   }
+}
+
+.dropdown-menu a {
+  color: black;
 }
 
 @media screen and (max-width: 480px) {
