@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = 'ログインしました'
-      redirect_to @user
+      redirect_to posts_url
     else
       render 'new'
     end
@@ -66,7 +66,7 @@ class UsersController < ApplicationController
 
     def image
       @user = User.new(user_params)
-      rand = rand(10)
+      rand = rand(0..7)
       if rand == 0
         @user.image = 'hukurou.png'
       end
