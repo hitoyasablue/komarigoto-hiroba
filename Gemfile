@@ -35,6 +35,8 @@ gem 'faker', '2.1.2'
 gem 'kaminari'
 gem 'htmlbeautifier'
 gem 'ransack'
+gem 'payjp'
+gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root to: 'home#top'
   get '/signup', to: 'users#new'
-  get '/posts/search', to: 'posts#search'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get '/posts/search', to: 'posts#search'
+  get 'gifts/index', to: 'gifts#index'
+  get 'gifts/pay', to: 'gifts#pay'
   resources :users
   resources :posts do
     resources :likes, only: [:create, :destroy]
