@@ -475,6 +475,8 @@ span.image {
 
 /// 新規投稿ページ ///
 
+/// モーダルウィンドウ ///
+
 .modal{
   display: none;
   height: 100vh;
@@ -501,6 +503,10 @@ span.image {
 .post_modal_content {
   display: none;
   text-align: center;
+}
+
+.twitter-share-button {
+  margin-top: 20px;
 }
 
 /// アコーディオンパネル ///
