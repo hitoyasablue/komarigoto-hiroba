@@ -1,9 +1,0 @@
-<%= form_with local: true, url: gifts_pay_path do |form| %>
-  金額：<%= form.text_field :amount %>
-  <script
-    type="text/javascript"
-    src="https://checkout.pay.jp"
-    class="payjp-button"
-    data-key="<%= ENV["PAYJP_PUBLIC_KEY"] %>">
-  </script>
-<% end %>
