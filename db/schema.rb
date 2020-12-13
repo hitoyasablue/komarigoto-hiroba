@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_04_154109) do
+ActiveRecord::Schema.define(version: 2020_10_31_111954) do
 
   create_table "erais", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 2020_08_04_154109) do
     t.index ["progress_id"], name: "index_erais_on_progress_id"
     t.index ["user_id", "progress_id"], name: "index_erais_on_user_id_and_progress_id", unique: true
     t.index ["user_id"], name: "index_erais_on_user_id"
+  end
+
+  create_table "gifts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

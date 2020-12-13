@@ -1,0 +1,13 @@
+<% provide(:button_text, '削除する') %>
+
+<label>登録クレジットカード情報</label>
+<br>
+<%= '**** **** ****' + @default_card_information.last4 %>
+<br>
+<% exp_month = @default_card_information.exp_month.to_s %>
+<% exp_year = @default_card_information.exp_year.to_s.slice(2,3) %>
+<%= exp_month + " / " + exp_year %>
+<%= form_with local: true, url: gift_path, method: :delete, id: 'charge-form', name: 'inputForm' do |f| %>
+  <input type= "hidden" name= "card_id" value= "">
+  <%= f.submit yield(:button_text), class: 'btn btn-primary' %>
+<% end %>
