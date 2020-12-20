@@ -16,6 +16,9 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+.w-30px {
+  width: 70px !important;
+}
 
 /// アプリ全般 ///
 
@@ -630,13 +633,17 @@ span.image {
     text-align: center;
 
     .progress_form_button {
-      width: 70%;
       display: inline-block;
+      width: 35%;
+      margin:0 auto;
+      text-align: center;
     }
 
     .progress_index_button {
-      width: 70%;
       display: inline-block;
+      width: 35%;
+      margin:0 auto;
+      text-align: center;
     }
   }
 }
@@ -778,6 +785,11 @@ span.image {
 
     .sounanda_button {
       display: inline-block;
+    }
+
+    .gift_button {
+      display: inline-block;
+      vertical-align: top;
     }
 
     .erai_button {

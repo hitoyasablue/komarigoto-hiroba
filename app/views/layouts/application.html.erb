@@ -14,6 +14,13 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
+    <% flash.each do |name, msg| %>
+      <% if name != 'post' %>
+        <div class="alert alert-<%= name %>">
+          <%= msg.html_safe %>
+        </div>
+      <% end %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

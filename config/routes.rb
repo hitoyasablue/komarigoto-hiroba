@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'card/new'
+  get 'card/show'
   root to: 'home#top'
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'

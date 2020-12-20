@@ -28,13 +28,17 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(post_params)
     if @post.save
       if @post.optional_content_4.present?
-        flash[:success] = '最後まで書いてすごい！ あなたが今日心おだやかでありますように・・・'
+        # flash[:post] = '最後まで書いてすごい！ あなたが今日心おだやかでありますように・・・'
+        flash[:post] = '4'
       elsif @post.optional_content_3.present?
-        flash[:success] = '無理のない範囲で、今できることを実行してみてくださいね。おうえんしています'
+        # flash[:post] = '無理のない範囲で、今できることを実行してみてくださいね。おうえんしています'
+        flash[:post] = '3'
       elsif @post.optional_content.present? || @post.optional_content_2.present?
-        flash[:success] = '困りごとを投稿しました。追加項目も書いてすごい！'
+        # flash[:post] = '困りごとを投稿しました。追加項目も書いてすごい！'
+        flash[:post] = '2'
       else
-        flash[:success] = '困りごとを投稿しました！'
+        # flash[:post] = '困りごとを投稿しました！'
+        flash[:post] = '1'
       end
       redirect_to posts_url
     else
@@ -49,7 +53,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find_by(id: params[:id])
     if @post.update(post_params)
-      flash[:success] = '投稿を更新しました'
+      flash[:info] = '投稿を更新しました'
       redirect_to posts_url
     else
       render 'edit'
@@ -58,7 +62,7 @@ class PostsController < ApplicationController
 
   def destroy
     Post.find_by(id: params[:id]).destroy
-    flash[:success] = '投稿を削除しました'
+    flash[:info] = '投稿を削除しました'
     redirect_to posts_url
   end
 

@@ -14,6 +14,8 @@ class GiftsController < ApplicationController
       :card => params['payjp-token'],
       :currency => 'jpy'
     )
+    flash[:info] = '送金が完了しました'
+    redirect_to posts_url
   end
 
   def delete
