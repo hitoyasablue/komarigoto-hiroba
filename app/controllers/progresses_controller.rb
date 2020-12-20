@@ -12,11 +12,11 @@ class ProgressesController < ApplicationController
     @progress = @post.progresses.new(progress_params)
     if @progress.save
       if @progress.optional_content_3.present?
-        flash[:success] = '最後まで書いてすごい！ あなたが今日心おだやかでありますように・・・'
+        flash[:info] = '最後まで書いてすごい！ あなたが今日心おだやかでありますように・・・'
       elsif @progress.optional_content_2.present?
-        flash[:success] = '無理のない範囲で、今できることを実行してみてくださいね。おうえんしています'
+        flash[:info] = '無理のない範囲で、今できることを実行してみてくださいね。おうえんしています'
       else
-        flash[:success] = '進捗を投稿しました！'
+        flash[:info] = '進捗を投稿しました！'
       end
       redirect_to posts_url
     else
@@ -39,7 +39,7 @@ class ProgressesController < ApplicationController
     @post = Post.find_by(id: params[:post_id])
     @progress = Progress.find_by(id: params[:id])
     if @progress.update(progress_params)
-      flash[:success] = '進捗を更新しました'
+      flash[:info] = '進捗を更新しました'
       redirect_to post_progresses_url
     else
       render 'edit'
@@ -53,7 +53,7 @@ class ProgressesController < ApplicationController
 
   def destroy
     Progress.find_by(id: params[:id]).destroy
-    flash[:success] = '進捗を削除しました'
+    flash[:info] = '進捗を削除しました'
     redirect_to posts_url
   end
 

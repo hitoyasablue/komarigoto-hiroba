@@ -46,13 +46,24 @@
         <%= render 'wakarus/wakaru', post: post %>
         <%= render 'teineis/teinei', post: post %>
         <%= render 'ouens/ouen', post: post %>
+        <div class="gift_button">
+          <% if post.user != current_user %>
+            <%= button_to new_gift_path, method: :get, class: 'btn btn-outline-dark' do %>
+              <i class="fas fa-gift"></i>
+            <% end %>
+          <% end %>
+        </div>
       </div>
       <div class="progress_buttons">
         <% if post.user == current_user %>
-          <%= button_to 'その後の進捗を記録する', new_post_progress_path(post_id: post.id), method: :get, class: 'btn btn-outline-primary progress_form_button' %>
+          <div class="progress_form_button">
+            <%= button_to '進捗を記録する', new_post_progress_path(post_id: post.id), method: :get, class: 'btn btn-outline-dark' %>
+          </div>
         <% end %>
         <% if post.progresses.present? %>
-          <%= button_to 'その後の進捗を見る', post_progresses_path(post_id: post.id), method: :get, class: 'btn btn-outline-primary progress_index_button' %>
+          <div class="progress_index_button">
+            <%= button_to "進捗 #{post.progresses.count}件", post_progresses_path(post_id: post.id), method: :get, class: 'btn btn-outline-dark' %>
+          </div>
         <% end %>
       </div>
     </li>
