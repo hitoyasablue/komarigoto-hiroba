@@ -1,33 +1,91 @@
-document.addEventListener(
-  "DOMContentLoaded", e => {
-    if (document.getElementById("token_submit") != null) { //token_submitというidがnullの場合、下記コードを実行しない
-      Payjp.setPublicKey("pk_test_79ae2d2743199a76f3eb36aa"); //ここに公開鍵を直書き
-      let btn = document.getElementById("token_submit"); //IDがtoken_submitの場合に取得されます
-      btn.addEventListener("click", e => { //ボタンが押されたときに作動します
-        e.preventDefault(); //ボタンを一旦無効化します
-        let card = {
-          number: document.getElementById("card_number").value,
-          cvc: document.getElementById("cvc").value,
-          exp_month: document.getElementById("exp_month").value,
-          exp_year: document.getElementById("exp_year").value
-        }; //入力されたデータを取得します。
-        Payjp.createToken(card, (status, response) => {
-          if (status === 200) { //成功した場合
-            $("#card_number").removeAttr("name");
-            $("#cvc").removeAttr("name");
-            $("#exp_month").removeAttr("name");
-            $("#exp_year").removeAttr("name"); //データを自サーバにpostしないように削除
-            $("#card_token").append(
-              $('<input type="hidden" name="payjp-token">').val(response.id)
-            ); //取得したトークンを送信できる状態にします
-            document.inputForm.submit();
-            alert("登録が完了しました"); //確認用
-          } else {
-            alert("カード情報が正しくありません。"); //確認用
-          }
-        });
-      });
+$(window).bind("load", function(){
+  if (document.URL.match(/cards/)){
+  //　　URlに/cards/がある時のみ発火するように
+
+    const payjp = Payjp('pk_test_2316ee76015cc1c70beb02a7')
+     //  公開鍵から以下操作の起点となるPayjpインスタンスを生成
+
+    const elements = payjp.elements();
+　　　// Elementsインスタンスを生成。Elementsインスタンス1つにつき、1組のカード情報入力フォームを用意可能
+
+    const style = {
+      base: {
+        color: 'black',
+        '::placeholder': {
+          fontStyle: 'italic',
+        },
+      }
     }
-  },
-  false
-);
+
+    const numberElement = elements.create('cardNumber', {style: style});
+    const expiryElement = elements.create('cardExpiry', {style: style});
+    const cvcElement = elements.create('cardCvc', {style: style});
+　　//　Elementインスタンスを生成
+
+    numberElement.mount('#number-form');
+    expiryElement.mount('#expiry-form');
+    cvcElement.mount('#cvc-form');
+　　　// elementをDOM上に配置
+
+    const submit_btn = $("#info_submit");
+    submit_btn.click(function (e) {
+      e.preventDefault();
+      payjp.createToken(numberElement).then(function (response) {
+　　　　//  ↑↑　ここでトークンを作成　// createTokenの引数には任意のElement1つを渡します
+
+        if (response.error) {  //  通信に失敗したとき
+          alert(response.error.message)
+          regist_card.prop('disabled', false)
+        } else {
+          alert("登録が完了しました");
+          $("#card_token").append(
+            `<input type="hidden" name="payjp_token" value=${response.id}>
+            <input type="hidden" name="card_token" value=${response.card.id}>`
+          );
+          $('#card_form')[0].submit();
+        　 //  ↑↑　ここでtype='hidden'にしてsubmitにtokenを乗せています
+
+          $("#card_number").removeAttr("name");
+          $("#cvc-from").removeAttr("name");
+          $("#exp_month").removeAttr("name");
+        　$("#exp_year").removeAttr("name");
+　　　　　　//  ↑↑　ここでremoveAttrで記述を削除してます
+        };
+      });
+    });
+  }
+});
+
+// document.addEventListener(
+//   "DOMContentLoaded", e => {
+//     if (document.getElementById("token_submit") != null) {
+//       Payjp.setPublicKey("pk_test_2316ee76015cc1c70beb02a7");
+//       let btn = document.getElementById("token_submit");
+//       btn.addEventListener("click", e => {
+//         e.preventDefault();
+//         let card = {
+//           number: document.getElementById("card_number").value,
+//           cvc: document.getElementById("cvc").value,
+//           exp_month: document.getElementById("exp_month").value,
+//           exp_year: document.getElementById("exp_year").value
+//         };
+//         Payjp.createToken(card, (status, response) => {
+//           if (status === 200) {
+//             $("#card_number").removeAttr("name");
+//             $("#cvc").removeAttr("name");
+//             $("#exp_month").removeAttr("name");
+//             $("#exp_year").removeAttr("name");
+//             $("#card_token").append(
+//               $('<input type="hidden" name="payjp-token">').val(response.id)
+//             );
+//             document.inputForm.submit();
+//             alert("登録が完了しました");
+//           } else {
+//             alert();
+//           }
+//         });
+//       });
+//     }
+//   },
+//   false
+// );

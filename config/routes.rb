@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'cards/new'
+  get 'cards/show'
   get 'card/new'
   get 'card/show'
   root to: 'home#top'
@@ -21,7 +23,13 @@ Rails.application.routes.draw do
       resources :teinei2s, only: [:create, :destroy]
     end
   end
-  resources :gifts, only: [:show, :new, :destroy] do
+  resources :cards, only: [:new, :destroy] do
+    collection do
+      post 'show', to: 'cards#show'
+      post 'pay', to: 'cards#pay'
+    end
+  end
+  resources :gifts, only: [:new, :destroy] do
     collection do
       post 'show', to: 'gifts#show'
       post 'pay', to: 'gifts#pay'

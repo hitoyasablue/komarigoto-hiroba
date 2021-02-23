@@ -805,19 +805,29 @@ span.image {
     }
 }
 
-// .manage_buttons {
-//   text-align: center;
 
-//   .edit_button {
-//     display: inline-block;
-//     width: 40%;
-//     margin-right: 20px;
-//   }
+/// カード情報入力ページ ///
 
-//   .delete_button {
-//     display: inline-block;
-//     width: 40%;
-//   }
+.payjp-outer {
+  #number-form #expiry-form #cvc-form {
+    border-color: black;
+  }
+}
+
+// #card_number {
+//   width: 160px;
+// }
+
+// #exp_month {
+//   width: 40px;
+// }
+
+// #exp_year {
+//   width: 40px;
+// }
+
+// #cvc {
+//   width: 40px;
 // }
 
 /// 通知一覧ページ ///
