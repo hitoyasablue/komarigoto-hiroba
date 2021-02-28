@@ -9,53 +9,35 @@
           <li><i class="fa fa-paw fa-fw"></i>どんなことに困っていますか？</li>
           <p><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: 'div') %></p>
           <% if @post.optional_content.present? %>
-            <li><i class="fa fa-paw fa-fw"></i>理想の状態を10点とすると、今の状態は何点ですか？理由もかんたんに記入してください</li>
+            <li><i class="fa fa-paw fa-fw"></i>あなたが今感じていることを、なんでも記入してください</li>
             <p><%= simple_format(h(@post.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></p>
           <% end %>
           <% if @post.optional_content_2.present? %>
-            <li><i class="fa fa-paw fa-fw"></i>どのような状態になれば、理想の状態（10点）であると言えますか？</li>
+            <li><i class="fa fa-paw fa-fw"></i>がんばって生きている自分にどんな言葉をかけてあげたいですか？</li>
             <p><%= simple_format(h(@post.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
           <% end %>
           <% if @post.optional_content_3.present? %>
-            <li><i class="fa fa-paw fa-fw"></i>1つ点数を上げるために、今あなたにできることはありますか？</li>
+            <li><i class="fa fa-paw fa-fw"></i>理想の状態を10点とすると、今の状態は何点ですか？理由もかんたんに記入してください</li>
             <p><%= simple_format(h(@post.optional_content_3), {}, sanitize: false, wrapper_tag: 'div') %></p>
           <% end %>
           <% if @post.optional_content_4.present? %>
-            <li><i class="fa fa-paw fa-fw"></i>それをいつまでに（もしくはいつから）しますか？</li>
+            <li><i class="fa fa-paw fa-fw"></i>どのような状態になれば、理想の状態（10点）であると言えますか？</li>
             <p><%= simple_format(h(@post.optional_content_4), {}, sanitize: false, wrapper_tag: 'div') %></p>
+          <% end %>
+          <% if @post.optional_content_5.present? %>
+            <li><i class="fa fa-paw fa-fw"></i>1つ点数を上げるために、今あなたにできることはありますか？</li>
+            <p><%= simple_format(h(@post.optional_content_5), {}, sanitize: false, wrapper_tag: 'div') %></p>
+          <% end %>
+          <% if @post.optional_content_6.present? %>
+            <li><i class="fa fa-paw fa-fw"></i>それをいつまでに（もしくはいつから）しますか？</li>
+            <p><%= simple_format(h(@post.optional_content_6), {}, sanitize: false, wrapper_tag: 'div') %></p>
           <% end %>
         </ul>
       </div>
     </div>
-    <div class="accordion_wrapper">
-      <div class="accordion_title">必須項目</div>
-      <div class="accordion_content_open">
-        <div class="field">
-          <i class="fa fa-paw fa-fw"></i><%= f.label :'前回の投稿から、何か変わったことがあれば教えてください（特にない場合は「なし」でかまいません）'%>
-          <%= f.text_area :content, class: 'form-control', id: 'progress_content' %>
-        </div>
-        <div class="field">
-          <i class="fa fa-paw fa-fw"></i><%= f.label :'前回の投稿から、心境の変化があれば教えてください（特にない場合は「なし」でかまいません）' %>
-          <%= f.text_area :content_2, class: 'form-control', id: 'progress_content_2' %>
-        </div>
-      </div>
-    </div>
-    <div class="accordion_wrapper">
-      <div class="accordion_title">余裕があれば</div>
-      <div class="accordion_content">
-        <div class="field">
-          <i class="fa fa-paw fa-fw"></i><%= f.label :'理想の状態を10点とすると、今の状態は何点ですか？理由もかんたんに記入してください' %>
-          <%= f.text_area :optional_content, class: 'form-control' %>
-        </div>
-        <div class="field">
-          <i class="fa fa-paw fa-fw"></i><%= f.label :'1つ点数を上げるために、今あなたにできることはありますか？' %>
-          <%= f.text_area :optional_content_2, class: 'form-control' %>
-        </div>
-        <div class="field">
-          <i class="fa fa-paw fa-fw"></i><%= f.label :'それをいつまでにしますか？' %>
-          <%= f.text_area :optional_content_3, class: 'form-control' %>
-        </div>
-      </div>
+    <div class="field">
+      <i class="fa fa-paw fa-fw"></i><%= f.label :返信の内容を入力してください%>
+      <%= f.text_area :content, class: 'form-control', id: 'progress_content' %>
     </div>
     <%= f.submit yield(:button_text), class: 'btn btn-primary' %>
   </div>

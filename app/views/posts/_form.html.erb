@@ -4,7 +4,7 @@
   <%= render 'shared/error_messages', object: f.object %>
   <div class="wrapper">
     <div class="accordion_wrapper">
-      <div class="accordion_title">必須項目</div>
+      <div class="accordion_title">この項目は必須です</div>
       <div class="accordion_content_open">
         <div class="field">
           <i class="fa fa-paw fa-fw"></i><%= f.label :'今どんなことに困っていますか？' %>
@@ -13,27 +13,41 @@
       </div>
     </div>
     <div class="accordion_wrapper">
-      <div class="accordion_title">余裕があれば</div>
+      <div class="accordion_title">心の平穏に向けて</div>
         <div class="accordion_content">
           <div class="field">
-            <i class="fa fa-paw fa-fw"></i><%= f.label :'理想の状態を10点とすると、今の状態は何点ですか？理由もかんたんに記入してください' %>
+            <i class="fa fa-paw fa-fw"></i><%= f.label :'あなたが今感じていることを、なんでも記入してください' %>
             <%= f.text_area :optional_content, class: 'form-control form-control-2' %>
           </div>
           <div class="field">
-            <i class="fa fa-paw fa-fw"></i><%= f.label :'どのような状態になれば、理想の状態（10点）であると言えますか？' %>
+            <i class="fa fa-paw fa-fw"></i><%= f.label :'がんばって生きている自分にどんな言葉をかけてあげたいですか？' %>
             <%= f.text_area :optional_content_2, class: 'form-control form-control-3' %>
-          </div>
-          <div class="field">
-            <i class="fa fa-paw fa-fw"></i><%= f.label :'1つ点数を上げるために、今あなたにできることはありますか？' %>
-            <%= f.text_area :optional_content_3, class: 'form-control form-control-4' %>
-          </div>
-          <div class="field">
-            <i class="fa fa-paw fa-fw"></i><%= f.label :'それをいつまでに（もしくはいつから）しますか？' %>
-            <%= f.text_area :optional_content_4, class: 'form-control form-control-5' %>
           </div>
         </div>
       </div>
     </div>
-    <%= f.submit yield(:button_text), class: 'btn btn-primary js-modal-open submit_ajax' %>
+    <div class="accordion_wrapper">
+      <div class="accordion_title">解決に向けて</div>
+        <div class="accordion_content">
+          <div class="field">
+            <i class="fa fa-paw fa-fw"></i><%= f.label :'理想の状態を10点とすると、今の状態は何点ですか？理由もかんたんに記入してください' %>
+            <%= f.text_area :optional_content_3, class: 'form-control form-control-4' %>
+          </div>
+          <div class="field">
+            <i class="fa fa-paw fa-fw"></i><%= f.label :'どのような状態になれば、理想の状態（10点）であると言えますか？' %>
+            <%= f.text_area :optional_content_4, class: 'form-control form-control-5' %>
+          </div>
+          <div class="field">
+            <i class="fa fa-paw fa-fw"></i><%= f.label :'1つ点数を上げるために、今あなたにできることはありますか？' %>
+            <%= f.text_area :optional_content_5, class: 'form-control form-control-6' %>
+          </div>
+          <div class="field">
+            <i class="fa fa-paw fa-fw"></i><%= f.label :'それをいつまでに（もしくはいつから）しますか？' %>
+            <%= f.text_area :optional_content_6, class: 'form-control form-control-7' %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= f.submit yield(:button_text), id: 'post_submit', class: 'btn btn-primary js-modal-open submit_ajax' %>
   </div>
 <% end %>

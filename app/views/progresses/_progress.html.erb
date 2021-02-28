@@ -20,7 +20,7 @@
   <% end %>
 </ul>
 
-<h3 class="progress_header">進捗一覧</h3>
+<h3 class="progress_header">返信一覧</h3>
 <% post.progresses.order(id: 'DESC').each do |progress| %>
     <ul class="progress_items">
       <ul class="top">
@@ -32,7 +32,7 @@
           <i class="fa fa-angle-down my-size" id="dropdownMenu1" data-toggle="dropdown"></i>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
             <%= link_to '編集', edit_post_progress_path(post, progress), class: 'dropdown-item' %>
-            <%= link_to '削除', post_progress_path(post, progress), method: :delete, data: {confirm: 'この進捗を削除します。よろしいですか？'}, class: 'dropdown-item' %>
+            <%= link_to '削除', post_progress_path(post, progress), method: :delete, data: {confirm: 'この返信を削除します。よろしいですか？'}, class: 'dropdown-item' %>
           </div>
         </li>
         <% end %>

@@ -648,6 +648,12 @@ span.image {
   }
 }
 
+#post_submit{
+  width: 45%;
+  display: inline-block;
+  margin:0 auto;
+}
+
 @media screen and (max-width: 480px) {
   .posts .top li .fa-angle-down {
     left: 330%;
@@ -714,7 +720,7 @@ span.image {
   }
 }
 
-/// 進捗一覧ページ ///
+/// 返信一覧ページ ///
 
 .progress_items {
   border-top: 3px solid #e8e8e8;
