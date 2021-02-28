@@ -1,6 +1,6 @@
+<% provide(:button_text, '100円ギフトする') %>
 <%= button_to 'カード情報登録画面へ', new_card_path, method: :get, class: 'btn btn-outline-dark' %>
 
-<%= form_with local: true, url: pay_gifts_path do |form| %>
-  金額：<%= form.text_field :amount %>
-  <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_2316ee76015cc1c70beb02a7"></script>
+<%= form_with url: gifts_path, method: :post, local: true do |f| %>
+  <%= f.submit yield(:button_text), id: 'card_button', class: 'btn btn-primary' %>
 <% end %>
