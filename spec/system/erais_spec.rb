@@ -3,7 +3,7 @@ require 'rails_helper'
 describe '「えらい」のシステムテスト', type: :system do
   let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com', image: 'inu.png') }
   let!(:post_a) { FactoryBot.create(:post, content: 'Aの投稿', user: user_a) }
-  let!(:progress_a) { FactoryBot.create(:progress, content: 'Aの進捗その1', content_2: 'Aの進捗その2', post: post_a) }
+  let!(:progress_a) { FactoryBot.create(:progress, content: 'Aの返信その1', content_2: 'Aの返信その2', post: post_a) }
 
   before do
     visit login_path

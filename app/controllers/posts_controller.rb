@@ -69,11 +69,11 @@ class PostsController < ApplicationController
   private
 
     def search_posts
-      params.require(:q).permit(:content_or_optional_content_or_optional_content_2_or_optional_content_3_or_optional_content_4cont)
+      params.require(:q).permit(:content_or_optional_content_or_optional_content_2_or_optional_content_3_or_optional_content_4_or_optional_content_5_or_optional_content_6_cont)
     end
 
     def post_params
-      params.require(:post).permit(:content, :optional_content, :optional_content_2, :optional_content_3, :optional_content_4)
+      params.require(:post).permit(:content, :optional_content, :optional_content_2, :optional_content_3, :optional_content_4, :optional_content_5, :optional_content_6)
     end
 
     def set_post

@@ -31,7 +31,7 @@
       </div>
 
       <div class="accordion_wrapper">
-        <div class="accordion_title">進捗の内容</div>
+        <div class="accordion_title">返信の内容</div>
         <div class="accordion_content_open">
           <ul class="progress_items">
             <li><i class="fa fa-paw fa-fw"></i>前回の投稿から、何か変わったことがあれば教えてください（特にない場合は「なし」でかまいません）</li>
@@ -65,7 +65,7 @@
     <div class="manage_buttons">
       <% if @user == current_user %>
         <%= link_to '編集', edit_post_progress_path, class: 'btn btn-primary edit_button' %>
-        <%= link_to '削除', post_progress_path, method: :delete, data: {confirm: 'この進捗を削除します。よろしいですか？'}, class: 'btn btn-danger delete_button' %>
+        <%= link_to '削除', post_progress_path, method: :delete, data: {confirm: 'この返信を削除します。よろしいですか？'}, class: 'btn btn-danger delete_button' %>
       <% end %>
     </div>
   </div>

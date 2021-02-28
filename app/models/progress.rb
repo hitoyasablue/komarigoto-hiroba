@@ -1,6 +1,5 @@
 class Progress < ApplicationRecord
   validates :content, presence: true
-  validates :content_2, presence: true
   belongs_to :post
   has_many :notifications, dependent: :destroy
   has_many :erais, dependent: :destroy

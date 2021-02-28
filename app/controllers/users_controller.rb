@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user.image = image
     if @user.save
       log_in @user
-      flash[:success] = 'ログインしました'
+      flash[:info] = 'ログインしました'
       redirect_to posts_url
     else
       render 'new'
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     if @user.update(user_params)
-      flash[:success] = 'プロフィールを更新しました'
+      flash[:info] = 'プロフィールを更新しました'
       redirect_to @user
     else
       render 'edit'
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find_by(id: params[:id]).destroy
-    flash[:success] = 'ユーザーは削除されました'
+    flash[:info] = 'ユーザーは削除されました'
     redirect_to users_url
   end
 
