@@ -1,29 +1,30 @@
 class CardsController < ApplicationController
-  require "payjp"
+  require "stripe"
 
   def new
     card = Card.where(user_id: current_user.id)
     redirect_to new_gift_url if card.exists?
   end
 
-  def pay
-    Payjp.api_key = 'sk_test_81f3183a95db326cb5db9158'
-    if params['payjp_token'].blank?
-      redirect_to new_card_url
+  def create
+    Stripe.api_key = 'sk_test_51IOzkSI7CbPhhw7oV80cldziv9UQoH0DpGbCHYEVEtalacCbcZg2Ms8NCfpW8a6deZ1iLZI0oemYn2VyyQf9V2zY00K2Z8HeRw'
+    if params['stripeToken'].blank?
+      redirect_to ports_url
     else
-      customer = Payjp::Customer.create(
-      card: params['payjp_token'],
-      metadata: {user_id: current_user.id}
-      )
+      sender = Stripe::Customer.create({
+        name: current_user.name,
+        email: current_user.email,
+        source: params['stripeToken'],
+      })
       @card = Card.new(
         user_id: current_user.id,
-        customer_id: customer.id,
-        card_id: customer.default_card
+        customer_id: sender.id,
+        card_id: params['stripeToken'],
       )
       if @card.save
         redirect_to new_gift_url
       else
-        redirect_to pay_cards_url
+        redirect_to posts_url
       end
     end
   end
@@ -37,13 +38,13 @@ class CardsController < ApplicationController
       customer.delete
       card.delete
     end
-      redirect_to new_card_url
+      redirect_to new_post_card_url(id: params[:id])
   end
 
   def show
     card = Card.where(user_id: current_user.id).first
     if card.blank?
-      redirect_to new_card_url
+      redirect_to new_post_card_url(id: params[:id])
     else
       Payjp.api_key = 'sk_test_81f3183a95db326cb5db9158'
       customer = Payjp::Customer.retrieve(card.customer_id)

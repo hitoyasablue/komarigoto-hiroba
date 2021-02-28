@@ -23,16 +23,15 @@ Rails.application.routes.draw do
       resources :teinei2s, only: [:create, :destroy]
     end
   end
-  resources :cards, only: [:new, :destroy] do
+  resources :cards, only: [:new, :create, :destroy] do
     collection do
-      post 'show', to: 'cards#show'
       post 'pay', to: 'cards#pay'
     end
   end
-  resources :gifts, only: [:new, :destroy] do
+  resources :gifts, only: [:new, :create, :destroy] do
     collection do
-      post 'show', to: 'gifts#show'
       post 'pay', to: 'gifts#pay'
+      post 'stripe_connect', to: 'gifts#stripe_connect'
     end
   end
   resources :notifications, only: [:index]
