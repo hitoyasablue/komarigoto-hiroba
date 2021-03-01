@@ -22,16 +22,16 @@ Rails.application.routes.draw do
       resources :ouen2s, only: [:create, :destroy]
       resources :teinei2s, only: [:create, :destroy]
     end
-  end
-  resources :cards, only: [:new, :create, :destroy] do
-    collection do
-      post 'pay', to: 'cards#pay'
+    resources :cards, only: [:new, :create, :destroy] do
+      collection do
+        post 'pay', to: 'cards#pay'
+      end
     end
-  end
-  resources :gifts, only: [:new, :create, :destroy] do
-    collection do
-      post 'pay', to: 'gifts#pay'
-      post 'stripe_connect', to: 'gifts#stripe_connect'
+    resources :gifts, only: [:new, :create, :destroy] do
+      collection do
+        post 'pay', to: 'gifts#pay'
+        post 'stripe_connect', to: 'gifts#stripe_connect'
+      end
     end
   end
   resources :notifications, only: [:index]

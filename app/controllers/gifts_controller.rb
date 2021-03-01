@@ -43,75 +43,148 @@ class GiftsController < ApplicationController
     begin
 
       reciever = Stripe::Account.create({
-        type: 'express',
-        country: "JP",
+        type: 'custom',
+        country: 'JP',
         # name: @reciever_local.name,
         # email: @reciever_local.email,
+        business_type: 'individual',
         capabilities: {
-          card_payments: {requested: true},
-          transfers: {requested: true},
+          card_payments: {
+            requested: true,
+          },
+          transfers: {
+            requested: true,
+          },
         },
       })
+
+      stripe_account = Stripe::Account.update(
+        reciever.id,
+        individual: {
+          address_kanji: {
+            :postal_code => "150-0013",
+            :state => "東京",
+            :city => "渋谷区",
+            :town => "恵比寿",
+            :line1 => "1-1-1",
+            :line2 => "テストビルディング101号",
+          },
+          address_kana: {
+            :postal_code => "150-0013",
+            :state => "とうきょうと",
+            :city => "しぶやく",
+            :town => "えびす",
+            :line1 => "1-1-1",
+            :line2 => "てすとびるでぃんぐ101ごう",
+          },
+          :first_name_kanji => "太郎",
+          :last_name_kanji => "田中",
+          :first_name_kana => "たろう",
+          :last_name_kana => "たなか",
+          dob: {
+            :day => "1",
+            :month => "1",
+            :year => "2000",
+          },
+          :gender => "male",
+          # :phone => "555-555-0000",
+        },
+        tos_acceptance: {
+          :date => Time.now.to_i,
+          :ip => "192.168.0.1",
+        },
+        external_account: {
+          :object => 'bank_account',
+          :country => 'jp',
+          :currency => 'jpy',
+          :routing_number => '1100000', #銀行コード+支店コード
+          :account_number => '0001234',
+          :account_holder_name => 'トクテスト(カ',
+        }
+      )
+
+      # stripe_account = Stripe::Account.retrieve(reciever.id)
+
+      # # 事業者の種類（法人 or 個人）
+      # stripe_account.business_type = "individual" #個人
+      # stripe_account.external_accounts.create({
+      #   :external_account => {
+      #     'object':'bank_account',
+      #     'account_number': '0001234',
+      #     'routing_number': '1100000', #銀行コード+支店コード
+      #     'account_holder_name':'トクテスト(カ',
+      #     'currency':'jpy',
+      #     'country':'jp'
+      #   }
+      # })
 
       # byebug
 
-      account_links = Stripe::AccountLink.create({
-        account: reciever.id,
-        refresh_url: 'http://localhost:3000',
-        return_url: 'http://localhost:3000/posts',
-        type: 'account_onboarding',
-      })
+      # 事業者の住所（漢字）
+      # stripe_account.individual.address_kanji.postal_code = "1234567"
+      # stripe_account.individual.address_kanji.state = "東京"
+      # stripe_account.individual.address_kanji.city = "渋谷区"
+      # stripe_account.individual.address_kanji.town = "恵比寿"
+      # stripe_account.individual.address_kanji.line1 = "1-1-1"
+      # stripe_account.individual.address_kanji.line2 = "テストビルディング101号"
 
-      # cardholder = Stripe::Issuing::Cardholder.create({
-      #   name: 'Jenny Rosen',
-      #   status: 'active',
-      #   type: 'individual',
-      #   billing: {
-      #     address: {
-      #       line1: '1234 Main Street',
-      #       city: 'San Francisco',
-      #       state: 'CA',
-      #       postal_code: '94111',
-      #       country: 'US',
-      #     },
+      # # 事業者の住所（かな）
+      # # stripe_account.individual.address_kana.postal_code = "1234567"
+      # stripe_account.individual.address_kana.state = "とうきょうと"
+      # stripe_account.individual.address_kana.city = "しぶやく"
+      # stripe_account.individual.address_kana.town = "えびす"
+      # stripe_account.individual.address_kana.line1 = "1-1-1"
+      # stripe_account.individual.address_kana.line2 = "てすとびるでぃんぐ101ごう"
+
+      # # 事業責任者の名前（漢字）
+      # stripe_account.individual.first_name_kanji = "太郎"
+      # stripe_account.individual.last_name_kanji = "田中"
+
+      # # 事業責任者の名前（かな）
+      # stripe_account.individual.first_name_kana = "たろう"
+      # stripe_account.individual.last_name_kana = "たなか"
+
+      # # 事業者責任者の誕生日
+      # stripe_account.individual.dob.day = "1"
+      # stripe_account.individual.dob.month = "1"
+      # stripe_account.individual.dob.year = "2000"
+
+      # # # 事業責任者の性別
+      # stripe_account.individual.gender = "male"
+
+      # # # 事業責任者の電話番号
+      # stripe_account.individual.phone = "090-0000-0000"
+
+      # # 受理された日付とグローバルIPアドレス
+      # stripe_account.tos_acceptance.date = Time.now.to_i
+      # stripe_account.tos_acceptance.ip = "192.168.0.1" #グローバルIPアドレスを入力
+
+      # Stripeに画像ファイルをアップロードするための処理
+      # 免許証やパスポートなどをアップロードする
+      # verification_document = Stripe::File.new(
+      #   {
+      #     purpose: 'identity_document',
+      #     file: File.new("/Users/yusaku/works/komarigoto_hiroba/app/assets/images/inu.png")
       #   },
-      # })
+      #   {
+      #     stripe_account: stripe_account_id
+      #   }
+      # )
 
-      # card = Stripe::Issuing::Card.create({
-      #   cardholder: cardholder.id,
-      #   type: 'virtual',
-      #   currency: 'jpy',
-      # })
+      # # アップロードされたドキュメントのID番号
+      # stripe_account.individual.verification.document = verification_document.id
 
-      # @card_sender = Stripe::Card.create({
-      #   source: @card_sender.card_id,
-      # })
+      stripe_account.save
 
-      @gift = Stripe::PaymentIntent.create({
-        amount: 100,
-        currency: "jpy",
+      gift = Stripe::PaymentIntent.create({
         payment_method_types: ['card'],
-        # payment_method_data: {
-        #   type: 'card',
-        #   metadata: {
-        #     'token': @card_sender.card_id
-        #   },
-        # },
-        customer: @card_sender.customer_id,
-        # payment_method: ,
+        amount: @amount,
+        currency: "jpy",
+        customer: @card_sender.customer_id, #Stripe.jsで自動で付与されるカード情報のトークン
         transfer_data: {
           destination: reciever.id,
-        },
+        }
       })
-
-      # @gift = Stripe::Charge.create({
-      #   amount: 100,
-      #   currency: "jpy",
-      #   customer: @card_sender.customer_id,
-      #   transfer_data: {
-      #     destination: reciever.id,
-      #   },
-      # })
 
     # stripe関連でエラーが起こった場合
     rescue Stripe::CardError => e
