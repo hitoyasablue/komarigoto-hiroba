@@ -1,6 +1,6 @@
 <% provide(:button_text, '100円ギフトする') %>
-<%= button_to 'カード情報登録画面へ', new_card_path, method: :get, class: 'btn btn-outline-dark' %>
+<%= button_to 'カード情報登録画面へ', new_post_card_path(id: params[:id]), method: :get, class: 'btn btn-outline-dark' %>
 
-<%= form_with url: gifts_path, method: :post, local: true do |f| %>
+<%= form_with url: post_gifts_path(id: params[:id]), method: :post, local: true do |f| %>
   <%= f.submit yield(:button_text), id: 'card_button', class: 'btn btn-primary' %>
 <% end %>
