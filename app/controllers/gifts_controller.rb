@@ -38,8 +38,6 @@ class GiftsController < ApplicationController
     @reciever_local = User.find_by(id: @post.user_id)
     @card_sender = Card.find_by(user_id: current_user.id)
 
-    # byebug
-
     begin
 
       reciever = Stripe::Account.create({
@@ -56,6 +54,16 @@ class GiftsController < ApplicationController
             requested: true,
           },
         },
+      })
+
+      front = Stripe::File.create({
+        purpose: 'identity_document',
+        file: File.new("app/assets/images/inu.png"),
+      })
+
+      back = Stripe::File.create({
+        purpose: 'identity_document',
+        file: File.new("app/assets/images/neko.png"),
       })
 
       stripe_account = Stripe::Account.update(
@@ -86,8 +94,14 @@ class GiftsController < ApplicationController
             :month => "1",
             :year => "2000",
           },
+          verification: {
+            document: {
+              :front => front.id,
+              :back => back.id,
+            }
+          },
           :gender => "male",
-          # :phone => "555-555-0000",
+          :phone => "+819012345678",
         },
         tos_acceptance: {
           :date => Time.now.to_i,
@@ -161,26 +175,38 @@ class GiftsController < ApplicationController
 
       # Stripeに画像ファイルをアップロードするための処理
       # 免許証やパスポートなどをアップロードする
-      # verification_document = Stripe::File.new(
-      #   {
-      #     purpose: 'identity_document',
-      #     file: File.new("/Users/yusaku/works/komarigoto_hiroba/app/assets/images/inu.png")
-      #   },
-      #   {
-      #     stripe_account: stripe_account_id
-      #   }
-      # )
 
-      # # アップロードされたドキュメントのID番号
-      # stripe_account.individual.verification.document = verification_document.id
+
+      # アップロードされたドキュメントのID番号
 
       stripe_account.save
 
-      gift = Stripe::PaymentIntent.create({
-        payment_method_types: ['card'],
-        amount: @amount,
+      # token = Stripe::Source.create({
+      #   type: 'card',
+      #   currency: 'jpy',
+      #   usage: 'reusable',
+      #   owner: {
+      #     email: current_user.email,
+      #   },
+      # }, {
+      #   stripe_account: reciever.id,
+      # })
+
+      # gift = Stripe::PaymentIntent.create({
+      #   payment_method_types: ['card'],
+      #   amount: @amount,
+      #   currency: "jpy",
+      #   payment_method: token.id,
+      #   customer: @card_sender.customer_id, #Stripe.jsで自動で付与されるカード情報のトークン
+      #   transfer_data: {
+      #     destination: reciever.id,
+      #   }
+      # })
+
+      @gift = Stripe::Charge.create({
+        amount: 100,
         currency: "jpy",
-        customer: @card_sender.customer_id, #Stripe.jsで自動で付与されるカード情報のトークン
+        customer: @card_sender.customer_id,
         transfer_data: {
           destination: reciever.id,
         }
@@ -217,7 +243,8 @@ class GiftsController < ApplicationController
       render :new
     end
 
-    posts_path and return
+    redirect_to posts_path
+    # posts_path and return
 
   end
 
