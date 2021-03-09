@@ -39,6 +39,7 @@ gem 'payjp'
 gem 'stripe'
 gem 'omniauth-stripe-connect'
 gem 'dotenv-rails'
+gem 'gon'
 gem 'devise'
 
 group :development, :test do

@@ -4,6 +4,7 @@
     <title>komarigoto-hiroba</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= include_gon %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -11,7 +12,6 @@
     <meta name="google" content="notranslate">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="https://js.pay.jp/v2/pay.js"></script>
   </head>
   <body>
     <%= render 'layouts/header' %>

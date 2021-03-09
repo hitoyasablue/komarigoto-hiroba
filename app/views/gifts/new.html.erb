@@ -1,6 +1,20 @@
 <% provide(:button_text, '100円ギフトする') %>
-<%= button_to 'カード情報登録画面へ', new_post_card_path(id: params[:id]), method: :get, class: 'btn btn-outline-dark' %>
 
-<%= form_with url: post_gifts_path(id: params[:id]), method: :post, local: true do |f| %>
-  <%= f.submit yield(:button_text), id: 'card_button', class: 'btn btn-primary' %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="gift-elements">
+      <p class="top-p"><i class="fa fa-paw fa-fw"></i>ここは、このユーザーに100円をギフトすることのできるページです。<br>
+      はじめてギフトをされる方はまず以下のボタンからカード情報を登録してください。</p>
+      <div class="col-md-4 offset-md-4">
+        <%= button_to 'カード情報登録画面へ', new_post_card_path(id: params[:id]), method: :get, class: 'btn btn-outline-dark' %>
+      </div>
+      <p class="top-p"><i class="fa fa-paw fa-fw"></i>カード情報を登録された方、既にカード情報を登録したことのある方は、<br>
+      以下のボタンから100円をギフトすることができます。</p>
+      <div class="col-md-4 offset-md-4">
+      <%= form_with url: post_gifts_path(id: params[:id]), method: :post, local: true do |f| %>
+        <%= f.submit yield(:button_text), id: 'card_button', class: 'btn btn-primary' %>
+      <% end %>
+     </div>
+    </div>
+  </div>
+</div>
