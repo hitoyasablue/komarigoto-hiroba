@@ -23,25 +23,24 @@ class GiftsController < ApplicationController
   #    end
   # end
 
-  def stripe_connect
-    response = Stripe::OAuth.token({
-      grant_type: 'authorization_code',
-      code: params[:id],
-      assert_capabilities: ['transfers'],
-    })
-  end
+  # def stripe_connect
+  #   response = Stripe::OAuth.token({
+  #     grant_type: 'authorization_code',
+  #     code: params[:id],
+  #     assert_capabilities: ['transfers'],
+  #   })
+  # end
 
   def create
-    Stripe.api_key = 'sk_test_51IOzkSI7CbPhhw7oV80cldziv9UQoH0DpGbCHYEVEtalacCbcZg2Ms8NCfpW8a6deZ1iLZI0oemYn2VyyQf9V2zY00K2Z8HeRw'
-    @amount = 100
-    @post = Post.find_by(id: params[:post_id])
-    @reciever_local = User.find_by(id: @post.user_id)
-    @card_sender = Card.find_by(user_id: current_user.id)
-
-    # byebug
+    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+    amount = 100
+    post = Post.find_by(id: params[:post_id])
+    # @reciever_local = User.find_by(id: post.user_id)
+    card_sender = Card.find_by(user_id: current_user.id)
 
     begin
 
+      # 送金先ユーザのStripeアカウント作成
       reciever = Stripe::Account.create({
         type: 'custom',
         country: 'JP',
@@ -58,6 +57,18 @@ class GiftsController < ApplicationController
         },
       })
 
+      # 証明写真の面裏をStripeサーバにアップロード
+      front = Stripe::File.create({
+        purpose: 'identity_document',
+        file: File.new("app/assets/images/inu.png"),
+      })
+
+      back = Stripe::File.create({
+        purpose: 'identity_document',
+        file: File.new("app/assets/images/neko.png"),
+      })
+
+      # 送金先ユーザの作成に必要な情報を追加登録
       stripe_account = Stripe::Account.update(
         reciever.id,
         individual: {
@@ -86,8 +97,14 @@ class GiftsController < ApplicationController
             :month => "1",
             :year => "2000",
           },
+          verification: {
+            document: {
+              :front => front.id,
+              :back => back.id,
+            }
+          },
           :gender => "male",
-          # :phone => "555-555-0000",
+          :phone => "+819012345678",
         },
         tos_acceptance: {
           :date => Time.now.to_i,
@@ -103,84 +120,36 @@ class GiftsController < ApplicationController
         }
       )
 
-      # stripe_account = Stripe::Account.retrieve(reciever.id)
 
-      # # 事業者の種類（法人 or 個人）
-      # stripe_account.business_type = "individual" #個人
-      # stripe_account.external_accounts.create({
-      #   :external_account => {
-      #     'object':'bank_account',
-      #     'account_number': '0001234',
-      #     'routing_number': '1100000', #銀行コード+支店コード
-      #     'account_holder_name':'トクテスト(カ',
-      #     'currency':'jpy',
-      #     'country':'jp'
+      # stripe_account.save
+
+      # token = Stripe::Source.create({
+      #   type: 'card',
+      #   currency: 'jpy',
+      #   usage: 'reusable',
+      #   owner: {
+      #     email: current_user.email,
+      #   },
+      # }, {
+      #   stripe_account: reciever.id,
+      # })
+
+      # gift = Stripe::PaymentIntent.create({
+      #   payment_method_types: ['card'],
+      #   amount: @amount,
+      #   currency: "jpy",
+      #   payment_method: token.id,
+      #   customer: @card_sender.customer_id, #Stripe.jsで自動で付与されるカード情報のトークン
+      #   transfer_data: {
+      #     destination: reciever.id,
       #   }
       # })
 
-      # byebug
-
-      # 事業者の住所（漢字）
-      # stripe_account.individual.address_kanji.postal_code = "1234567"
-      # stripe_account.individual.address_kanji.state = "東京"
-      # stripe_account.individual.address_kanji.city = "渋谷区"
-      # stripe_account.individual.address_kanji.town = "恵比寿"
-      # stripe_account.individual.address_kanji.line1 = "1-1-1"
-      # stripe_account.individual.address_kanji.line2 = "テストビルディング101号"
-
-      # # 事業者の住所（かな）
-      # # stripe_account.individual.address_kana.postal_code = "1234567"
-      # stripe_account.individual.address_kana.state = "とうきょうと"
-      # stripe_account.individual.address_kana.city = "しぶやく"
-      # stripe_account.individual.address_kana.town = "えびす"
-      # stripe_account.individual.address_kana.line1 = "1-1-1"
-      # stripe_account.individual.address_kana.line2 = "てすとびるでぃんぐ101ごう"
-
-      # # 事業責任者の名前（漢字）
-      # stripe_account.individual.first_name_kanji = "太郎"
-      # stripe_account.individual.last_name_kanji = "田中"
-
-      # # 事業責任者の名前（かな）
-      # stripe_account.individual.first_name_kana = "たろう"
-      # stripe_account.individual.last_name_kana = "たなか"
-
-      # # 事業者責任者の誕生日
-      # stripe_account.individual.dob.day = "1"
-      # stripe_account.individual.dob.month = "1"
-      # stripe_account.individual.dob.year = "2000"
-
-      # # # 事業責任者の性別
-      # stripe_account.individual.gender = "male"
-
-      # # # 事業責任者の電話番号
-      # stripe_account.individual.phone = "090-0000-0000"
-
-      # # 受理された日付とグローバルIPアドレス
-      # stripe_account.tos_acceptance.date = Time.now.to_i
-      # stripe_account.tos_acceptance.ip = "192.168.0.1" #グローバルIPアドレスを入力
-
-      # Stripeに画像ファイルをアップロードするための処理
-      # 免許証やパスポートなどをアップロードする
-      # verification_document = Stripe::File.new(
-      #   {
-      #     purpose: 'identity_document',
-      #     file: File.new("/Users/yusaku/works/komarigoto_hiroba/app/assets/images/inu.png")
-      #   },
-      #   {
-      #     stripe_account: stripe_account_id
-      #   }
-      # )
-
-      # # アップロードされたドキュメントのID番号
-      # stripe_account.individual.verification.document = verification_document.id
-
-      stripe_account.save
-
-      gift = Stripe::PaymentIntent.create({
-        payment_method_types: ['card'],
-        amount: @amount,
+      # 送金処理
+      @gift = Stripe::Charge.create({
+        amount: amount,
         currency: "jpy",
-        customer: @card_sender.customer_id, #Stripe.jsで自動で付与されるカード情報のトークン
+        customer: card_sender.customer_id,
         transfer_data: {
           destination: reciever.id,
         }
@@ -217,7 +186,8 @@ class GiftsController < ApplicationController
       render :new
     end
 
-    posts_path and return
+    redirect_to posts_path
+    # posts_path and return
 
   end
 

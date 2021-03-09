@@ -1,28 +1,36 @@
 class CardsController < ApplicationController
+  # stripeAPI用のメソッドなどを使用できるようにする
   require "stripe"
 
   def new
+    # あらかじめ環境変数に入れておいたテスト用公開鍵を、gonのメソッドにセット
+    gon.stripe_public_key = ENV['STRIPE_PUBLISHABLE_KEY']
     card = Card.where(user_id: current_user.id)
-    redirect_to new_gift_url if card.exists?
+    # カードのデータが既にDBに存在していた場合は指定したページに遷移
+    redirect_to new_post_gift_url(id: params[:id]) if card.exists?
   end
 
   def create
-    Stripe.api_key = 'sk_test_51IOzkSI7CbPhhw7oV80cldziv9UQoH0DpGbCHYEVEtalacCbcZg2Ms8NCfpW8a6deZ1iLZI0oemYn2VyyQf9V2zY00K2Z8HeRw'
+    # あらかじめ環境変数に入れておいたテスト用秘密鍵をセット
+    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+    # トークンが生成されていなかった場合は何もせずリダイレクト
     if params['stripeToken'].blank?
-      redirect_to ports_url
+      redirect_to posts_url
     else
+      # 送信元ユーザのStripeアカウントを生成
       sender = Stripe::Customer.create({
         name: current_user.name,
         email: current_user.email,
         source: params['stripeToken'],
       })
+      # CardテーブルにログインユーザのこのアプリでのIDと、StripeアカウントでのIDを保存
       @card = Card.new(
         user_id: current_user.id,
         customer_id: sender.id,
         card_id: params['stripeToken'],
       )
       if @card.save
-        redirect_to new_gift_url
+        redirect_to new_post_gift_url(id: params[:id])
       else
         redirect_to posts_url
       end
@@ -33,22 +41,9 @@ class CardsController < ApplicationController
     card = Card.where(user_id: current_user.id).first
     if card.blank?
     else
-      Payjp.api_key = 'sk_test_81f3183a95db326cb5db9158'
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      customer.delete
-      card.delete
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+      # retrieveする
     end
-      redirect_to new_post_card_url(id: params[:id])
-  end
-
-  def show
-    card = Card.where(user_id: current_user.id).first
-    if card.blank?
-      redirect_to new_post_card_url(id: params[:id])
-    else
-      Payjp.api_key = 'sk_test_81f3183a95db326cb5db9158'
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
-    end
+    redirect_to posts_url
   end
 end

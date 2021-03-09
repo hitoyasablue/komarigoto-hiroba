@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'cards/new'
+  get 'cards/new' #以下は4行はいらない気が・・・
   get 'cards/show'
   get 'card/new'
   get 'card/show'
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/posts/search', to: 'posts#search'
-  # get 'gifts/pay', to: 'gifts#pay'
+  get '/donation', to: 'users#donation'
   resources :users
   resources :posts do
     resources :likes, only: [:create, :destroy]
@@ -35,4 +35,5 @@ Rails.application.routes.draw do
     end
   end
   resources :notifications, only: [:index]
+
 end

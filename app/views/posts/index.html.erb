@@ -5,19 +5,23 @@
   <div class="modal js-modal">
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">
-      <% if flash[:post] == '4' %>
-        <p>最後まで書いてすごい！ あなたが今日心おだやかでありますように・・・'</p>
-      <% elsif flash[:post] == '3' %>
-        <p>無理のない範囲で、今できることを実行してみてくださいね。おうえんしています</p>
-      <% elsif flash[:post] == '2' %>
-        <p>困りごとを投稿しました。追加項目も書いてすごい！</p>
-      <% elsif flash[:post] == '1' %>
-        <p>困りごとを投稿しました。</p>
+      <% if flash[:post] == '1' || flash[:post] == '2' || flash[:post] == '3' || flash[:post] == '4'  %>
+        <% if flash[:post] == '4' %>
+          <p>最後まで書いてすごい！ あなたが今日心おだやかでありますように・・・'</p>
+        <% elsif flash[:post] == '3' %>
+          <p>無理のない範囲で、今できることを実行してみてくださいね。おうえんしています</p>
+        <% elsif flash[:post] == '2' %>
+          <p>困りごとを投稿しました。追加項目も書いてすごい！</p>
+        <% elsif flash[:post] == '1' %>
+          <p>困りごとを投稿しました。</p>
+        <% end %>
+        <p>今のあなたの気持ちをシェアしてみませんか？</p>
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">シェア</a></div>
+        <a class="js-modal-close" href="">閉じる</a>
+      <% elsif flash[:post] == '5' %>
+        <p>寄付していただきありがとうございます！励みになります。より心地よい場にしていけるよう、これからもぼちぼちがんばります・・・</p>
       <% end %>
-      <p>今のあなたの気持ちをシェアしてみませんか？</p>
-      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-      <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">シェア</a></div>
-      <a class="js-modal-close" href="">閉じる</a>
     </div>
   </div>
 </div>
@@ -43,7 +47,7 @@ $(function(){
     <% if @posts.exists? %>
       <%= render 'post' %>
     <% end %>
-    <% if flash[:post] == '1' || flash[:post] == '2' || flash[:post] == '3' || flash[:post] == '4' %>
+    <% if flash[:post] == '1' || flash[:post] == '2' || flash[:post] == '3' || flash[:post] == '4' || flash[:post] == '5' %>
       <script>
       $(function(){
         $('.js-modal-open').trigger('click');

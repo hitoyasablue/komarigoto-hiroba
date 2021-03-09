@@ -29,6 +29,7 @@
               <li><%= link_to 'プロフィール編集', edit_user_path(current_user) %></li>
               <li class="divider"></li>
               <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+              <li><%= link_to '運営への寄付', donation_path %></li>
             </ul>
           </li>
         </ul>
@@ -49,6 +50,7 @@
             </li>
             <li><%= link_to 'プロフィール編集', edit_user_path(current_user) %></li>
             <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+            <li><%= link_to '運営への寄付', donation_path %></li>
             <li class="close"><span>閉じる</span></li>
           </ul>
         </nav>

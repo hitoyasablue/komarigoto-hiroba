@@ -1,0 +1,7 @@
+<script>
+  const stripe = Stripe(gon.stripe_public_key);
+  stripe.redirectToCheckout({
+    sessionId: '<%= @session.id %>'
+  }).then(function (result) {
+  });
+</script>
