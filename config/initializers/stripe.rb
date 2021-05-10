@@ -13,6 +13,3 @@ if Rails.env.production?
     :secret_key      => ENV['STRIPE_SECRET_KEY_PRODUCTION']
   }
 end
-
-#それぞれの環境に適したstripeAPIキーをセットしておく。
-Stripe.api_key = Rails.configuration.stripe[:secret_key]
