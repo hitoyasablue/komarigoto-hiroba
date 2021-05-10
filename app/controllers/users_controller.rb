@@ -50,16 +50,17 @@ class UsersController < ApplicationController
   end
 
   def donation
-    gon.stripe_public_key = ENV['STRIPE_PUBLISHABLE_KEY']
+    Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRODUCTION']
+    gon.stripe_public_key = ENV['STRIPE_PUBLISHABLE_KEY_PRODUCTON']
     flash[:post] = '5'
     @session = Stripe::Checkout::Session.create({
       payment_method_types: ['card'],
       line_items: [
-        {price: 'price_1ISI99I7CbPhhw7oQlrTfWG0', quantity: 1},
+        {price: 'price_1ISIXUI7CbPhhw7oaYciokTe', quantity: 1},
       ],
       mode: 'payment',
-      success_url: 'http://localhost:3000/posts',
-      cancel_url: 'http://localhost:3000/posts',
+      success_url: 'https://komarigotohiroba.com/posts',
+      cancel_url: 'https://komarigotohiroba.com/posts',
     })
   end
 

@@ -32,7 +32,7 @@ class GiftsController < ApplicationController
   # end
 
   def create
-    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+    Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRODUCTION']
     amount = 100
     post = Post.find_by(id: params[:post_id])
     # @reciever_local = User.find_by(id: post.user_id)

@@ -1,17 +1,21 @@
 version: '3'
 services:
   db:
-    image: 875184864877.dkr.ecr.ap-northeast-1.amazonaws.com/mysql:5.7
+    image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: pass
-      MYSQL_DATABASE: myapp_production
+      MYSQL_DATABASE: myapp_development
     ports:
       - "3306:3306"
+    volumes:
+      - /var/lib/mysql
 
   web:
     build: .
-    image: 875184864877.dkr.ecr.ap-northeast-1.amazonaws.com/komarigoto-hiroba-web:latest
     command: rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/myapp
+      - /app/tmp
     ports:
       - "3000:3000"
     depends_on:

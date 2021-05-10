@@ -54,13 +54,13 @@
         <%= render 'wakarus/wakaru', post: post %>
         <%= render 'teineis/teinei', post: post %>
         <%= render 'ouens/ouen', post: post %>
-        <div class="gift_button">
+        <!-- <div class="gift_button">
           <% if post.user != current_user %>
             <%= button_to new_post_gift_path(post_id: post.id), method: :get, class: 'btn btn-outline-dark' do %>
               <i class="fas fa-gift"></i>
             <% end %>
           <% end %>
-        </div>
+        </div> -->
       </div>
       <div class="progress_buttons">
         <div class="progress_form_button">
