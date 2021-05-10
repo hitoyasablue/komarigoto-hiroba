@@ -17,7 +17,7 @@ https://komarigotohiroba.com/
 ## アプリのスクリーンショット
 <img src="https://user-images.githubusercontent.com/66470480/117677818-c37a4a80-b1e9-11eb-80b7-42461d8e0ff1.png" width="700px">
 <img src="https://user-images.githubusercontent.com/66470480/117677831-c6753b00-b1e9-11eb-9fb9-5a4b05bf4ac7.png" width="700px">
-<img src="https://user-images.githubusercontent.com/66470480/117677877-cf660c80-b1e9-11eb-92e8-2b996b37927d.png" width="700px">
+<img src="https://user-images.githubusercontent.com/66470480/117679367-2c15f700-b1eb-11eb-850c-1be1d1f3a979.png" width="700px">
 
 ## 使用した技術
 
