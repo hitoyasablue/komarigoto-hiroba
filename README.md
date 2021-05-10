@@ -15,6 +15,12 @@
 ## アプリURL
 https://komarigotohiroba.com/
 
+## アプリのスクリーンショット
+![image](https://user-images.githubusercontent.com/66470480/117677818-c37a4a80-b1e9-11eb-80b7-42461d8e0ff1.png)
+![image](https://user-images.githubusercontent.com/66470480/117677831-c6753b00-b1e9-11eb-9fb9-5a4b05bf4ac7.png)
+![image](https://user-images.githubusercontent.com/66470480/117677867-cd03b280-b1e9-11eb-8950-9879bff83d0e.png)
+![image](https://user-images.githubusercontent.com/66470480/117677877-cf660c80-b1e9-11eb-92e8-2b996b37927d.png)
+
 ## 使用した技術
 
 ### フロントエンド
@@ -58,5 +64,5 @@ https://komarigotohiroba.com/
 - レスポンシブデザイン
 
 ## AWS構成図
-スクリーンショット 2021-05-10 23.32.01![image](https://user-images.githubusercontent.com/66470480/117675907-fd4a5180-b1e7-11eb-9a03-d612043da824.png)
+![image](https://user-images.githubusercontent.com/66470480/117675907-fd4a5180-b1e7-11eb-9a03-d612043da824.png)
 
