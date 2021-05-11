@@ -20,31 +20,20 @@ https://komarigotohiroba.com/
 <img src="https://user-images.githubusercontent.com/66470480/117679367-2c15f700-b1eb-11eb-850c-1be1d1f3a979.png" width="700px">
 
 ## 使用した技術
-
-### フロントエンド
-- HTML, CSS, JavaScript
-- bootstrap
-
-### バックエンド
-- Ruby, Rails
-
-### インフラ
+- Ruby 2.7.1
+- Rails 6.0.3.2
 - Git, Github
 - MySQL
 - Docker, docker-compose
-
-### AWS
-- ECS
-- ECR
-- RDS
-- Route53
-- ALB
-- CloudWatch
-
-### その他
 - RSpec
 - RuboCop
-
+- AWS
+  - ECS
+  - ECR
+  - RDS
+  - Route53
+  - ALB
+  - CloudWatch
 
 ## 機能一覧
 - ログイン, ログアウト, 簡単ログイン機能
