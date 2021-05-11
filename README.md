@@ -22,14 +22,11 @@ https://komarigotohiroba.com/
 ## 使用した技術
 
 ### フロントエンド
-- HTML
-- CSS
-- JavaScript
+- HTML, CSS, JavaScript
 - bootstrap
 
 ### バックエンド
-- Ruby
-- Rails
+- Ruby, Rails
 
 ### インフラ
 - Git, Github
