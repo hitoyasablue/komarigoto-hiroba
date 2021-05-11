@@ -660,6 +660,17 @@ span.image {
   }
 }
 
+/// コメント ///
+
+.progress_items {
+  li {
+    display: inline-block;
+    position: relative;
+    right: 30px;
+  }
+}
+
+
 /// 検索窓 ///
 
 #search_form {
