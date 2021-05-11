@@ -24,9 +24,8 @@
 <% post.progresses.order(id: 'DESC').each do |progress| %>
     <ul class="progress_items">
       <ul class="top">
-        <li class="timestamp">
-          <%= time_ago_in_words(progress.created_at) %>前
-        </li>
+        <li><%= image_tag current_user.image, class: 'user_icon' %></li>
+        <li class="user"><%= link_to current_user.name, post.user %></li>
         <% if post.user == current_user %>
         <li class="dropdown">
           <i class="fa fa-angle-down my-size" id="dropdownMenu1" data-toggle="dropdown"></i>
@@ -37,28 +36,6 @@
         </li>
         <% end %>
       </ul>
-      <li><i class="fa fa-paw fa-fw"></i>前回の投稿から、何か変わったことがあれば教えてください（特にない場合は「なし」でかまいません）</li>
       <p><%= simple_format(h(progress.content), {}, sanitize: false, wrapper_tag: 'div') %></p>
-      <li><i class="fa fa-paw fa-fw"></i>前回の投稿から、心境の変化があれば教えてください（特にない場合は「なし」でかまいません）</li>
-      <p><%= simple_format(h(progress.content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
-      <% if progress.optional_content.present? %>
-        <li><i class="fa fa-paw fa-fw"></i>理想の状態を10点とすると、今の状態は何点ですか？理由もかんたんに記入してください</li>
-        <p><%= simple_format(h(progress.optional_content), {}, sanitize: false, wrapper_tag: 'div') %></p>
-      <% end %>
-      <% if progress.optional_content_2.present? %>
-        <li><i class="fa fa-paw fa-fw"></i>1つ点数を上げるために、今あなたにできることはありますか？</li>
-        <p><%= simple_format(h(progress.optional_content_2), {}, sanitize: false, wrapper_tag: 'div') %></p>
-      <% end %>
-      <% if progress.optional_content_3.present? %>
-        <li><i class="fa fa-paw fa-fw"></i>それをいつまでにしますか？</li>
-        <p><%= simple_format(h(progress.optional_content_3), {}, sanitize: false, wrapper_tag: 'div') %></p>
-      <% end %>
-
-      <div class="reaction_buttons">
-        <%= render 'sounandas/sounanda', post: post, progress: progress %>
-        <%= render 'erais/erai', post: post, progress: progress %>
-        <%= render 'teinei2s/teinei2', post: post, progress: progress %>
-        <%= render 'ouen2s/ouen2', post: post, progress: progress %>
-      </div>
     </ul>
 <% end %>
