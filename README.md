@@ -21,9 +21,9 @@ https://komarigotohiroba.com/
 
 ## 使用した技術
 - Ruby 2.7.1
-- Rails 6.0.3.2
+- Ruby on Rails 6.0.3.2
+- MySQL 5.7
 - Git, Github
-- MySQL
 - Docker, docker-compose
 - RSpec
 - RuboCop
