@@ -28,7 +28,7 @@ https://komarigotohiroba.com/
 - RSpec
 - RuboCop
 - AWS
-  - ECS
+  - ECS（fargate）
   - ECR
   - RDS
   - Route53
