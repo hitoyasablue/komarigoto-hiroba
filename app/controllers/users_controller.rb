@@ -52,7 +52,6 @@ class UsersController < ApplicationController
   def donation
     Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRODUCTION']
     gon.stripe_public_key = ENV['STRIPE_PUBLISHABLE_KEY_PRODUCTON']
-    flash[:post] = '5'
     @session = Stripe::Checkout::Session.create({
       payment_method_types: ['card'],
       line_items: [

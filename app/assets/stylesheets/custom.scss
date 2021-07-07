@@ -386,6 +386,9 @@ span.image {
 }
 
 @media screen and (max-width: 480px) {
+  .masthead {
+    font-family: "web_font";
+  }
   .masthead h1 {
     font-size: 2.6rem;
   }
