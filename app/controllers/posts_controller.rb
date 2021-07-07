@@ -27,17 +27,23 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      if @post.optional_content_4.present?
-        # flash[:post] = '最後まで書いてすごい！ あなたが今日心おだやかでありますように・・・'
+      if @post.optional_content_6.present?
+        #「最後まで書いてすごい！ ぼちぼち、ゆっくり、進んでいきましょう・・・」用
+        flash[:post] = '6'
+      elsif @post.optional_content_5.present?
+        #「無理のない範囲で、今できることを実行してみてくださいね。おうえんしています」用
+        flash[:post] = '5'
+      elsif @post.optional_content_3.present? || @post.optional_content_4.present?
+        #「困りごとを投稿しました。追加項目も書いてすごい！」用
         flash[:post] = '4'
-      elsif @post.optional_content_3.present?
-        # flash[:post] = '無理のない範囲で、今できることを実行してみてくださいね。おうえんしています'
+      elsif @post.optional_content_2.present?
+        #「困りごとを投稿しました。あなたが今日心おだやかでありますように・・・」用
         flash[:post] = '3'
-      elsif @post.optional_content.present? || @post.optional_content_2.present?
-        # flash[:post] = '困りごとを投稿しました。追加項目も書いてすごい！'
+      elsif @post.optional_content.present?
+        #「困りごとを投稿しました。あなたのもやもやがほんの少しでも薄くなっていますように・・・」用
         flash[:post] = '2'
       else
-        # flash[:post] = '困りごとを投稿しました！'
+        #「困りごとを投稿しました！」用
         flash[:post] = '1'
       end
       redirect_to posts_url
